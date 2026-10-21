@@ -112,9 +112,13 @@ export async function sendLead(request, env) {
     return jsonResponse({ error: "Vui lòng kiểm tra lại thông tin và xác nhận đồng ý liên hệ." }, 400);
   }
 
-  if (!env.RESEND_API_KEY || !env.LEADS_TO_EMAIL || !env.LEADS_FROM_EMAIL) {
-    console.error("Lead email service is not configured.");
-    return jsonResponse({ error: "Hệ thống chưa được cấu hình nhận đăng ký. Vui lòng thử lại sau." }, 503);
+  const missingBindings = ["RESEND_API_KEY", "LEADS_TO_EMAIL", "LEADS_FROM_EMAIL"]
+    .filter((name) => !env[name]);
+  if (missingBindings.length > 0) {
+    console.error("Missing Worker runtime bindings:", missingBindings.join(", "));
+    return jsonResponse({
+      error: `Worker chưa nhận được cấu hình: ${missingBindings.join(", ")}. Hãy thêm các giá trị này trong Runtime → Production rồi Deploy.`
+    }, 503);
   }
 
   const email = buildEmail(lead);

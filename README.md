@@ -47,10 +47,12 @@ Form yêu cầu họ tên, số điện thoại, khóa học quan tâm và xác 
 
 1. Tạo API key trong Resend, xác minh domain gửi. Địa chỉ `LEADS_FROM_EMAIL` phải thuộc domain đã xác minh.
 2. Cài Node.js trên máy có source code rồi deploy Worker từ thư mục dự án bằng `npx wrangler deploy`. Wrangler config trong `wrangler.jsonc` sẽ deploy Worker `model-academy` tại `model-academy.cun09062.workers.dev`.
-3. Trong Cloudflare, mở Worker **model-academy → Settings → Variables and Secrets** và thêm:
-   - `RESEND_API_KEY` — lưu dưới dạng secret, không đưa vào mã nguồn.
-   - `LEADS_TO_EMAIL` — địa chỉ tuyển sinh nhận thông báo.
-   - `LEADS_FROM_EMAIL` — địa chỉ gửi thuộc domain đã xác minh.
+3. Trong Cloudflare, mở Worker **model-academy → Settings → Variables and Secrets → Runtime → Production** và thêm đủ:
+   - `RESEND_API_KEY`
+   - `LEADS_TO_EMAIL`
+   - `LEADS_FROM_EMAIL`
+
+   Lưu cả ba dưới dạng **Secret**. API key bắt buộc phải là secret; hai email cũng có thể lưu dạng secret để tránh bị Wrangler xóa khi deploy. Đây là runtime secrets, không phải Build variables. Bấm **Deploy** để áp dụng.
 4. Frontend chỉ cho phép gọi API từ `https://adaacademy.tech` và `https://www.adaacademy.tech`.
 5. Deploy website lên Vercel như bình thường; form gọi Worker API độc lập với host website.
 6. Để chạy thử Worker local, cài Wrangler rồi chạy `npx wrangler dev`. Tạo file `.dev.vars` ở thư mục gốc với ba giá trị trên; file này đã được Git ignore. Không commit hoặc chia sẻ secrets.
@@ -62,6 +64,8 @@ RESEND_API_KEY=re_...
 LEADS_TO_EMAIL=tuyensinh@example.com
 LEADS_FROM_EMAIL="Model Academy <no-reply@example.com>"
 ```
+
+Nếu deployment log cảnh báo cấu hình Wrangler sẽ ghi đè `vars`, đó là các biến thường được khai báo từ Dashboard/Build; hãy giữ các giá trị cần thiết trong Runtime dưới dạng Secret và deploy lại. Không đưa API key vào `wrangler.jsonc` hoặc Build variables.
 
 Gói miễn phí và giới hạn của Cloudflare/Resend có thể thay đổi; kiểm tra bảng giá của nhà cung cấp trước khi triển khai. Backend hiện gửi email thông báo, chưa lưu lead vào database/CRM và chưa tích hợp CAPTCHA/rate limit. Trước khi quảng bá công khai, nên bật Cloudflare Turnstile hoặc quy tắc giới hạn request để giảm spam. Hãy chỉ báo thành công cho người dùng khi dịch vụ email chấp nhận gửi.
 
