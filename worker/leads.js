@@ -79,12 +79,7 @@ function buildEmail(lead) {
   return { text, html: `<h1>Yêu cầu tư vấn mới</h1>${html}` };
 }
 
-export async function onRequestPost({ request, env }) {
-  const origin = request.headers.get("Origin");
-  if (origin && origin !== new URL(request.url).origin) {
-    return jsonResponse({ error: "Nguồn gửi yêu cầu không hợp lệ." }, 403);
-  }
-
+export async function sendLead(request, env) {
   if (!request.headers.get("content-type")?.toLowerCase().startsWith("application/json")) {
     return jsonResponse({ error: "Yêu cầu phải có nội dung JSON." }, 415);
   }

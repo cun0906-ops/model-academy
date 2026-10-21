@@ -16,7 +16,7 @@
   };
   const consentError = form.querySelector(".consent-error");
 
-  const API_ENDPOINT = "/api/leads";
+  const API_ENDPOINT = "https://model-academy.cun09062.workers.dev/api/leads";
 
   function setError(field, message) {
     const wrapper = field.closest(".form-field");

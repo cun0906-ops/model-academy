@@ -10,12 +10,13 @@ model-academy/
 ├── css/
 │   ├── style.css
 │   └── responsive.css
-├── functions/
-│   └── api/
-│       └── leads.js
 ├── js/
 │   ├── main.js
 │   └── form.js
+├── worker/
+│   ├── index.js
+│   └── leads.js
+├── wrangler.jsonc
 └── README.md
 ```
 
@@ -34,28 +35,29 @@ Trang dùng ảnh minh họa từ Unsplash và font Google Fonts, nên cần k�
 - Thay ảnh minh họa bằng ảnh do học viện sở hữu hoặc có quyền sử dụng.
 - Kiểm tra lại tên khóa học, nội dung, học phí, lịch khai giảng, điều kiện đầu vào và quyền lợi.
 - Bổ sung trang/chính sách quyền riêng tư thực tế và cập nhật liên kết từ form.
-- Cấu hình secrets của Cloudflare Pages để gửi thông báo đăng ký qua email.
+- Cấu hình secrets của Cloudflare Worker để gửi thông báo đăng ký qua email.
 
-## Tích hợp form
+## Tích hợp form với Vercel và Cloudflare Workers
 
-Form gửi dữ liệu tới `/api/leads`, được xử lý bởi Cloudflare Pages Function (Workers runtime). Backend kiểm tra dữ liệu rồi gửi email thông báo tuyển sinh qua Resend. Form không gửi email xác nhận cho người đăng ký vì hiện chưa thu thập email.
+Website được host trên Vercel. Form gọi Worker API tại `https://model-academy.cun09062.workers.dev/api/leads`; Worker kiểm tra dữ liệu rồi gửi email thông báo tuyển sinh qua Resend. Form không gửi email xác nhận cho người đăng ký vì hiện chưa thu thập email.
 
 Form yêu cầu họ tên, số điện thoại, khóa học quan tâm và xác nhận đồng ý liên hệ. Mục tiêu học và thời gian liên hệ là tùy chọn. Trước khi chạy thật, hãy bổ sung liên kết đến chính sách quyền riêng tư thực tế của học viện.
 
 ### Cấu hình và deploy
 
-1. Tạo tài khoản Cloudflare và một dự án **Workers & Pages → Pages**, kết nối repository này. Đặt build command trống và build output directory là `.` (thư mục gốc).
-2. Tạo tài khoản Resend, xác minh domain gửi email, rồi tạo API key. Địa chỉ gửi (`LEADS_FROM_EMAIL`) phải thuộc domain đã xác minh.
-3. Trong Pages project, vào **Settings → Variables and Secrets** và cấu hình:
+1. Tạo API key trong Resend, xác minh domain gửi. Địa chỉ `LEADS_FROM_EMAIL` phải thuộc domain đã xác minh.
+2. Cài Node.js trên máy có source code rồi deploy Worker từ thư mục dự án bằng `npx wrangler deploy`. Wrangler config trong `wrangler.jsonc` sẽ deploy Worker `model-academy` tại `model-academy.cun09062.workers.dev`.
+3. Trong Cloudflare, mở Worker **model-academy → Settings → Variables and Secrets** và thêm:
    - `RESEND_API_KEY` — lưu dưới dạng secret, không đưa vào mã nguồn.
    - `LEADS_TO_EMAIL` — địa chỉ tuyển sinh nhận thông báo.
-   - `LEADS_FROM_EMAIL` — địa chỉ gửi thuộc domain đã xác minh trên Resend.
-4. Deploy Pages. Endpoint `/api/leads` sẽ được deploy cùng trang; gửi form hợp lệ sẽ gửi email đến `LEADS_TO_EMAIL`.
-5. Để chạy thử local, cài Wrangler rồi chạy `npx wrangler pages dev .`. Tạo file `.dev.vars` ở thư mục gốc với ba giá trị trên; file này đã được Git ignore. Không commit hoặc chia sẻ các secret.
+   - `LEADS_FROM_EMAIL` — địa chỉ gửi thuộc domain đã xác minh.
+4. Frontend chỉ cho phép gọi API từ `https://adaacademy.tech` và `https://www.adaacademy.tech`.
+5. Deploy website lên Vercel như bình thường; form gọi Worker API độc lập với host website.
+6. Để chạy thử Worker local, cài Wrangler rồi chạy `npx wrangler dev`. Tạo file `.dev.vars` ở thư mục gốc với ba giá trị trên; file này đã được Git ignore. Không commit hoặc chia sẻ secrets.
 
 Ví dụ `.dev.vars` (thay bằng giá trị của riêng học viện; không dùng cú pháp này để lưu secret vào Git):
 
-```js
+```ini
 RESEND_API_KEY=re_...
 LEADS_TO_EMAIL=tuyensinh@example.com
 LEADS_FROM_EMAIL="Model Academy <no-reply@example.com>"
@@ -67,4 +69,4 @@ Không đặt API key bí mật trong JavaScript frontend.
 
 ## Ghi chú
 
-Chạy `index.html` bằng cách mở trực tiếp file không cung cấp API backend; hãy dùng `wrangler pages dev .` để kiểm thử toàn bộ form. Dự án chưa có database, CRM, Google Sheets hay analytics.
+Mở `index.html` bằng file trực tiếp/Live Server sẽ không dùng được API trên trình duyệt vì CORS chỉ cho phép domain production. Dự án chưa có database, CRM, Google Sheets hay analytics.
