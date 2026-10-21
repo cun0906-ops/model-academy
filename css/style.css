@@ -66,7 +66,7 @@ p { margin-bottom: 16px; }
 .brand-copy { display: flex; flex-direction: column; line-height: 1.35; }
 .brand-copy strong { font-family: var(--font-display); font-size: .77rem; letter-spacing: .09em; }
 .brand-copy small { margin-top: 3px; color: var(--muted); font-size: .54rem; letter-spacing: .14em; }
-.primary-nav { display: flex; align-items: center; gap: clamp(18px, 2.4vw, 34px); }
+.primary-nav { display: flex; align-items: center; gap: clamp(18px, 2.4vw, 34px); height: max-content; }
 .primary-nav > a:not(.button) { font-size: .75rem; font-weight: 500; transition: color .2s ease; }
 .primary-nav > a:not(.button):hover { color: var(--accent-dark); }
 .menu-toggle { display: none; }
