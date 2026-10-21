@@ -303,14 +303,14 @@
         <div class="lead-copy">
           <p class="eyebrow eyebrow-light">START YOUR JOURNEY</p>
           <h2>Đầu tư cho kỹ năng.<br><em>Mở rộng cơ hội.</em></h2>
-          <p>Điền thông tin bên dưới. Đội ngũ tuyển sinh sẽ liên hệ để trao đổi về mục tiêu, chương trình và lịch học.</p>
+          <p>Để lại thông tin để được trao đổi về khóa học phù hợp, lịch học và học phí. Chọn “Chưa biết, cần tư vấn” nếu bạn chưa xác định được chương trình.</p>
           <div class="lead-contact">
             <span class="contact-icon" aria-hidden="true">↗</span>
             <div><small>HOTLINE / ZALO</small><strong><!-- TODO: thay bằng số hotline thật -->Cập nhật số liên hệ</strong></div>
           </div>
         </div>
         <form class="lead-form" id="admissions-form" novalidate>
-          <div class="form-heading"><p class="eyebrow">ADMISSIONS FORM</p><h3>Đăng ký tư vấn</h3><p>Các trường có dấu * là bắt buộc.</p></div>
+          <div class="form-heading"><p class="eyebrow">ADMISSIONS FORM</p><h3>Đăng ký tư vấn</h3><p>Các trường có dấu * là bắt buộc. Mục tiêu học và thời gian liên hệ là tùy chọn.</p></div>
           <div class="form-field">
             <label for="full-name">Họ và tên <span>*</span></label>
             <input id="full-name" name="name" type="text" autocomplete="name" placeholder="Nhập họ và tên" required minlength="2">
@@ -333,6 +333,16 @@
             <small class="field-error" aria-live="polite"></small>
           </div>
           <div class="form-field">
+            <label for="learning-goal">Mục tiêu học (không bắt buộc)</label>
+            <select id="learning-goal" name="learning_goal">
+              <option value="">Chọn mục tiêu nếu bạn đã xác định</option>
+              <option value="catwalk">Rèn kỹ năng catwalk</option>
+              <option value="photoshoot">Tạo dáng và làm việc trước ống kính</option>
+              <option value="career">Theo đuổi nghề người mẫu</option>
+              <option value="explore">Tìm hiểu và khám phá thêm</option>
+            </select>
+          </div>
+          <div class="form-field">
             <label for="contact-time">Thời gian liên hệ</label>
             <select id="contact-time" name="contact_time">
               <option value="any">Bất kỳ thời gian phù hợp</option>
@@ -342,10 +352,10 @@
             </select>
           </div>
           <label class="consent-row">
-            <input type="checkbox" name="consent" id="consent" required>
+            <input type="checkbox" name="consent" id="consent" aria-describedby="consent-error" required>
             <span>Tôi đồng ý để học viện liên hệ tư vấn theo thông tin đã cung cấp và đã đọc chính sách quyền riêng tư.</span>
           </label>
-          <small class="consent-error field-error" aria-live="polite"></small>
+          <small class="consent-error field-error" id="consent-error" aria-live="polite"></small>
           <button class="button button-dark button-full form-submit" type="submit">Gửi yêu cầu tư vấn <span aria-hidden="true">↗</span></button>
           <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
           <p class="form-privacy">Thông tin chỉ nên được sử dụng cho mục đích tư vấn tuyển sinh đã thông báo.</p>

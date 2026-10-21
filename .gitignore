@@ -7,3 +7,5 @@ Thumbs.db
 # Local environment / secrets
 .env
 .env.*
+.dev.vars
+.dev.vars.*

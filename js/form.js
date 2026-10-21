@@ -1,7 +1,4 @@
-/* Admissions lead form.
- * Demo mode is enabled until a real backend endpoint is configured.
- * Never put private API keys or secrets in frontend JavaScript.
- */
+/* Admissions lead form. Never put private API keys or secrets in frontend JavaScript. */
 (() => {
   "use strict";
 
@@ -14,12 +11,12 @@
     name: form.querySelector('[name="name"]'),
     phone: form.querySelector('[name="phone"]'),
     course: form.querySelector('[name="course"]'),
+    learningGoal: form.querySelector('[name="learning_goal"]'),
     consent: form.querySelector('[name="consent"]')
   };
+  const consentError = form.querySelector(".consent-error");
 
-  // Replace with your own backend endpoint, for example:
-  // const API_ENDPOINT = "https://your-domain.vn/api/leads";
-  const API_ENDPOINT = "";
+  const API_ENDPOINT = "/api/leads";
 
   function setError(field, message) {
     const wrapper = field.closest(".form-field");
@@ -42,7 +39,8 @@
     setError(fields.name, "");
     setError(fields.phone, "");
     setError(fields.course, "");
-    document.querySelector(".consent-error").textContent = "";
+    consentError.textContent = "";
+    fields.consent.setAttribute("aria-invalid", "false");
 
     if (name.length < 2) {
       setError(fields.name, "Vui lòng nhập họ tên (ít nhất 2 ký tự).");
@@ -62,8 +60,9 @@
     }
 
     if (!fields.consent.checked) {
-      document.querySelector(".consent-error").textContent =
+      consentError.textContent =
         "Vui lòng xác nhận đồng ý để học viện liên hệ tư vấn.";
+      fields.consent.setAttribute("aria-invalid", "true");
       valid = false;
     }
 
@@ -75,6 +74,7 @@
       name: fields.name.value.trim(),
       phone: fields.phone.value.trim(),
       course: fields.course.value,
+      learning_goal: fields.learningGoal.value,
       contact_time: form.elements.contact_time.value,
       consent: fields.consent.checked,
       source: "model-academy-landing-page",
@@ -83,12 +83,6 @@
   }
 
   async function submitLead(payload) {
-    if (!API_ENDPOINT) {
-      // Demo mode: do not pretend data has been saved or sent.
-      console.info("[Model Academy demo] Form payload (not sent):", payload);
-      return { demo: true };
-    }
-
     const response = await fetch(API_ENDPOINT, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -96,10 +90,10 @@
     });
 
     if (!response.ok) {
-      throw new Error("Không thể gửi thông tin lúc này. Vui lòng thử lại sau.");
+      const result = await response.json().catch(() => null);
+      throw new Error(result?.error || "Không thể gửi thông tin lúc này. Vui lòng thử lại sau.");
     }
 
-    return { demo: false };
   }
 
   form.addEventListener("input", clearStatus);
@@ -120,19 +114,13 @@
     submitButton.textContent = "Đang xử lý...";
 
     try {
-      const result = await submitLead(getPayload());
-      status.classList.add(result.demo ? "is-error" : "is-success");
-
-      if (result.demo) {
-        status.textContent =
-          "Form đang ở chế độ demo: dữ liệu chưa được gửi hoặc lưu. Hãy cấu hình API_ENDPOINT trong js/form.js để nhận lead thực tế.";
-      } else {
-        status.textContent = "Cảm ơn bạn! Yêu cầu tư vấn đã được gửi thành công.";
-        form.reset();
-        form.querySelectorAll('[aria-invalid="true"]').forEach((field) => {
-          field.removeAttribute("aria-invalid");
-        });
-      }
+      await submitLead(getPayload());
+      status.classList.add("is-success");
+      status.textContent = "Cảm ơn bạn! Yêu cầu tư vấn đã được gửi thành công.";
+      form.reset();
+      form.querySelectorAll('[aria-invalid="true"]').forEach((field) => {
+        field.removeAttribute("aria-invalid");
+      });
     } catch (error) {
       status.classList.add("is-error");
       status.textContent = error.message || "Có lỗi xảy ra. Vui lòng thử lại.";
