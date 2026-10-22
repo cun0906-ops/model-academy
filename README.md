@@ -34,6 +34,7 @@ Trang dùng ảnh minh họa từ Unsplash và font Google Fonts, nên cần k�
 - Thay số hotline, Zalo, địa chỉ, thông tin pháp lý và liên kết mạng xã hội.
 - Thay ảnh minh họa bằng ảnh do học viện sở hữu hoặc có quyền sử dụng.
 - Xác nhận nội dung bootcamp, lịch khai giảng, học phí, mentor, địa điểm, điều kiện đầu vào và quyền lợi/quà tặng trước khi tuyển sinh.
+- Xác nhận bằng văn bản các quyền lợi KOL/KOC được quảng bá: tiêu chí/thủ tục thành lập doanh nghiệp, quy mô và quyền truy cập hệ sinh thái, phần mềm, hỗ trợ setup livestream, lịch sử dụng studio, dịch vụ hình ảnh, điều kiện voucher và thể lệ tham gia chương trình Hoa hậu Doanh nhân/khách mời.
 - Bổ sung trang/chính sách quyền riêng tư thực tế và cập nhật liên kết từ form.
 - Cấu hình secrets của Cloudflare Worker để gửi thông báo đăng ký qua email.
 

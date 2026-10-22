@@ -96,7 +96,7 @@
 
   // Reveal content as it enters the viewport, unless the user prefers reduced motion.
   const revealTargets = document.querySelectorAll(
-    ".intro-strip-inner, .section-heading, .feature-card, .program-card, .timeline-item, " +
+    ".intro-strip-inner, .section-heading, .feature-card, .benefit-card, .program-card, .timeline-item, " +
     ".instructor-image, .instructor-copy, .gallery-item, .enrollment-card, .faq-item, .lead-copy, .lead-form"
   );
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

@@ -32,9 +32,6 @@
   .hero-visual > img { min-height: 420px; height: 58vw; }
   .hero-stamp { right: -16px; width: 90px; height: 90px; font-size: .53rem; }
   .intro-strip-inner { grid-template-columns: 1fr auto; gap: 12px 20px; }
-  .bootcamp-strip-inner { gap: 14px; }
-  .bootcamp-strip-inner > div { flex-direction: column; gap: 2px; }
-  .bootcamp-strip-inner > div + div { padding-left: 14px; }
   .intro-strip .eyebrow { grid-column: 1; }
   .intro-strip-copy { grid-column: 1; }
   .round-link { grid-column: 2; grid-row: 1 / span 2; }
@@ -49,6 +46,8 @@
   .program-card:last-child { grid-column: 1 / -1; display: grid; grid-template-columns: .8fr 1fr; }
   .program-card:last-child .program-image img { height: 100%; min-height: 330px; }
   .program-card-featured { transform: none; }
+  .benefits-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .benefit-card-voucher { grid-column: 1 / -1; }
   .roadmap-layout, .instructor-layout, .faq-layout { gap: 44px; }
   .instructor-image img { height: 540px; }
   .enrollment-layout { grid-template-columns: 1fr .9fr; gap: 30px; }
@@ -86,10 +85,14 @@
   .hero-stamp { right: 12px; bottom: 48px; }
   .hero-image-label { font-size: .52rem; }
   .intro-strip-inner { padding-block: 23px; gap: 8px 16px; }
-  .bootcamp-strip-inner { grid-template-columns: repeat(3, 1fr); gap: 10px; padding-block: 16px; }
-  .bootcamp-strip-inner > div + div { padding-left: 10px; }
-  .bootcamp-strip-inner strong { font-size: 1.05rem; }
-  .bootcamp-strip-inner span { font-size: .62rem; line-height: 1.4; }
+  .bootcamp-strip-inner { grid-template-columns: 1fr; gap: 9px; padding-block: 20px; }
+  .bootcamp-strip-kicker { margin-bottom: 3px; font-size: .55rem; }
+  .bootcamp-metric { grid-template-columns: minmax(0, 1fr) auto; min-height: 75px; column-gap: 12px; padding: 11px 15px; }
+  .bootcamp-metric-label { grid-column: 1; grid-row: 1; margin-bottom: 2px; font-size: .5rem; }
+  .bootcamp-metric strong { grid-column: 1; grid-row: 2; font-size: 1.2rem; }
+  .bootcamp-metric-copy { grid-column: 2; grid-row: 1 / span 2; align-self: center; font-size: .7rem; text-align: right; }
+  .bootcamp-metric-hours { grid-template-columns: minmax(0, 1fr) auto; }
+  .bootcamp-metric-hours strong { font-size: 1.12rem; }
   .intro-strip .eyebrow { font-size: .57rem; }
   .intro-strip-copy { font-size: 1rem; }
   .round-link { width: 36px; height: 36px; }
@@ -109,6 +112,12 @@
   .program-image img, .program-card:last-child .program-image img { height: 100vw; min-height: 300px; max-height: 430px; }
   .program-body { padding: 24px 20px 26px; }
   .program-body > p:not(.eyebrow) { min-height: 0; }
+  .benefits-grid { grid-template-columns: 1fr; gap: 12px; }
+  .benefit-card { min-height: 0; padding: 20px; }
+  .benefit-card-voucher { grid-column: auto; display: block; }
+  .benefit-card-voucher .feature-icon { margin: 17px 0 14px; }
+  .benefits-note { margin-top: 18px; padding: 14px; }
+  .benefits-cta { width: 100%; }
   .roadmap-layout, .instructor-layout, .faq-layout, .enrollment-layout, .lead-layout { grid-template-columns: 1fr; gap: 38px; }
   .roadmap-intro { position: static; }
   .roadmap-intro .button { width: 100%; }
