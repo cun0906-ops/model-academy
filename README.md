@@ -1,6 +1,6 @@
 # Model Academy — Landing Page
 
-Landing page giới thiệu khóa học đào tạo người mẫu, viết bằng HTML, CSS và JavaScript thuần.
+Landing page giới thiệu bootcamp Business KOL & Model Doanh nhân 7 ngày, viết bằng HTML, CSS và JavaScript thuần.
 
 ## Cấu trúc
 
@@ -30,10 +30,10 @@ Trang dùng ảnh minh họa từ Unsplash và font Google Fonts, nên cần k�
 
 ## Những mục cần thay trước khi sử dụng thật
 
-- Thay tên `MODEL ACADEMY` bằng tên học viện.
+- Xác nhận tên chương trình, đơn vị tổ chức và quyền sử dụng logo ADA Group.
 - Thay số hotline, Zalo, địa chỉ, thông tin pháp lý và liên kết mạng xã hội.
 - Thay ảnh minh họa bằng ảnh do học viện sở hữu hoặc có quyền sử dụng.
-- Kiểm tra lại tên khóa học, nội dung, học phí, lịch khai giảng, điều kiện đầu vào và quyền lợi.
+- Xác nhận nội dung bootcamp, lịch khai giảng, học phí, mentor, địa điểm, điều kiện đầu vào và quyền lợi/quà tặng trước khi tuyển sinh.
 - Bổ sung trang/chính sách quyền riêng tư thực tế và cập nhật liên kết từ form.
 - Cấu hình secrets của Cloudflare Worker để gửi thông báo đăng ký qua email.
 
@@ -41,7 +41,7 @@ Trang dùng ảnh minh họa từ Unsplash và font Google Fonts, nên cần k�
 
 Website được host trên Vercel. Form gọi Worker API tại `https://model-academy.cun09062.workers.dev/api/leads`; Worker kiểm tra dữ liệu rồi gửi email thông báo tuyển sinh qua Resend. Form không gửi email xác nhận cho người đăng ký vì hiện chưa thu thập email.
 
-Form yêu cầu họ tên, số điện thoại, khóa học quan tâm và xác nhận đồng ý liên hệ. Mục tiêu học và thời gian liên hệ là tùy chọn. Trước khi chạy thật, hãy bổ sung liên kết đến chính sách quyền riêng tư thực tế của học viện.
+Form yêu cầu họ tên, số điện thoại, chương trình quan tâm và xác nhận đồng ý liên hệ. Nội dung muốn tìm hiểu và thời gian liên hệ là tùy chọn. Worker gửi email thông báo với tên bootcamp mới. Trước khi chạy thật, hãy bổ sung liên kết đến chính sách quyền riêng tư thực tế của học viện.
 
 ### Cấu hình và deploy
 

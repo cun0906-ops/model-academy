@@ -4,17 +4,17 @@ const allowedContactTimes = new Set(["any", "morning", "afternoon", "evening"]);
 
 const courseNames = {
   foundation: "Model Foundation — Nền tảng",
-  skills: "Model Skills — Kỹ năng",
+  skills: "Bootcamp Business KOL & Model Doanh nhân — 7 ngày",
   professional: "Professional Model — Nâng cao",
-  unknown: "Chưa biết, cần tư vấn"
+  unknown: "Cần tư vấn thêm trước khi chọn"
 };
 
 const goalNames = {
   "": "Chưa cung cấp",
-  catwalk: "Rèn kỹ năng catwalk",
-  photoshoot: "Tạo dáng và làm việc trước ống kính",
-  career: "Theo đuổi nghề người mẫu",
-  explore: "Tìm hiểu và khám phá thêm"
+  catwalk: "Catwalk, phong thái và trình diễn",
+  photoshoot: "Video, tạo dáng và ảnh profile",
+  career: "Xây dựng hình ảnh KOL/KOC",
+  explore: "Thương mại điện tử, nội dung và livestream"
 };
 
 const contactTimeNames = {
@@ -133,7 +133,7 @@ export async function sendLead(request, env) {
       body: JSON.stringify({
         from: env.LEADS_FROM_EMAIL,
         to: [env.LEADS_TO_EMAIL],
-        subject: "Có yêu cầu tư vấn mới — Model Academy",
+        subject: "Yêu cầu tư vấn mới — Bootcamp Business KOL",
         text: email.text,
         html: email.html
       })
