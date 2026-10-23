@@ -125,4 +125,18 @@
       if (courseSelect) courseSelect.value = link.dataset.course || "";
     });
   });
+
+  // Floating back to top button
+  const backToTopBtn = document.querySelector("#back-to-top");
+  if (backToTopBtn) {
+    const toggleBackToTop = () => {
+      backToTopBtn.classList.toggle("is-visible", window.scrollY > 350);
+    };
+    toggleBackToTop();
+    window.addEventListener("scroll", toggleBackToTop, { passive: true });
+    backToTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
 })();
+
