@@ -94,27 +94,67 @@
   const year = document.querySelector("#current-year");
   if (year) year.textContent = String(new Date().getFullYear());
 
-  // Reveal content as it enters the viewport, unless the user prefers reduced motion.
+  // Reveal content as it enters the viewport (hỗ trợ cả cuộn xuống và từ dưới cuộn lên)
   const revealTargets = document.querySelectorAll(
     ".intro-strip-inner, .section-heading, .feature-card, .benefit-card, .program-card, .timeline-item, " +
     ".instructor-image, .instructor-copy, .gallery-item, .enrollment-card, .faq-item, .lead-copy, .lead-form, " +
-    ".pillar-card, .audience-card, .program-detail-card, .value-card, .advantage-card, .challenges-callout"
+    ".pillar-card, .audience-card, .program-detail-card, .value-card, .advantage-card, .challenges-callout, " +
+    ".section-heading-split, .about-header"
   );
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   if (revealTargets.length && "IntersectionObserver" in window && !prefersReducedMotion) {
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("is-visible");
-        observer.unobserve(entry.target);
-      });
-    }, { threshold: 0.12, rootMargin: "0px 0px -32px 0px" });
+    let lastScrollY = window.scrollY;
+    let scrollDirection = "down";
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        const currentScrollY = window.scrollY;
+        if (currentScrollY > lastScrollY + 4) {
+          scrollDirection = "down";
+        } else if (currentScrollY < lastScrollY - 4) {
+          scrollDirection = "up";
+        }
+        lastScrollY = currentScrollY;
+      },
+      { passive: true }
+    );
+
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const el = entry.target;
+          if (entry.isIntersecting) {
+            el.dataset.scrollDir = scrollDirection;
+            const siblings = Array.from(
+              el.parentElement ? el.parentElement.querySelectorAll(":scope > .reveal-on-scroll") : []
+            );
+            const index = siblings.indexOf(el);
+            if (index >= 0) {
+              const delay =
+                scrollDirection === "up" && siblings.length > 1
+                  ? (siblings.length - 1 - index) * 70
+                  : index * 70;
+              el.style.setProperty("--reveal-delay", `${Math.min(delay, 280)}ms`);
+            }
+            el.classList.add("is-visible");
+          } else {
+            // Khi phần tử rời khỏi màn hình hoàn toàn, gỡ bỏ is-visible
+            // để sẵn sàng cho hiệu ứng xuất hiện tiếp theo khi người dùng cuộn ngược lại
+            el.classList.remove("is-visible");
+          }
+        });
+      },
+      {
+        threshold: 0.08,
+        rootMargin: "-40px 0px -20px 0px"
+      }
+    );
 
     document.body.classList.add("js-reveal-ready");
     revealTargets.forEach((element) => {
       element.classList.add("reveal-on-scroll");
-      const siblings = element.parentElement.querySelectorAll(":scope > .reveal-on-scroll");
-      element.style.setProperty("--reveal-delay", `${Math.min((siblings.length - 1) * 110, 330)}ms`);
       revealObserver.observe(element);
     });
   }
