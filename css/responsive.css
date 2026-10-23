@@ -55,8 +55,9 @@
   .instructor-image img { height: 540px; }
   .enrollment-layout { grid-template-columns: 1fr .9fr; gap: 30px; }
   .enrollment-card { padding: 26px; }
-  .lead-layout { grid-template-columns: .8fr 1fr; gap: 35px; }
-  .lead-form { padding: 28px; }
+  .lead-layout { grid-template-columns: 1fr; gap: 36px; }
+  .lead-description, .lead-highlights { width: 100%; max-width: 100%; }
+  .lead-form { padding: 30px 26px; }
   .footer-main { grid-template-columns: 1fr 1fr; gap: 36px 28px; }
   .footer-col-brand { grid-column: 1 / -1; max-width: none; }
 }
@@ -78,7 +79,7 @@
   .eyebrow { font-size: 12px; gap: 8px; flex-wrap: wrap; }
   .eyebrow-line { width: 20px; flex-shrink: 0; }
   .hero-content .eyebrow { margin-bottom: 20px; }
-  h2, .hero h1, .hero-content h2 { font-size: clamp(2.1rem, 8.5vw, 2.85rem); margin-bottom: 18px; line-height: 1.18; }
+  h2, .hero h1, .hero-content h2, .lead-copy h2 { font-size: clamp(2.1rem, 8.5vw, 2.85rem); margin-bottom: 18px; line-height: 1.18; }
   .hero-description {
     width: 100%;
     max-width: 100%;
@@ -186,7 +187,41 @@
   .faq-item p { font-size: .76rem; }
   .lead-layout { gap: 28px; }
   .lead-copy { padding-top: 0; }
-  .lead-contact { margin-top: 25px; }
+  .lead-copy h2 {
+    font-size: clamp(2.1rem, 8.5vw, 2.85rem);
+    margin-bottom: 18px;
+    line-height: 1.18;
+  }
+  .lead-description {
+    width: 100%;
+    max-width: 100%;
+    font-size: 14px;
+    line-height: 1.75;
+    text-align: justify;
+    text-justify: inter-word;
+    text-align-last: left;
+    letter-spacing: -.01em;
+    margin-bottom: 20px;
+  }
+  .lead-highlights {
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .lead-highlights li {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .lead-highlights li span {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .lead-highlights svg {
+    width: 18px;
+    height: 18px;
+    padding: 3px;
+    margin-top: 2px;
+  }
+  .lead-contact { margin-top: 0; }
   .lead-form { padding: 25px 20px; }
   .footer-main { grid-template-columns: 1fr; gap: 28px; padding-block: 36px 24px; }
   .footer-col-brand { grid-column: auto; }
@@ -199,7 +234,7 @@
   .brand { gap: 8px; }
   .brand-copy strong { font-size: .64rem; }
   .brand-copy small { font-size: .44rem; }
-  h2, .hero h1, .hero h2 { font-size: 2.1rem; }
+  h2, .hero h1, .hero h2, .lead-copy h2 { font-size: 2.1rem; }
   .feature-card { padding-inline: 10px !important; }
   .feature-card h3 { font-size: 15px; }
   .gallery-grid { grid-template-rows: 250px 160px; }

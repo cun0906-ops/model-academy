@@ -74,8 +74,8 @@
       name: fields.name.value.trim(),
       phone: fields.phone.value.trim(),
       course: fields.course.value,
-      learning_goal: fields.learningGoal.value,
-      contact_time: form.elements.contact_time.value,
+      learning_goal: fields.learningGoal ? fields.learningGoal.value.trim() : "",
+      contact_time: form.elements.contact_time ? form.elements.contact_time.value : "any",
       consent: fields.consent.checked,
       source: "model-academy-landing-page",
       submitted_at: new Date().toISOString()

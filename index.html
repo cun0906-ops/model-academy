@@ -11,8 +11,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=35">
-  <link rel="stylesheet" href="css/responsive.css?v=24">
+  <link rel="stylesheet" href="css/style.css?v=38">
+  <link rel="stylesheet" href="css/responsive.css?v=27">
   <script src="js/main.js?v=5" defer></script>
   <script src="js/form.js" defer></script>
 </head>
@@ -486,9 +486,25 @@
     <section class="section lead-section" id="lead-form">
       <div class="container lead-layout">
         <div class="lead-copy">
-          <p class="eyebrow eyebrow-light"><span class="eyebrow-line"></span> START WITH A CONVERSATION <span class="eyebrow-line"></span></p>
-          <h2>Chọn kỹ năng muốn phát triển.<br><em>Nhận lộ trình phù hợp.</em></h2>
-          <p>Để lại thông tin để được tư vấn lộ trình KOL/model, lịch học, học phí và quyền lợi cụ thể đang áp dụng cho khóa.</p>
+          <p class="eyebrow eyebrow-light"><span class="eyebrow-line"></span> BẮT ĐẦU HÀNH TRÌNH PHÁT TRIỂN <span class="eyebrow-line"></span></p>
+          <h2>Bắt đầu hành trình phát triển<br><em>cùng ADA Talent Academy.</em></h2>
+          <p class="lead-description">Mỗi cá nhân đều có những thế mạnh và mục tiêu riêng. Hãy để ADA Talent Academy giúp bạn tìm hiểu lộ trình đào tạo phù hợp với định hướng của mình.</p>
+          
+          <ul class="lead-highlights">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Tư vấn 1-1 chuyên sâu theo thế mạnh và mục tiêu cá nhân</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Định hướng xây dựng hình ảnh và thương hiệu cá nhân</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Cập nhật lịch học và quyền lợi cụ thể đang áp dụng</span>
+            </li>
+          </ul>
+
           <a class="lead-contact" href="https://zalo.me/0886291909" target="_blank" rel="noopener noreferrer" aria-label="Liên hệ Hotline / Zalo: 088 629 1909">
             <span class="contact-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -498,53 +514,46 @@
             <div><small>HOTLINE / ZALO</small><strong>088 629 1909</strong></div>
           </a>
         </div>
+
         <form class="lead-form" id="admissions-form" novalidate>
-          <div class="form-heading"><p class="eyebrow">BOOTCAMP INQUIRY</p><h3>Nhận tư vấn chương trình</h3><p>Họ tên, số điện thoại và xác nhận liên hệ là bắt buộc. Các thông tin khác là tùy chọn.</p></div>
+          <div class="form-heading">
+            <p class="eyebrow">TƯ VẤN LỘ TRÌNH</p>
+            <h3>Đăng ký nhận tư vấn chương trình</h3>
+            <p>Vui lòng để lại thông tin để bộ phận tuyển sinh liên hệ và giới thiệu chương trình đào tạo phù hợp.</p>
+          </div>
           <div class="form-field">
             <label for="full-name">Họ và tên <span>*</span></label>
-            <input id="full-name" name="name" type="text" autocomplete="name" placeholder="Nhập họ và tên" required minlength="2">
+            <input id="full-name" name="name" type="text" autocomplete="name" placeholder="Ví dụ: Nguyễn Văn A" required minlength="2">
             <small class="field-error" aria-live="polite"></small>
           </div>
           <div class="form-field">
             <label for="phone">Số điện thoại <span>*</span></label>
-            <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="Ví dụ: 09xxxxxxxx" required>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="Ví dụ: 088 629 1909" required>
             <small class="field-error" aria-live="polite"></small>
           </div>
           <div class="form-field">
             <label for="course">Chương trình quan tâm <span>*</span></label>
             <select id="course" name="course" required>
-              <option value="skills" selected>Bootcamp Business KOL &amp; Model Doanh nhân — 7 ngày</option>
-              <option value="unknown">Tôi cần tư vấn thêm trước khi chọn</option>
+              <option value="" disabled selected>Chọn chương trình quan tâm</option>
+              <option value="kol_branding">KOL/KOC &amp; Personal Branding</option>
+              <option value="model_image">Model &amp; Personal Image</option>
+              <option value="undetermined">Chưa xác định</option>
             </select>
             <small class="field-error" aria-live="polite"></small>
           </div>
           <div class="form-field">
-            <label for="learning-goal">Nội dung muốn tìm hiểu thêm</label>
-            <select id="learning-goal" name="learning_goal">
-              <option value="">Chọn một nội dung (không bắt buộc)</option>
-              <option value="catwalk">Catwalk, phong thái &amp; trình diễn</option>
-              <option value="photoshoot">Video, tạo dáng &amp; ảnh profile</option>
-              <option value="career">Xây dựng hình ảnh KOL/KOC</option>
-              <option value="explore">TMĐT, nội dung &amp; livestream</option>
-            </select>
+            <label for="learning-goal">Mục tiêu hoặc nhu cầu học tập <span class="optional-label">(không bắt buộc)</span></label>
+            <input id="learning-goal" name="learning_goal" type="text" placeholder="Chia sẻ mục tiêu hoặc định hướng của bạn">
           </div>
-          <div class="form-field">
-            <label for="contact-time">Thời gian liên hệ</label>
-            <select id="contact-time" name="contact_time">
-              <option value="any">Bất kỳ thời gian phù hợp</option>
-              <option value="morning">Buổi sáng</option>
-              <option value="afternoon">Buổi chiều</option>
-              <option value="evening">Buổi tối</option>
-            </select>
-          </div>
+          <input type="hidden" name="contact_time" value="any">
           <label class="consent-row">
             <input type="checkbox" name="consent" id="consent" aria-describedby="consent-error" required>
             <span>Tôi đồng ý để học viện liên hệ tư vấn theo thông tin đã cung cấp.</span>
           </label>
           <small class="consent-error field-error" id="consent-error" aria-live="polite"></small>
-          <button class="button button-dark button-full form-submit" type="submit">Gửi yêu cầu tư vấn <span class="action-icon icon-up" aria-hidden="true">↗</span></button>
+          <button class="button button-dark button-full form-submit" type="submit">Gửi đăng ký tư vấn <span class="action-icon icon-up" aria-hidden="true">↗</span></button>
           <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
-          <p class="form-privacy">Chỉ cung cấp thông tin cần thiết để được liên hệ. Không gửi CCCD, mật khẩu hoặc thông tin thanh toán qua form.</p>
+          <p class="form-privacy">Chỉ cung cấp thông tin cần thiết để được liên hệ. Cam kết bảo mật thông tin cá nhân theo quy định.</p>
         </form>
       </div>
     </section>
