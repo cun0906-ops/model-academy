@@ -97,7 +97,8 @@
   // Reveal content as it enters the viewport, unless the user prefers reduced motion.
   const revealTargets = document.querySelectorAll(
     ".intro-strip-inner, .section-heading, .feature-card, .benefit-card, .program-card, .timeline-item, " +
-    ".instructor-image, .instructor-copy, .gallery-item, .enrollment-card, .faq-item, .lead-copy, .lead-form"
+    ".instructor-image, .instructor-copy, .gallery-item, .enrollment-card, .faq-item, .lead-copy, .lead-form, " +
+    ".pillar-card, .audience-card, .program-detail-card, .value-card, .advantage-card, .challenges-callout"
   );
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (revealTargets.length && "IntersectionObserver" in window && !prefersReducedMotion) {

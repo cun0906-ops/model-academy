@@ -11,9 +11,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=38">
-  <link rel="stylesheet" href="css/responsive.css?v=27">
-  <script src="js/main.js?v=5" defer></script>
+  <link rel="stylesheet" href="css/style.css?v=42">
+  <link rel="stylesheet" href="css/responsive.css?v=30">
+  <script src="js/main.js?v=6" defer></script>
   <script src="js/form.js" defer></script>
 </head>
 <body>
@@ -28,11 +28,12 @@
         <span></span><span></span><span></span>
       </button>
       <nav class="primary-nav" id="primary-nav" aria-label="Điều hướng chính">
-        <a href="#program">Chương trình</a>
-        <a href="#schedule">Lộ trình 7 ngày</a>
-        <a href="#outcomes">Bạn sẽ thực hành</a>
-        <a href="#benefits">Quyền lợi học viên</a>
-        <a href="#faq">Câu hỏi thường gặp</a>
+        <a href="#about">Giới thiệu</a>
+        <a href="#challenges">Nhu cầu</a>
+        <a href="#audience">Đối tượng</a>
+        <a href="#programs">Chương trình</a>
+        <a href="#roadmap">Lộ trình</a>
+        <a href="#advantages">Lợi thế</a>
         <a class="button button-small button-dark nav-cta" href="#lead-form">Nhận tư vấn</a>
         <span class="nav-indicator" aria-hidden="true"></span>
       </nav>
@@ -40,136 +41,114 @@
   </header>
 
   <main id="main-content">
-    <section class="hero section-dark" id="top">
+    <!-- SECTION 01: HERO BANNER -->
+    <section class="section hero section-dark" id="top">
       <div class="container hero-grid">
         <div class="hero-content">
-          <p class="eyebrow eyebrow-light"><span class="eyebrow-line"></span> BOOTCAMP KOL &amp; MODEL · 7 NGÀY <span class="eyebrow-line"></span></p>
-          <h2>Muốn làm KOL, model?<br><em>Bắt đầu từ đâu?</em></h2>
-          <p class="hero-description">Bạn muốn trở thành KOL nhưng chưa biết xây kênh, làm nội dung hay tìm cơ hội booking thế nào? Muốn làm model nhưng chưa biết tạo dáng, catwalk và xây hình ảnh ra sao? Bootcamp đồng hành cùng bạn qua từng bước thực hành.</p>
+          <p class="eyebrow eyebrow-light"><span class="eyebrow-line"></span> ADA TALENT ACADEMY<span class="eyebrow-line"></span></p>
+          <h2>Tự tin trước ống kính –<br><em>Xây dựng dấu ấn cá nhân.</em></h2>
+          <p class="hero-description">Khám phá hành trình phát triển bản thân cùng ADA Talent Academy thông qua các chương trình đào tạo KOL/KOC, xây dựng thương hiệu cá nhân và kỹ năng người mẫu. Từ định hướng phong cách, phát triển kỹ năng giao tiếp đến thực hành sáng tạo nội dung và trình diễn, ADA Talent Academy hướng đến việc giúp mỗi học viên từng bước khám phá tiềm năng và thể hiện bản sắc riêng.</p>
           <div class="hero-actions">
-            <a class="button button-accent" href="#lead-form">Nhận lộ trình &amp; lịch học <span class="action-icon icon-up" aria-hidden="true">↗</span></a>
-            <a class="button button-outline" href="#schedule">Xem chương trình 7 ngày <span class="action-icon icon-down" aria-hidden="true">↓</span></a>
+            <a class="button button-accent" href="#lead-form">Đăng ký tư vấn lộ trình <span class="action-icon icon-up" aria-hidden="true">↗</span></a>
+            <a class="button button-outline" href="#programs">Khám phá chương trình đào tạo <span class="action-icon icon-down" aria-hidden="true">↓</span></a>
           </div>
-          <div class="hero-note">
-            <span class="note-dot"></span>
-            <span>Học nền tảng buổi sáng, thực hành kỹ năng và hình ảnh cá nhân buổi chiều.</span>
+          <div class="hero-highlights-list">
+            <div class="hero-highlight-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Định hình phong cách và thương hiệu cá nhân.</span>
+            </div>
+            <div class="hero-highlight-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Phát triển kỹ năng trước ống kính.</span>
+            </div>
+            <div class="hero-highlight-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Tiếp cận kiến thức và thực hành sáng tạo nội dung.</span>
+            </div>
           </div>
+          <p class="hero-subnote">Đăng ký để nhận thông tin chi tiết và được tư vấn chương trình phù hợp với mục tiêu của bạn.</p>
         </div>
         <div class="hero-visual">
           <img
             src="./assets/post1.png"
-            alt="Ảnh minh họa thời trang cho bootcamp Business KOL"
+            alt="Ảnh minh họa ADA Talent Academy - Tự tin trước ống kính"
             width="700" height="900" fetchpriority="high">
         </div>
       </div>
       <div class="hero-bottom-line" aria-hidden="true"></div>
     </section>
 
-    <section class="intro-strip bootcamp-strip" aria-label="Thông tin nhanh chương trình">
-      <div class="container bootcamp-strip-inner">
-        <!-- <div class="bootcamp-strip-header">
-          <p class="bootcamp-strip-kicker">
-            <span class="kicker-badge-dot" aria-hidden="true"></span>
-            THÔNG TIN CHƯƠNG TRÌNH
-          </p>
-        </div> -->
-
-        <div class="bootcamp-metric">
-          <div class="bootcamp-metric-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="4" width="18" height="18" rx="3" ry="3"></rect>
-              <line x1="16" y1="2" x2="16" y2="6"></line>
-              <line x1="8" y1="2" x2="8" y2="6"></line>
-              <line x1="3" y1="10" x2="21" y2="10"></line>
-              <path d="M8 14h.01"></path>
-              <path d="M12 14h.01"></path>
-              <path d="M16 14h.01"></path>
-              <path d="M8 18h.01"></path>
-              <path d="M12 18h.01"></path>
-            </svg>
+    <!-- SECTION 02: GIỚI THIỆU HỌC VIỆN -->
+    <section class="section section-white" id="about">
+      <div class="container">
+        <div class="about-header section-heading">
+          <div class="about-title-wrap">
+            <p class="eyebrow"><span class="eyebrow-line"></span> ADA TALENT ACADEMY <span class="eyebrow-line"></span></p>
+            <h2>Khám phá tiềm năng –<br><em>Phát triển tài năng.</em></h2>
           </div>
-          <div class="bootcamp-metric-content">
-            <span class="bootcamp-metric-label">THỜI LƯỢNG</span>
-            <div class="bootcamp-metric-value-wrap">
-              <strong>07</strong>
-              <span class="bootcamp-metric-copy">Ngày tập trung</span>
-            </div>
+          <div class="about-lead-copy">
+            <p class="section-lead">ADA Talent Academy là định hướng đào tạo và phát triển tài năng thuộc hệ sinh thái ADA Group, tập trung vào các lĩnh vực KOL/KOC, hình ảnh cá nhân và kỹ năng người mẫu.</p>
+            <p class="about-desc">Học viện hướng đến việc xây dựng môi trường đào tạo kết hợp giữa kiến thức chuyên môn, kỹ năng thực hành và tư duy truyền thông hiện đại, giúp học viên từng bước phát triển sự tự tin và khả năng thể hiện bản thân.</p>
+            <p class="about-desc">Với định hướng kết nối hoạt động đào tạo cùng hệ sinh thái truyền thông, sáng tạo nội dung và sản xuất hình ảnh của ADA Group, học viện chú trọng tính ứng dụng trong hành trình phát triển năng lực của mỗi cá nhân.</p>
           </div>
         </div>
 
-        <div class="bootcamp-metric">
-          <div class="bootcamp-metric-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="3" width="7" height="7" rx="2"></rect>
-              <rect x="14" y="3" width="7" height="7" rx="2"></rect>
-              <rect x="3" y="14" width="7" height="7" rx="2"></rect>
-              <rect x="14" y="14" width="7" height="7" rx="2"></rect>
-            </svg>
-          </div>
-          <div class="bootcamp-metric-content">
-            <span class="bootcamp-metric-label">NỘI DUNG</span>
-            <div class="bootcamp-metric-value-wrap">
-              <strong>04</strong>
-              <span class="bootcamp-metric-copy">Nhóm kỹ năng</span>
+        <div class="pillars-grid">
+          <article class="pillar-card">
+            <div class="pillar-card-top">
+              <span class="pillar-number">01</span>
+              <div class="pillar-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                </svg>
+              </div>
             </div>
-          </div>
-        </div>
+            <h3>Khám phá tiềm năng</h3>
+            <p>Giúp học viên tìm hiểu thế mạnh, xác định sở thích và định hướng hình ảnh cá nhân.</p>
+          </article>
 
-        <div class="bootcamp-metric bootcamp-metric-hours">
-          <div class="bootcamp-metric-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="9"></circle>
-              <polyline points="12 7 12 12 15.5 15.5"></polyline>
-            </svg>
-          </div>
-          <div class="bootcamp-metric-content">
-            <span class="bootcamp-metric-label">LỊCH HỌC DỰ KIẾN</span>
-            <div class="bootcamp-metric-value-wrap">
-              <strong>08:30–17:00</strong>
-              <span class="bootcamp-metric-copy">Mỗi ngày</span>
+          <article class="pillar-card">
+            <div class="pillar-card-top">
+              <span class="pillar-number">02</span>
+              <div class="pillar-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+              </div>
             </div>
-          </div>
+            <h3>Phát triển kỹ năng</h3>
+            <p>Tập trung vào giao tiếp, biểu cảm, phong thái, kỹ năng sáng tạo nội dung và trình diễn.</p>
+          </article>
+
+          <article class="pillar-card">
+            <div class="pillar-card-top">
+              <span class="pillar-number">03</span>
+              <div class="pillar-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+              </div>
+            </div>
+            <h3>Ứng dụng thực tiễn</h3>
+            <p>Hướng đến việc đưa kiến thức vào những bài tập thực hành, sản phẩm hình ảnh và nội dung cá nhân.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section section-paper" id="program">
+    <!-- SECTION 03: NHU CẦU & KHÓ KHĂN CỦA HỌC VIÊN -->
+    <section class="section section-paper" id="challenges">
       <div class="container">
         <div class="section-heading section-heading-split">
           <div>
-            <p class="eyebrow"><span class="eyebrow-line"></span> THE BUSINESS KOL APPROACH <span class="eyebrow-line"></span></p>
-            <h2>Không chỉ xuất hiện.<br><em>Biết mình đang xây gì.</em></h2>
+            <p class="eyebrow"><span class="eyebrow-line"></span> NHU CẦU &amp; KHÓ KHĂN CỦA HỌC VIÊN <span class="eyebrow-line"></span></p>
+            <h2>Bạn có tiềm năng.<br><em>Đâu là bước đầu tiên để phát triển?</em></h2>
           </div>
-          <p class="section-lead">Từ phong thái cá nhân đến nội dung và vận hành kênh bán hàng: học theo một hành trình liền mạch, có bài tập và phần thực hành mỗi ngày.</p>
+          <p class="section-lead">Trong thời đại nội dung số, xây dựng hình ảnh cá nhân không chỉ dành cho người nổi tiếng. Đó còn là một kỹ năng giúp bạn tự tin thể hiện bản thân, truyền tải thông điệp và phát triển những cơ hội phù hợp với mình.<br><br>Tuy nhiên, hành trình bắt đầu thường đi kèm nhiều câu hỏi:</p>
         </div>
-        <div class="feature-grid">
-          <article class="feature-card">
-            <div class="feature-card-header">
-              <div class="feature-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
-                  <circle cx="12" cy="13" r="3.5"></circle>
-                </svg>
-              </div>
-              <span class="feature-number">01 / PRESENCE</span>
-            </div>
-            <h3>Hình ảnh &amp; phong thái</h3>
-            <p>Định hình phong cách, luyện giọng nói, ngôn ngữ cơ thể và sự tự tin trước ống kính.</p>
-          </article>
-          <article class="feature-card">
-            <div class="feature-card-header">
-              <div class="feature-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
-                  <path d="M3 6h18"></path>
-                  <path d="M16 10a4 4 0 0 1-8 0"></path>
-                </svg>
-              </div>
-              <span class="feature-number">02 / COMMERCE</span>
-            </div>
-            <h3>Tư duy kinh doanh số</h3>
-            <p>Tìm hiểu TikTok Shop, Shopee, lựa chọn ngách và cách đánh giá sản phẩm phù hợp.</p>
-          </article>
+        <div class="challenges-grid">
           <article class="feature-card">
             <div class="feature-card-header">
               <div class="feature-icon" aria-hidden="true">
@@ -179,10 +158,36 @@
                   <circle cx="8.5" cy="12" r="2"></circle>
                 </svg>
               </div>
-              <span class="feature-number">03 / CONTENT</span>
+              <span class="feature-number">01 / KHỞI ĐẦU</span>
             </div>
-            <h3>Video &amp; livestream</h3>
-            <p>Lên kịch bản, thực hành quay dựng video ngắn và thử dẫn một phiên livestream mô phỏng.</p>
+            <h3>Muốn trở thành KOL/KOC nhưng chưa biết bắt đầu từ đâu?</h3>
+            <p>Bạn quan tâm đến sáng tạo nội dung, review sản phẩm hoặc xây dựng kênh cá nhân nhưng chưa xác định được hướng đi phù hợp.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-card-header">
+              <div class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
+                  <circle cx="12" cy="13" r="3.5"></circle>
+                </svg>
+              </div>
+              <span class="feature-number">02 / TỰ TIN</span>
+            </div>
+            <h3>Thiếu tự tin khi xuất hiện trước ống kính?</h3>
+            <p>Bạn thường ngại nói trước camera, chưa kiểm soát tốt giọng nói, biểu cảm và ngôn ngữ cơ thể.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-card-header">
+              <div class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 20h9"></path>
+                  <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                </svg>
+              </div>
+              <span class="feature-number">03 / Ý TƯỞNG</span>
+            </div>
+            <h3>Có ý tưởng nhưng chưa biết phát triển nội dung?</h3>
+            <p>Bạn muốn xây dựng TikTok, Facebook hoặc các nền tảng số nhưng còn gặp khó khăn trong việc lên ý tưởng, viết kịch bản và quay dựng video.</p>
           </article>
           <article class="feature-card">
             <div class="feature-card-header">
@@ -196,289 +201,328 @@
                   <line x1="18" y1="3" x2="16" y2="9"></line>
                 </svg>
               </div>
-              <span class="feature-number">04 / MODEL</span>
+              <span class="feature-number">04 / KỸ NĂNG</span>
             </div>
-            <h3>Catwalk &amp; tạo dáng</h3>
-            <p>Rèn dáng đi, tư thế, kỹ thuật trình diễn và cách tạo dáng trước máy ảnh.</p>
+            <h3>Đam mê người mẫu nhưng chưa có kỹ năng nền tảng?</h3>
+            <p>Bạn muốn cải thiện phong thái, khả năng tạo dáng, biểu cảm và trình diễn nhưng thiếu sự định hướng chuyên môn.</p>
           </article>
+          <article class="feature-card feature-card-wide">
+            <div class="feature-card-header">
+              <div class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
+                  <path d="M3 6h18"></path>
+                  <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+              </div>
+              <span class="feature-number">05 / KINH DOANH</span>
+            </div>
+            <h3>Muốn phát triển hình ảnh cá nhân để hỗ trợ công việc kinh doanh?</h3>
+            <p>Bạn muốn tự tin livestream, giới thiệu sản phẩm và xây dựng hình ảnh chuyên nghiệp hơn khi giao tiếp với khách hàng.</p>
+          </article>
+        </div>
+        <div class="challenges-callout">
+          <p>Mỗi hành trình đều cần một điểm khởi đầu. ADA Talent Academy đồng hành cùng bạn trong quá trình tìm hiểu bản thân, rèn luyện kỹ năng và lựa chọn hướng phát triển phù hợp.</p>
+          <a class="button button-dark" href="#roadmap">Tìm hiểu lộ trình dành cho bạn <span class="action-icon icon-up" aria-hidden="true">↗</span></a>
         </div>
       </div>
     </section>
 
-    <section class="section section-white" id="audience">
+    <!-- SECTION 04: ĐỐI TƯỢNG HỌC VIÊN -->
+    <section class="section section-sand" id="audience">
       <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow"><span class="eyebrow-line"></span> BẠN ĐANG Ở ĐÂU TRÊN HÀNH TRÌNH? <span class="eyebrow-line"></span></p>
-          <h2>Muốn trở thành KOL hay model,<br><em>nhưng chưa biết bắt đầu?</em></h2>
-          <p class="section-lead">Bạn không cần phải biết hết mọi thứ trước khi bắt đầu. Bootcamp giúp bạn làm quen kỹ năng, thực hành từng bước và tìm hướng đi phù hợp với mình.</p>
+        <div class="section-heading section-heading-split">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-line"></span> ĐỐI TƯỢNG HỌC VIÊN <span class="eyebrow-line"></span></p>
+            <h2>Ai phù hợp với<br><em>ADA Talent Academy?</em></h2>
+          </div>
+          <p class="section-lead">Dù bạn là người mới bắt đầu hay đã có kinh nghiệm và mong muốn nâng cấp hình ảnh, ADA Talent Academy đều có định hướng đào tạo tương thích với mục tiêu của bạn.</p>
         </div>
-        <div class="program-grid audience-grid">
-          <article class="program-card">
-            <div class="program-image audience-image"><img src="./assets/post2.png" alt="Ảnh minh họa nhóm doanh nhân trao đổi" width="600" height="420" loading="lazy"></div>
-            <div class="program-body">
-              <p class="eyebrow">BẠN MUỐN TRỞ THÀNH KOL?</p>
-              <h3>Chưa biết xây kênh từ đâu?</h3>
-              <p>Chưa rõ chọn ngách nào, làm video gì, lên livestream ra sao hay tìm nhãn hàng booking ở đâu? Bắt đầu với nền tảng nội dung, hình ảnh và kinh doanh số.</p>
+        <div class="audience-cards-grid">
+          <article class="audience-card">
+            <div class="audience-card-badge">01 / BEGINNER</div>
+            <h3>Người mới bắt đầu</h3>
+            <p>Yêu thích sáng tạo nội dung, muốn xây dựng hình ảnh cá nhân hoặc tìm hiểu con đường trở thành KOL/KOC.</p>
+          </article>
+          <article class="audience-card">
+            <div class="audience-card-badge">02 / CREATOR</div>
+            <h3>Content Creator &amp; KOC tiềm năng</h3>
+            <p>Đã sử dụng các nền tảng mạng xã hội và mong muốn cải thiện khả năng sản xuất nội dung, biểu đạt trước camera và phát triển phong cách riêng.</p>
+          </article>
+          <article class="audience-card">
+            <div class="audience-card-badge">03 / BUSINESS</div>
+            <h3>Người kinh doanh &amp; xây dựng thương hiệu cá nhân</h3>
+            <p>Mong muốn phát triển kỹ năng giới thiệu sản phẩm, livestream, giao tiếp trước công chúng và ứng dụng nội dung số vào hoạt động kinh doanh.</p>
+          </article>
+          <article class="audience-card">
+            <div class="audience-card-badge">04 / MODEL</div>
+            <h3>Người yêu thích lĩnh vực người mẫu</h3>
+            <p>Muốn tìm hiểu các kỹ năng tạo dáng, trình diễn, biểu cảm và xây dựng hình ảnh cá nhân chuyên nghiệp.</p>
+          </article>
+        </div>
+        <div class="audience-cta-wrap">
+          <a class="button button-accent" href="#lead-form">Tư vấn chương trình phù hợp <span class="action-icon icon-up" aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 05: CHƯƠNG TRÌNH ĐÀO TẠO -->
+    <section class="section section-white" id="programs">
+      <div class="container">
+        <div class="section-heading section-heading-split">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-line"></span> CHƯƠNG TRÌNH ĐÀO TẠO <span class="eyebrow-line"></span></p>
+            <h2>Lựa chọn lộ trình<br><em>phát triển phù hợp.</em></h2>
+          </div>
+          <p class="section-lead">ADA Talent Academy định hướng phát triển các chương trình đào tạo dựa trên nhu cầu và mục tiêu của từng nhóm học viên.</p>
+        </div>
+        <div class="programs-dual-grid">
+          <!-- Program 1 -->
+          <article class="program-detail-card">
+            <div class="program-detail-header">
+              <span class="program-badge">CHƯƠNG TRÌNH 01</span>
+              <h3>KOL/KOC &amp; Personal Branding</h3>
+              <p class="program-tagline">Xây dựng hình ảnh – Phát triển nội dung – Tự tin xuất hiện trước công chúng</p>
+              <p class="program-summary">Chương trình tập trung vào những kỹ năng nền tảng dành cho người muốn bước vào lĩnh vực sáng tạo nội dung, phát triển hình ảnh cá nhân và tìm hiểu hoạt động KOL/KOC.</p>
+            </div>
+            <div class="program-detail-body">
+              <h4 class="program-subhead">Nội dung đào tạo định hướng:</h4>
+              <ul class="program-content-list">
+                <li>
+                  <strong>Xây dựng thương hiệu cá nhân:</strong>
+                  <span>Xác định phong cách, thế mạnh, đối tượng khán giả và thông điệp cá nhân.</span>
+                </li>
+                <li>
+                  <strong>Kỹ năng trước ống kính:</strong>
+                  <span>Luyện tập giọng nói, biểu cảm, giao tiếp và cách truyền tải thông điệp.</span>
+                </li>
+                <li>
+                  <strong>Sáng tạo nội dung số:</strong>
+                  <span>Phát triển ý tưởng, viết kịch bản, xác định chủ đề và định dạng video.</span>
+                </li>
+                <li>
+                  <strong>Quay dựng video ngắn:</strong>
+                  <span>Tiếp cận các kỹ thuật cơ bản trong quay hình, bố cục và biên tập video.</span>
+                </li>
+                <li>
+                  <strong>Review sản phẩm &amp; livestream:</strong>
+                  <span>Tìm hiểu cách giới thiệu sản phẩm tự nhiên, truyền đạt thông tin rõ ràng và tương tác với người xem.</span>
+                </li>
+                <li>
+                  <strong>Phát triển kênh cá nhân:</strong>
+                  <span>Tìm hiểu nguyên tắc xây dựng nội dung nhất quán, phân tích phản hồi và cải thiện chất lượng kênh.</span>
+                </li>
+              </ul>
+            </div>
+            <div class="program-detail-footer">
+              <div class="program-outcome">
+                <span class="outcome-label">ĐỊNH HƯỚNG PHÁT TRIỂN</span>
+                <p>Content Creator, KOC, KOL, xây dựng thương hiệu cá nhân và truyền thông hỗ trợ kinh doanh.</p>
+              </div>
+              <a class="button button-accent button-full" href="#lead-form">Đăng ký tư vấn chương trình <span class="action-icon icon-up" aria-hidden="true">↗</span></a>
             </div>
           </article>
-          <article class="program-card">
-            <div class="program-image audience-image"><img src="./assets/post3.png" alt="Ảnh minh họa nhà sáng tạo nội dung" width="600" height="420" loading="lazy"></div>
-            <div class="program-body">
-              <p class="eyebrow">BẠN MUỐN TRỞ THÀNH MODEL?</p>
-              <h3>Chưa biết bắt đầu từ kỹ năng nào?</h3>
-              <p>Làm quen với catwalk, tạo dáng, biểu cảm và cách thể hiện trước ống kính — rồi thực hành xây dựng hình ảnh cá nhân chuyên nghiệp.</p>
+
+          <!-- Program 2 -->
+          <article class="program-detail-card">
+            <div class="program-detail-header">
+              <span class="program-badge">CHƯƠNG TRÌNH 02</span>
+              <h3>Model &amp; Personal Image</h3>
+              <p class="program-tagline">Định hình phong thái – Phát triển khả năng trình diễn – Thể hiện cá tính riêng</p>
+              <p class="program-summary">Chương trình hướng đến những cá nhân yêu thích lĩnh vực người mẫu, mong muốn phát triển kỹ năng hình thể, biểu cảm và xây dựng hình ảnh chuyên nghiệp hơn.</p>
             </div>
-          </article>
-          <article class="program-card">
-            <div class="program-image audience-image"><img src="./assets/post4.png" alt="Ảnh minh họa nhóm người trẻ học tập" width="600" height="420" loading="lazy"></div>
-            <div class="program-body">
-              <p class="eyebrow">BẠN MUỐN PHÁT TRIỂN HÌNH ẢNH?</p>
-              <h3>Sẵn sàng bước ra trước ống kính</h3>
-              <p>Dành cho người muốn tự tin thể hiện bản thân, thử sức với nội dung số và khám phá cơ hội trong lĩnh vực sáng tạo, thời trang.</p>
-              <p class="small-note">Người dưới 18 tuổi cần trao đổi cùng phụ huynh/người giám hộ trước khi đăng ký.</p>
+            <div class="program-detail-body">
+              <h4 class="program-subhead">Nội dung đào tạo:</h4>
+              <ul class="program-content-list">
+                <li>
+                  <strong>Phong thái &amp; hình thể:</strong>
+                  <span>Rèn luyện tư thế đứng, dáng đi, ngôn ngữ cơ thể.</span>
+                </li>
+                <li>
+                  <strong>Catwalk cơ bản:</strong>
+                  <span>Tìm hiểu kỹ thuật di chuyển, giữ thăng bằng và trình diễn.</span>
+                </li>
+                <li>
+                  <strong>Tạo dáng trước ống kính:</strong>
+                  <span>Làm quen với góc mặt, tư thế và cách thể hiện hình ảnh.</span>
+                </li>
+                <li>
+                  <strong>Biểu cảm &amp; thần thái:</strong>
+                  <span>Phát triển khả năng truyền tải cảm xúc và tạo điểm nhấn cá nhân.</span>
+                </li>
+                <li>
+                  <strong>Định hình phong cách:</strong>
+                  <span>Tìm hiểu cách lựa chọn trang phục, hình ảnh và cách thể hiện phù hợp.</span>
+                </li>
+                <li>
+                  <strong>Xây dựng hồ sơ hình ảnh:</strong>
+                  <span>Tìm hiểu các yếu tố tạo nên portfolio cá nhân.</span>
+                </li>
+              </ul>
+            </div>
+            <div class="program-detail-footer">
+              <div class="program-outcome">
+                <span class="outcome-label">ĐỊNH HƯỚNG PHÁT TRIỂN</span>
+                <p>Phát triển kỹ năng người mẫu, hình ảnh cá nhân, trình diễn và các hoạt động sáng tạo hình ảnh.</p>
+              </div>
+              <a class="button button-accent button-full" href="#lead-form">Đăng ký tư vấn chương trình <span class="action-icon icon-up" aria-hidden="true">↗</span></a>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section section-sand" id="schedule">
+    <!-- SECTION 06: LỘ TRÌNH ĐÀO TẠO -->
+    <section class="section section-sand" id="roadmap">
       <div class="container roadmap-layout">
         <div class="roadmap-intro">
-          <p class="eyebrow"><span class="eyebrow-line"></span> 7-DAY PRACTICAL BOOTCAMP <span class="eyebrow-line"></span></p>
-          <h2>Học buổi sáng.<br><em>Thực hành buổi chiều.</em></h2>
-          <p class="section-lead">Lộ trình dự kiến 7 ngày liên tục, từ định vị hình ảnh và xây kênh đến sản xuất nội dung, livestream và trình diễn.</p>
-          <p class="schedule-time"><strong>08:30–11:30</strong> Chuyên đề &amp; hướng dẫn<br><strong>13:30–17:00</strong> Bài tập &amp; thực hành</p>
-          <a class="button button-dark" href="#lead-form">Hỏi về lịch khai giảng <span class="action-icon icon-up" aria-hidden="true">↗</span></a>
+          <p class="eyebrow"><span class="eyebrow-line"></span> LỘ TRÌNH ĐÀO TẠO <span class="eyebrow-line"></span></p>
+          <h2>Từ khám phá bản thân<br><em>đến phát triển kỹ năng thực tế.</em></h2>
+          <p class="section-lead">Quy trình đào tạo 5 giai đoạn được thiết kế bài bản, giúp học viên đi từ nền tảng nhận thức đến rèn luyện kỹ năng và hoàn thiện sản phẩm thực tế.</p>
+          <a class="button button-dark" href="#lead-form">Đăng ký nhận lộ trình chi tiết <span class="action-icon icon-up" aria-hidden="true">↗</span></a>
         </div>
-        <div class="timeline bootcamp-timeline">
+        <div class="timeline">
           <article class="timeline-item">
             <span class="timeline-number">01</span>
             <div>
-              <h3>Định vị hình ảnh &amp; làm chủ ống kính</h3>
-              <p>Buổi sáng: xác định phong cách cá nhân, mục tiêu và hình ảnh muốn xây dựng.</p>
-              <p>Buổi chiều: luyện giọng, hơi thở, ánh mắt và ngôn ngữ cơ thể; quay video giới thiệu bản thân để nhận phản hồi.</p>
+              <h3>Giai đoạn 01: Khám phá &amp; Định hướng</h3>
+              <p>Tìm hiểu mục tiêu, thế mạnh và nhu cầu cá nhân. Xác định lĩnh vực và phong cách phát triển phù hợp.</p>
             </div>
           </article>
           <article class="timeline-item">
             <span class="timeline-number">02</span>
             <div>
-              <h3>Tư duy Business KOL &amp; thương mại điện tử</h3>
-              <p>Buổi sáng: tìm hiểu TikTok Shop, Shopee, lựa chọn sản phẩm/ngách và các bước đánh giá nguồn hàng.</p>
-              <p>Buổi chiều: thực hành xây dựng hồ sơ kênh và làm quen quy trình thiết lập gian hàng theo điều kiện nền tảng.</p>
+              <h3>Giai đoạn 02: Xây dựng nền tảng</h3>
+              <p>Tiếp cận các kiến thức về thương hiệu cá nhân, giao tiếp, ngôn ngữ cơ thể, biểu cảm và kỹ năng chuyên môn theo chương trình lựa chọn.</p>
             </div>
           </article>
           <article class="timeline-item">
             <span class="timeline-number">03</span>
             <div>
-              <h3>Lên ý tưởng &amp; sản xuất video ngắn</h3>
-              <p>Buổi sáng: cấu trúc mở đầu thu hút và kịch bản review, chia sẻ chuyên môn, vlog.</p>
-              <p>Buổi chiều: thực hành ánh sáng, quay bằng điện thoại và dựng video cơ bản; mục tiêu bài tập là hoàn thiện video ngắn.</p>
+              <h3>Giai đoạn 03: Rèn luyện kỹ năng</h3>
+              <p>Luyện tập xuất hiện trước ống kính, sáng tạo nội dung hoặc trình diễn thông qua các bài tập theo từng học phần.</p>
             </div>
           </article>
           <article class="timeline-item">
             <span class="timeline-number">04</span>
             <div>
-              <h3>Kịch bản &amp; thực hành livestream</h3>
-              <p>Buổi sáng: cấu trúc phiên live, tương tác, giới thiệu sản phẩm và xử lý tình huống thường gặp.</p>
-              <p>Buổi chiều: chia nhóm thực hành trong bối cảnh mô phỏng, làm quen công cụ hỗ trợ theo thiết bị và nền tảng.</p>
+              <h3>Giai đoạn 04: Thực hành &amp; Hoàn thiện</h3>
+              <p>Ứng dụng kiến thức vào các bài tập video, hình ảnh, trình diễn hoặc sản phẩm cá nhân theo nội dung chương trình.</p>
             </div>
           </article>
           <article class="timeline-item">
             <span class="timeline-number">05</span>
             <div>
-              <h3>Catwalk, tư thế &amp; tạo dáng</h3>
-              <p>Buổi sáng: tư thế, dáng đi, chuyển hướng và kỹ thuật trình diễn cơ bản.</p>
-              <p>Buổi chiều: thực hành tạo dáng thời trang, ảnh profile và hình ảnh cùng sản phẩm.</p>
-            </div>
-          </article>
-          <article class="timeline-item">
-            <span class="timeline-number">06</span>
-            <div>
-              <h3>Trình diễn sân khấu &amp; ngày sản xuất hình ảnh</h3>
-              <p>Buổi sáng: luyện kỹ thuật xoay, tương tác sân khấu và cách xử lý tình huống trình diễn.</p>
-              <p>Buổi chiều: buổi chụp profile/studio dự kiến theo gói chương trình; hạng mục cụ thể cần được xác nhận trước khi ghi danh.</p>
-            </div>
-          </article>
-          <article class="timeline-item">
-            <span class="timeline-number">07</span>
-            <div>
-              <h3>Tổng duyệt &amp; showcase cuối khóa</h3>
-              <p>Buổi sáng: rà soát kênh, nội dung đã làm và kế hoạch tiếp tục thực hành.</p>
-              <p>Buổi chiều: trình diễn bài tập tổng kết, chia sẻ sản phẩm đã hoàn thành và trao chứng nhận hoàn thành nếu có trong thể lệ khóa học.</p>
+              <h3>Giai đoạn 05: Đánh giá &amp; Định hướng tiếp theo</h3>
+              <p>Tổng kết quá trình thực hành, tiếp nhận góp ý chuyên môn và xác định những kỹ năng cần tiếp tục cải thiện.</p>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section section-paper" id="outcomes">
+    <!-- SECTION 07: GIÁ TRỊ HỌC TẬP -->
+    <section class="section section-paper" id="values">
       <div class="container">
         <div class="section-heading section-heading-split">
           <div>
-            <p class="eyebrow"><span class="eyebrow-line"></span> PRACTICE &amp; PORTFOLIO <span class="eyebrow-line"></span></p>
-            <h2>Rời lớp với thứ<br><em>mình đã bắt tay làm.</em></h2>
+            <p class="eyebrow"><span class="eyebrow-line"></span> GIÁ TRỊ HỌC TẬP <span class="eyebrow-line"></span></p>
+            <h2>Không chỉ tiếp cận kiến thức –<br><em>Hướng đến khả năng ứng dụng.</em></h2>
           </div>
-          <p class="section-lead">Thay vì chỉ nghe lý thuyết, học viên thực hành trên các bài tập cụ thể. Sản phẩm và mức độ hoàn thành tùy theo tiến độ của từng người.</p>
+          <p class="section-lead">Học viện hướng đến việc đem lại giá trị lâu dài cho học viên, trang bị tư duy và năng lực ứng dụng độc lập sau khóa học.</p>
         </div>
-        <div class="feature-grid">
-          <article class="feature-card">
-            <span class="feature-number">PRACTICE / 01</span>
-            <div class="feature-icon" aria-hidden="true">◎</div>
-            <h3>Video giới thiệu cá nhân</h3>
-            <p>Luyện nói trước ống kính, thử cách thể hiện bản thân và nhận góp ý để hoàn thiện.</p>
+        <div class="values-grid">
+          <article class="value-card">
+            <div class="value-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+              </svg>
+            </div>
+            <span class="value-number">01</span>
+            <h3>Hiểu rõ định hướng cá nhân</h3>
+            <p>Biết cách nhìn nhận điểm mạnh, xác định phong cách và xây dựng mục tiêu phát triển phù hợp.</p>
           </article>
-          <article class="feature-card">
-            <span class="feature-number">PRACTICE / 02</span>
-            <div class="feature-icon" aria-hidden="true">▻</div>
-            <h3>Nội dung video ngắn</h3>
-            <p>Thử xây dựng ý tưởng, kịch bản, quay và dựng video bằng thiết bị phù hợp.</p>
+          <article class="value-card">
+            <div class="value-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                <line x1="12" y1="19" x2="12" y2="22"></line>
+              </svg>
+            </div>
+            <span class="value-number">02</span>
+            <h3>Rèn luyện sự tự tin</h3>
+            <p>Từng bước cải thiện cách giao tiếp, sử dụng giọng nói, biểu cảm và ngôn ngữ cơ thể.</p>
           </article>
-          <article class="feature-card">
-            <span class="feature-number">PRACTICE / 03</span>
-            <div class="feature-icon" aria-hidden="true">◌</div>
-            <h3>Livestream mô phỏng</h3>
-            <p>Thực hành dẫn dắt nội dung, giới thiệu sản phẩm và tương tác trong bối cảnh có hướng dẫn.</p>
+          <article class="value-card">
+            <div class="value-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                <circle cx="8.5" cy="12" r="2"></circle>
+              </svg>
+            </div>
+            <span class="value-number">03</span>
+            <h3>Phát triển tư duy nội dung</h3>
+            <p>Tiếp cận quy trình từ ý tưởng, xây dựng thông điệp đến triển khai nội dung trên các nền tảng số.</p>
           </article>
-          <article class="feature-card">
-            <span class="feature-number">PRACTICE / 04</span>
-            <div class="feature-icon" aria-hidden="true">✳</div>
-            <h3>Bài tập trình diễn</h3>
-            <p>Thực hành catwalk, tạo dáng và tổng kết quá trình qua một phần showcase cuối khóa.</p>
+          <article class="value-card">
+            <div class="value-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+              </svg>
+            </div>
+            <span class="value-number">04</span>
+            <h3>Có trải nghiệm thực hành</h3>
+            <p>Tham gia những bài tập gắn với kỹ năng chuyên môn, thay vì chỉ tiếp cận kiến thức lý thuyết.</p>
+          </article>
+          <article class="value-card value-card-wide">
+            <div class="value-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                <polyline points="17 6 23 6 23 12"></polyline>
+              </svg>
+            </div>
+            <span class="value-number">05</span>
+            <h3>Xác định hướng phát triển tiếp theo</h3>
+            <p>Nhận diện những kỹ năng đã cải thiện và những năng lực cần tiếp tục hoàn thiện sau quá trình học tập.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section section-white" id="mentors">
-      <div class="container instructor-layout">
-        <div class="instructor-image">
-          <img src="./assets/post5.png" alt="Ảnh minh họa một buổi trao đổi và thực hành nhóm" width="760" height="900" loading="lazy">
-        </div>
-        <div class="instructor-copy">
-          <p class="eyebrow"><span class="eyebrow-line"></span> ĐẶC BIỆT · ĐỒNG HÀNH CÙNG HOA HẬU DOANH NHÂN <span class="eyebrow-line"></span></p>
-          <h2>Học để tự tin xuất hiện.<br><em>Sẵn sàng cho sân khấu lớn.</em></h2>
-          <p class="section-lead">Bootcamp đồng hành cùng chương trình Hoa hậu Doanh nhân, mở ra cơ hội để học viên trải nghiệm môi trường sân khấu và kết nối với những gương mặt truyền cảm hứng.</p>
-          <div class="mentor-points">
-            <div><span>01</span><p><strong>Đồng hành cùng Hoa hậu Doanh nhân</strong><small>Học viên được tham gia các hoạt động trong khuôn khổ chương trình, với sự đồng hành của Á hậu Đặng Thị Tân.</small></p></div>
-            <div><span>02</span><p><strong>Khách mời đặc biệt</strong><small>Giao lưu cùng anh Bằng Cường trong khuôn khổ chương trình.</small></p></div>
-            <div><span>03</span><p><strong>Trải nghiệm sân khấu</strong><small>Cơ hội tham gia hoạt động theo thể lệ và điều kiện của từng đợt.</small></p></div>
-          </div>
-          <p class="small-note">Thời gian, hình thức tham gia, tiêu chí lựa chọn và các chi phí phát sinh (nếu có) sẽ được thông báo theo thể lệ chính thức của từng đợt.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-paper benefits-section" id="benefits">
+    <!-- SECTION 08: LỢI THẾ ĐÀO TẠO -->
+    <section class="section section-white" id="advantages">
       <div class="container">
         <div class="section-heading section-heading-split">
           <div>
-            <p class="eyebrow"><span class="eyebrow-line"></span> ĐẶC QUYỀN DÀNH CHO HỌC VIÊN <span class="eyebrow-line"></span></p>
-            <h2>Không chỉ học kỹ năng.<br><em>Mở rộng cơ hội làm nghề.</em></h2>
+            <p class="eyebrow"><span class="eyebrow-line"></span> VÌ SAO LỰA CHỌN ADA TALENT ACADEMY? <span class="eyebrow-line"></span></p>
+            <h2>Lợi thế đào tạo<br><em>tại ADA Talent Academy.</em></h2>
           </div>
-          <p class="section-lead">Học viên được tiếp cận hệ sinh thái, công cụ và hỗ trợ thực tế để từng bước phát triển hình ảnh, nội dung và hoạt động kinh doanh.</p>
+          <p class="section-lead">Được bảo trợ bởi hệ sinh thái ADA Group, chương trình kết hợp hài hòa giữa phát triển cá nhân và tính ứng dụng thực chiến trong truyền thông số.</p>
         </div>
-        <div class="benefits-grid">
-          <article class="benefit-card">
-            <span class="benefit-number">01 / BUSINESS</span>
-            <div class="feature-icon" aria-hidden="true">↗</div>
-            <h3>Hỗ trợ thành lập doanh nghiệp KOL</h3>
-            <p>Kết nối hệ sinh thái hàng triệu sản phẩm hot trend giá gốc tận xưởng, cùng hệ sinh thái hàng triệu nhãn hàng có nhu cầu booking KOL/KOC.</p>
+        <div class="advantages-grid">
+          <article class="advantage-card">
+            <div class="advantage-icon-badge">01</div>
+            <h3>Định hướng đào tạo gắn với kỹ năng thực tế</h3>
+            <p>Chú trọng khả năng ứng dụng trực tiếp thông qua các bài tập tình huống, rèn luyện kỹ năng và tạo ra sản phẩm hoàn thiện.</p>
           </article>
-          <article class="benefit-card">
-            <span class="benefit-number">02 / COMMERCE</span>
-            <div class="feature-icon" aria-hidden="true">◈</div>
-            <h3>Phần mềm chuyên biệt</h3>
-            <p>Tiếp cận phần mềm hỗ trợ KOL/KOC trong quá trình bán hàng và phát triển hoạt động kinh doanh.</p>
+          <article class="advantage-card">
+            <div class="advantage-icon-badge">02</div>
+            <h3>Kết nối tư duy hình ảnh và truyền thông</h3>
+            <p>Là một phần trong hệ sinh thái ADA Group, học viện có định hướng kết hợp kiến thức xây dựng hình ảnh cá nhân với hoạt động truyền thông và sản xuất nội dung.</p>
           </article>
-          <article class="benefit-card">
-            <span class="benefit-number">03 / LIVESTREAM</span>
-            <div class="feature-icon" aria-hidden="true">◉</div>
-            <h3>Hỗ trợ setup livestream tại nhà</h3>
-            <p>Được hỗ trợ setup phòng livestream tại nhà theo điều kiện của khóa học để bạn có thể bắt đầu thực hành.</p>
+          <article class="advantage-card">
+            <div class="advantage-icon-badge">03</div>
+            <h3>Phát triển đồng thời kỹ năng và phong cách cá nhân</h3>
+            <p>Tập trung vào kỹ thuật thể hiện, chương trình còn hướng đến việc giúp học viên hiểu rõ giá trị và dấu ấn riêng của chính mình.</p>
           </article>
-          <article class="benefit-card">
-            <span class="benefit-number">04 / STUDIO</span>
-            <div class="feature-icon" aria-hidden="true">▣</div>
-            <h3>Không gian studio tại công ty</h3>
-            <p>Trải nghiệm phòng studio livestream idol tại công ty, phục vụ hoạt động thực hành và sản xuất nội dung.</p>
+          <article class="advantage-card">
+            <div class="advantage-icon-badge">04</div>
+            <h3>Định hướng phù hợp với nhiều nhu cầu</h3>
+            <p>Từ người mới bắt đầu đến người muốn bổ sung kỹ năng phục vụ sáng tạo nội dung, công việc hoặc hoạt động kinh doanh.</p>
           </article>
-          <article class="benefit-card">
-            <span class="benefit-number">05 / IMAGE</span>
-            <div class="feature-icon" aria-hidden="true">✳</div>
-            <h3>Chăm chút hình ảnh cá nhân</h3>
-            <p>Stylist tóc và makeup, quay chụp, hỗ trợ xây dựng hình ảnh cá nhân chuyên nghiệp.</p>
-          </article>
-          <article class="benefit-card">
-            <span class="benefit-number">06 / MEMBER PRIVILEGE</span>
-            <div class="feature-icon" aria-hidden="true">%</div>
-            <h3>Voucher ưu đãi mua sắm</h3>
-            <p>Voucher giảm giá 30% từ các thương hiệu thời trang, túi xách và nước hoa — tổng giá trị ưu đãi công bố hàng chục triệu đồng.</p>
-          </article>
-        </div>
-        <div class="benefits-note">
-          <span aria-hidden="true">i</span>
-          <p>Quyền lợi, phạm vi hỗ trợ, thương hiệu áp dụng, giá trị voucher và điều kiện tham gia có thể khác nhau theo từng khóa. Học viện sẽ xác nhận cụ thể bằng văn bản trước khi bạn đăng ký.</p>
-        </div>
-        <a class="button button-dark benefits-cta" href="#lead-form">Nhận tư vấn quyền lợi từng khóa <span class="action-icon icon-up" aria-hidden="true">↗</span></a>
-      </div>
-    </section>
-
-    <section class="section section-dark enrollment-section" id="enrollment">
-      <div class="container enrollment-layout">
-        <div>
-          <p class="eyebrow eyebrow-light"><span class="eyebrow-line"></span> A PRACTICAL WEEK, A CLEAR NEXT STEP <span class="eyebrow-line"></span></p>
-          <h2>Thực hành trong 7 ngày.<br><em>Tiếp tục theo cách của bạn.</em></h2>
-          <p class="section-lead">Bootcamp giúp bạn bắt đầu từ những kỹ năng nền tảng, có cơ hội kết nối hệ sinh thái KOL/KOC và trải nghiệm chương trình Hoa hậu Doanh nhân. Doanh số, booking và kết quả nghề nghiệp không được đảm bảo.</p>
-        </div>
-        <div class="enrollment-card">
-          <div class="enrollment-card-top"><span>BOOTCAMP / 01</span><span>7 NGÀY</span></div>
-          <h3>Thông tin khóa học</h3>
-          <div class="enrollment-row"><span>Nội dung</span><strong>Business KOL · TMĐT · Livestream · Model</strong></div>
-          <div class="enrollment-row"><span>Thời lượng dự kiến</span><strong>08:30–11:30 &amp; 13:30–17:00</strong></div>
-          <div class="enrollment-row"><span>Ngày khai giảng &amp; học phí</span><strong>Nhận thông tin từ tư vấn viên</strong></div>
-          <a class="button button-accent button-full" href="#lead-form">Nhận lịch &amp; học phí <span class="action-icon icon-up" aria-hidden="true">↗</span></a>
-          <p class="small-note">Hỏi rõ quyền lợi đi kèm gói học, điều kiện tham gia, học phí, địa điểm và chính sách hoàn/đổi trước khi đăng ký.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-paper" id="faq">
-      <div class="container faq-layout">
-        <div>
-          <p class="eyebrow"><span class="eyebrow-line"></span> NEED TO KNOW <span class="eyebrow-line"></span></p>
-          <h2>Câu hỏi<br><em>thường gặp.</em></h2>
-          <p class="section-lead">Tìm hiểu những điểm quan trọng trước khi quyết định tham gia bootcamp.</p>
-        </div>
-        <div class="faq-list">
-          <details class="faq-item">
-            <summary>Chưa từng làm KOL/KOC hoặc livestream có học được không?<span aria-hidden="true">+</span></summary>
-            <p>Có thể bắt đầu từ bài tập nền tảng. Hãy trao đổi kinh nghiệm hiện tại với tư vấn viên để xác nhận chương trình phù hợp với bạn.</p>
-          </details>
-          <details class="faq-item">
-            <summary>Học 7 ngày có đảm bảo bán được hàng hoặc nổi tiếng không?<span aria-hidden="true">+</span></summary>
-            <p>Không. Chương trình cung cấp kiến thức và cơ hội thực hành; doanh số, lượt xem, booking hay kết quả nghề nghiệp phụ thuộc vào sản phẩm, nỗ lực, thị trường và nhiều yếu tố khác.</p>
-          </details>
-          <details class="faq-item">
-            <summary>Quyền lợi nào áp dụng cho khóa tôi đăng ký?<span aria-hidden="true">+</span></summary>
-            <p>Quyền lợi có thể tùy gói và từng đợt. Trước khi đóng học phí, hãy yêu cầu xác nhận bằng văn bản về phạm vi hỗ trợ thành lập doanh nghiệp, quyền truy cập phần mềm/studio, setup livestream, voucher, điều kiện tham gia Hoa hậu Doanh nhân và các chi phí phát sinh (nếu có).</p>
-          </details>
-          <details class="faq-item">
-            <summary>Ai đồng hành và khách mời của chương trình là ai?<span aria-hidden="true">+</span></summary>
-            <p>Chương trình đồng hành cùng Hoa hậu Doanh nhân, với sự đồng hành của Á hậu Đặng Thị Tân và khách mời anh Bằng Cường. Lịch xuất hiện và hình thức tham gia được thông báo theo từng đợt.</p>
-          </details>
-          <details class="faq-item">
-            <summary>Đăng ký tài khoản TikTok Shop hoặc Shopee cần điều kiện gì?<span aria-hidden="true">+</span></summary>
-            <p>Điều kiện và quy trình phụ thuộc chính sách hiện hành của từng nền tảng, loại tài khoản và chủ thể đăng ký. Khóa học không thay thế tư vấn pháp lý hoặc cam kết nền tảng phê duyệt.</p>
-          </details>
-          <details class="faq-item">
-            <summary>Người dưới 18 tuổi có thể đăng ký không?<span aria-hidden="true">+</span></summary>
-            <p>Người chưa đủ 18 tuổi cần có phụ huynh/người giám hộ cùng trao đổi và xác nhận điều kiện tham gia. Không gửi CCCD, mật khẩu hay thông tin thanh toán qua biểu mẫu này.</p>
-          </details>
-          <details class="faq-item">
-            <summary>Học phí, địa điểm và lịch học cụ thể ở đâu?<span aria-hidden="true">+</span></summary>
-            <p>Các thông tin này cần được học viện cập nhật theo từng đợt. Bạn có thể gửi yêu cầu tư vấn để nhận thông tin chính thức trước khi quyết định.</p>
-          </details>
         </div>
       </div>
     </section>
