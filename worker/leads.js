@@ -1,14 +1,24 @@
-const allowedCourses = new Set(["foundation", "skills", "professional", "unknown"]);
-const allowedGoals = new Set(["", "catwalk", "photoshoot", "career", "explore"]);
-const allowedContactTimes = new Set(["any", "morning", "afternoon", "evening"]);
+const allowedCourses = new Set([
+  "kol_branding",
+  "model_image",
+  "undetermined",
+  "foundation",
+  "skills",
+  "professional",
+  "unknown"
+]);
 
 const courseNames = {
+  kol_branding: "KOL/KOC & Personal Branding",
+  model_image: "Model & Personal Image",
+  undetermined: "Chưa xác định",
   foundation: "Model Foundation — Nền tảng",
   skills: "Bootcamp Business KOL & Model Doanh nhân — 7 ngày",
   professional: "Professional Model — Nâng cao",
   unknown: "Cần tư vấn thêm trước khi chọn"
 };
 
+const allowedGoals = new Set(["", "catwalk", "photoshoot", "career", "explore"]);
 const goalNames = {
   "": "Chưa cung cấp",
   catwalk: "Catwalk, phong thái và trình diễn",
@@ -16,6 +26,8 @@ const goalNames = {
   career: "Xây dựng hình ảnh KOL/KOC",
   explore: "Thương mại điện tử, nội dung và livestream"
 };
+
+const allowedContactTimes = new Set(["any", "morning", "afternoon", "evening"]);
 
 const contactTimeNames = {
   any: "Bất kỳ thời gian phù hợp",
@@ -48,13 +60,13 @@ function validateLead(value) {
   const phone = typeof value.phone === "string" ? value.phone.trim() : "";
   const normalizedPhone = phone.replace(/[\s.-]/g, "");
   const course = value.course;
-  const learningGoal = value.learning_goal ?? "";
-  const contactTime = value.contact_time;
+  const learningGoal = typeof value.learning_goal === "string" ? value.learning_goal.trim() : "";
+  const contactTime = value.contact_time || "any";
 
   if (name.length < 2 || name.length > 120) return null;
   if (!/^(?:\+84|84|0)\d{8,10}$/.test(normalizedPhone)) return null;
   if (!allowedCourses.has(course)) return null;
-  if (typeof learningGoal !== "string" || !allowedGoals.has(learningGoal)) return null;
+  if (learningGoal.length > 500) return null;
   if (!allowedContactTimes.has(contactTime)) return null;
   if (value.consent !== true) return null;
 
@@ -63,12 +75,13 @@ function validateLead(value) {
 
 function buildEmail(lead) {
   const submittedAt = new Date().toISOString();
+  const goalDisplay = goalNames[lead.learningGoal] || lead.learningGoal || "Chưa cung cấp";
   const fields = [
     ["Họ và tên", lead.name],
     ["Số điện thoại", lead.phone],
-    ["Khóa học quan tâm", courseNames[lead.course]],
-    ["Mục tiêu học", goalNames[lead.learningGoal]],
-    ["Thời gian liên hệ", contactTimeNames[lead.contactTime]],
+    ["Khóa học quan tâm", courseNames[lead.course] || lead.course],
+    ["Mục tiêu học", goalDisplay],
+    ["Thời gian liên hệ", contactTimeNames[lead.contactTime] || "Bất kỳ thời gian phù hợp"],
     ["Thời gian gửi", submittedAt]
   ];
   const text = fields.map(([label, value]) => `${label}: ${value}`).join("\n");
@@ -76,7 +89,7 @@ function buildEmail(lead) {
     .map(([label, value]) => `<p><strong>${label}:</strong> ${escapeHtml(value)}</p>`)
     .join("");
 
-  return { text, html: `<h1>Yêu cầu tư vấn mới</h1>${html}` };
+  return { text, html: `<h1>Yêu cầu tư vấn mới — ADA Talent Academy</h1>${html}` };
 }
 
 export async function sendLead(request, env) {

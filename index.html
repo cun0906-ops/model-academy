@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="css/style.css?v=51">
   <link rel="stylesheet" href="css/responsive.css?v=40">
   <script src="js/main.js?v=6" defer></script>
-  <script src="js/form.js" defer></script>
+  <script src="js/form.js?v=2" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Bỏ qua điều hướng</a>
@@ -582,7 +582,7 @@
           </div>
           <div class="form-field">
             <label for="phone">Số điện thoại <span>*</span></label>
-            <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="Ví dụ: 0886291909" required>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="numeric" pattern="[0-9]*" maxlength="10" placeholder="Ví dụ: 0886291909" required>
             <small class="field-error" aria-live="polite"></small>
           </div>
           <div class="form-field">
@@ -598,6 +598,7 @@
           <div class="form-field">
             <label for="learning-goal">Mục tiêu hoặc nhu cầu học tập <span class="optional-label">(không bắt buộc)</span></label>
             <input id="learning-goal" name="learning_goal" type="text" placeholder="Chia sẻ mục tiêu hoặc định hướng của bạn">
+            <small class="field-error" aria-live="polite"></small>
           </div>
           <input type="hidden" name="contact_time" value="any">
           <label class="consent-row">

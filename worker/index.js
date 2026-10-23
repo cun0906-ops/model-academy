@@ -5,6 +5,20 @@ const allowedOrigins = new Set([
   "https://www.adaacademy.tech"
 ]);
 
+function isAllowedOrigin(origin) {
+  if (!origin) return false;
+  if (allowedOrigins.has(origin)) return true;
+  if (
+    origin === "http://localhost" ||
+    origin === "http://127.0.0.1" ||
+    origin.startsWith("http://localhost:") ||
+    origin.startsWith("http://127.0.0.1:")
+  ) {
+    return true;
+  }
+  return false;
+}
+
 function jsonResponse(body, status, headers = {}) {
   return Response.json(body, {
     status,
@@ -25,7 +39,7 @@ function corsHeaders(origin) {
 export default {
   async fetch(request, env) {
     const origin = request.headers.get("Origin");
-    if (!origin || !allowedOrigins.has(origin)) {
+    if (!origin || !isAllowedOrigin(origin)) {
       return jsonResponse({ error: "Nguồn gửi yêu cầu không hợp lệ." }, 403);
     }
 
