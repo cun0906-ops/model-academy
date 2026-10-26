@@ -11,10 +11,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=57">
-  <link rel="stylesheet" href="css/responsive.css?v=44">
+  <link rel="stylesheet" href="css/style.css?v=60">
+  <link rel="stylesheet" href="css/responsive.css?v=45">
   <script src="js/main.js?v=7" defer></script>
-  <script src="js/form.js?v=2" defer></script>
+  <script src="js/form.js?v=3" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Bỏ qua điều hướng</a>
@@ -34,7 +34,7 @@
         <a href="#programs">Chương trình</a>
         <a href="#roadmap">Lộ trình</a>
         <a href="#advantages">Lợi thế</a>
-        <a class="button button-small button-dark nav-cta" href="#lead-form">Nhận tư vấn</a>
+        <a class="button button-small button-accent nav-cta" href="#lead-form">Nhận tư vấn</a>
         <span class="nav-indicator" aria-hidden="true"></span>
       </nav>
     </div>
@@ -225,7 +225,7 @@
         </div>
         <div class="challenges-callout">
           <p>Mỗi hành trình đều cần một điểm khởi đầu. ADA Talent Academy đồng hành cùng bạn trong quá trình tìm hiểu bản thân, rèn luyện kỹ năng và lựa chọn hướng phát triển phù hợp.</p>
-          <a class="button button-dark" href="#roadmap">Tìm hiểu lộ trình dành cho bạn <span class="action-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span></a>
+          <a class="button button-accent" href="#roadmap">Tìm hiểu lộ trình dành cho bạn <span class="action-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span></a>
         </div>
       </div>
     </section>
@@ -385,7 +385,7 @@
           <p class="eyebrow"><span class="eyebrow-line"></span> LỘ TRÌNH ĐÀO TẠO <span class="eyebrow-line"></span></p>
           <h2>Từ khám phá bản thân<br><em>đến phát triển kỹ năng thực tế.</em></h2>
           <p class="section-lead">Quy trình đào tạo 5 giai đoạn được thiết kế bài bản, giúp học viên đi từ nền tảng nhận thức đến rèn luyện kỹ năng và hoàn thiện sản phẩm thực tế.</p>
-          <a class="button button-dark" href="#lead-form">Đăng ký nhận lộ trình chi tiết <span class="action-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span></a>
+          <a class="button button-accent" href="#lead-form">Đăng ký nhận lộ trình chi tiết <span class="action-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span></a>
         </div>
         <div class="timeline">
           <article class="timeline-item">
@@ -571,7 +571,6 @@
 
         <form class="lead-form" id="admissions-form" novalidate>
           <div class="form-heading">
-            <p class="eyebrow">TƯ VẤN LỘ TRÌNH</p>
             <h3>Đăng ký nhận tư vấn chương trình</h3>
             <p>Vui lòng để lại thông tin để bộ phận tuyển sinh liên hệ và giới thiệu chương trình đào tạo phù hợp.</p>
           </div>
@@ -589,9 +588,9 @@
             <label for="course">Chương trình quan tâm <span>*</span></label>
             <select id="course" name="course" required>
               <option value="" disabled selected>Chọn chương trình quan tâm</option>
-              <option value="kol_branding">KOL/KOC &amp; Personal Branding</option>
-              <option value="model_image">Model &amp; Personal Image</option>
-              <option value="undetermined">Chưa xác định</option>
+              <option value="kol_koc">KOL/KOC</option>
+              <option value="branding_model">Personal Branding / Model</option>
+              <option value="personal_image">Personal Image</option>
             </select>
             <small class="field-error" aria-live="polite"></small>
           </div>
@@ -606,7 +605,7 @@
             <span>Tôi đồng ý để học viện liên hệ tư vấn theo thông tin đã cung cấp.</span>
           </label>
           <small class="consent-error field-error" id="consent-error" aria-live="polite"></small>
-          <button class="button button-dark button-full form-submit" type="submit">Gửi đăng ký tư vấn <span class="action-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span></button>
+          <button class="button button-accent button-full form-submit" type="submit">Gửi đăng ký tư vấn <span class="action-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span></button>
           <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
           <p class="form-privacy">Chỉ cung cấp thông tin cần thiết để được liên hệ. Cam kết bảo mật thông tin cá nhân theo quy định.</p>
         </form>
@@ -622,7 +621,7 @@
           <span class="brand-copy"><strong>ADA TALENT</strong><small>ACADEMY</small></span>
         </a>
         <p class="footer-tagline">Định hướng đào tạo KOL/KOC – Xây dựng thương hiệu cá nhân – Kỹ năng người mẫu.</p>
-        <p class="footer-ecosystem">Đơn vị trực thuộc hệ sinh thái <strong>ADA Group</strong>.</p>
+        <p class="footer-ecosystem">Đơn vị thuộc hệ sinh thái <strong>ADA Group</strong>.</p>
       </div>
 
       <div class="footer-col footer-col-contact">
@@ -670,7 +669,7 @@
       </div>
 
       <div class="footer-col footer-col-policies">
-        <p class="footer-title">Chính sách &amp; Pháp lý</p>
+        <p class="footer-title">Thông Tin Pháp Lý</p>
         <ul class="footer-policies-list">
           <li>
             <a href="#faq">

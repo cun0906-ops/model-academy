@@ -1,39 +1,19 @@
 const allowedCourses = new Set([
-  "kol_branding",
-  "model_image",
-  "undetermined",
-  "foundation",
-  "skills",
-  "professional",
-  "unknown"
+  "kol_koc",
+  "branding_model",
+  "personal_image"
 ]);
 
 const courseNames = {
-  kol_branding: "KOL/KOC & Personal Branding",
-  model_image: "Model & Personal Image",
-  undetermined: "Chưa xác định",
-  foundation: "Model Foundation — Nền tảng",
-  skills: "Bootcamp Business KOL & Model Doanh nhân — 7 ngày",
-  professional: "Professional Model — Nâng cao",
-  unknown: "Cần tư vấn thêm trước khi chọn"
+  kol_koc: "KOL/KOC",
+  branding_model: "Personal Branding / Model",
+  personal_image: "Personal Image"
 };
 
-const allowedGoals = new Set(["", "catwalk", "photoshoot", "career", "explore"]);
-const goalNames = {
-  "": "Chưa cung cấp",
-  catwalk: "Catwalk, phong thái và trình diễn",
-  photoshoot: "Video, tạo dáng và ảnh profile",
-  career: "Xây dựng hình ảnh KOL/KOC",
-  explore: "Thương mại điện tử, nội dung và livestream"
-};
-
-const allowedContactTimes = new Set(["any", "morning", "afternoon", "evening"]);
+const allowedContactTimes = new Set(["any"]);
 
 const contactTimeNames = {
-  any: "Bất kỳ thời gian phù hợp",
-  morning: "Buổi sáng",
-  afternoon: "Buổi chiều",
-  evening: "Buổi tối"
+  any: "Bất kỳ thời gian phù hợp"
 };
 
 function jsonResponse(body, status) {
@@ -61,7 +41,7 @@ function validateLead(value) {
   const normalizedPhone = phone.replace(/[\s.-]/g, "");
   const course = value.course;
   const learningGoal = typeof value.learning_goal === "string" ? value.learning_goal.trim() : "";
-  const contactTime = value.contact_time || "any";
+  const contactTime = allowedContactTimes.has(value.contact_time) ? value.contact_time : "any";
 
   if (name.length < 2 || name.length > 120) return null;
   if (!/^(?:\+84|84|0)\d{8,10}$/.test(normalizedPhone)) return null;
@@ -75,7 +55,7 @@ function validateLead(value) {
 
 function buildEmail(lead) {
   const submittedAt = new Date().toISOString();
-  const goalDisplay = goalNames[lead.learningGoal] || lead.learningGoal || "Chưa cung cấp";
+  const goalDisplay = lead.learningGoal || "Chưa cung cấp";
   const fields = [
     ["Họ và tên", lead.name],
     ["Số điện thoại", lead.phone],
@@ -146,7 +126,7 @@ export async function sendLead(request, env) {
       body: JSON.stringify({
         from: env.LEADS_FROM_EMAIL,
         to: [env.LEADS_TO_EMAIL],
-        subject: "Yêu cầu tư vấn mới — Bootcamp Business KOL",
+        subject: "Yêu cầu tư vấn mới — ADA Talent Academy",
         text: email.text,
         html: email.html
       })

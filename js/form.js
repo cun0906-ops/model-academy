@@ -258,9 +258,19 @@
     if (
       !response.ok &&
       response.status === 400 &&
-      ["kol_branding", "model_image", "undetermined"].includes(payload.course)
+      [
+        "kol_koc",
+        "branding_model",
+        "personal_image",
+        "kol_branding",
+        "model_image",
+        "undetermined"
+      ].includes(payload.course)
     ) {
       const legacyCourseMap = {
+        kol_koc: "skills",
+        branding_model: "skills",
+        personal_image: "foundation",
         kol_branding: "skills",
         model_image: "foundation",
         undetermined: "unknown"

@@ -8,6 +8,7 @@ const allowedOrigins = new Set([
 function isAllowedOrigin(origin) {
   if (!origin) return false;
   if (allowedOrigins.has(origin)) return true;
+  if (origin.endsWith(".vercel.app")) return true;
   if (
     origin === "http://localhost" ||
     origin === "http://127.0.0.1" ||

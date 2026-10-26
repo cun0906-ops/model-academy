@@ -110,7 +110,9 @@
   .challenges-callout {
     flex-direction: column;
     align-items: stretch;
-    padding: 22px 20px;
+    padding: 24px 20px !important;
+    border-radius: 16px;
+    margin-top: 20px;
   }
   .footer-main { grid-template-columns: 1fr 1fr; gap: 36px 28px; }
   .footer-col-brand { grid-column: 1 / -1; max-width: none; }
@@ -284,6 +286,7 @@
   .section-lead { font-size: 14px; line-height: 1.7; }
   .feature-grid { grid-template-columns: 1fr; gap: 14px; }
   .feature-card { min-height: auto; padding: 20px 18px !important; border-radius: 14px; }
+  .challenges-callout { padding: 20px 18px !important; border-radius: 14px; margin-top: 16px; }
   .feature-card-header { margin-bottom: 14px; }
   .feature-icon { width: 42px; height: 42px; margin: 0; border-radius: 10px; }
   .feature-icon svg { width: 20px; height: 20px; }
@@ -373,6 +376,7 @@
   .brand-copy small { font-size: .44rem; }
   h2, .hero h1, .hero h2, .lead-copy h2 { font-size: 1.7rem; line-height: 1.34; padding-top: 0.12em; }
   .feature-card { padding: 18px 14px !important; }
+  .challenges-callout { padding: 18px 14px !important; border-radius: 12px; }
   .feature-card h3 { font-size: 15px; }
   .audience-cards-grid,
   .advantages-grid {

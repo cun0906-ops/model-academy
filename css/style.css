@@ -87,7 +87,8 @@ p { margin-bottom: 16px; }
 .button:hover {
   transform: translateY(-2px);
 }
-.button-accent {
+.button-accent,
+.button-dark {
   color: var(--white);
   background: var(--accent-gradient);
   background-size: 180% 180%;
@@ -95,7 +96,8 @@ p { margin-bottom: 16px; }
   box-shadow: 0 8px 22px rgba(49,86,216,.28);
   border-color: transparent;
 }
-.button-accent:hover {
+.button-accent:hover,
+.button-dark:hover {
   transform: translateY(-2px);
   background-position: 100% 50%;
   box-shadow: 0 12px 28px rgba(49,86,216,.4);
@@ -113,17 +115,6 @@ p { margin-bottom: 16px; }
   border-color: rgba(255, 255, 255, 0.65);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   color: var(--white);
-}
-.button-dark {
-  color: var(--white);
-  background: var(--ink);
-  box-shadow: 0 4px 14px rgba(24, 32, 61, 0.18);
-  border-color: transparent;
-}
-.button-dark:hover {
-  background: #2b3b75;
-  box-shadow: 0 8px 22px rgba(24, 32, 61, 0.28);
-  transform: translateY(-2px);
 }
 .button-small {
   min-height: 40px;
@@ -166,8 +157,8 @@ p { margin-bottom: 16px; }
 .brand-logo { display: block; width: 164px; height: 60px; object-fit: contain; mix-blend-mode: multiply; }
 .site-header .brand-logo { width: auto; height: 50px; mix-blend-mode: normal; }
 .site-header .brand-copy { display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1; }
-.site-header .brand-copy strong { font-family: var(--font-display); font-size: 1.25rem; font-weight: 800; color: #013bcb; letter-spacing: .02em; line-height: 1.05; }
-.site-header .brand-copy small { margin-top: 4px; font-family: var(--font-display); font-size: .56rem; font-weight: 600; color: #013bcb; letter-spacing: .44em; text-indent: .44em; line-height: 1; text-align: center; }
+.site-header .brand-copy strong { font-family: var(--font-display); font-size: 1.25rem; font-weight: 800; color: #2c4b9f; letter-spacing: .02em; line-height: 1.05; }
+.site-header .brand-copy small { margin-top: 4px; font-family: var(--font-display); font-size: .56rem; font-weight: 600; color: #2c4b9f; letter-spacing: .44em; text-indent: .44em; line-height: 1; text-align: center; }
 .primary-nav { position: relative; display: flex; align-items: center; gap: clamp(18px, 2.4vw, 34px); height: max-content; padding-bottom: 8px; }
 .primary-nav > a:not(.button) { padding-block: 8px; font-size: .875rem; font-weight: 500; transition: color .2s ease; }
 .primary-nav > a:not(.button):hover { color: var(--accent); }
@@ -933,7 +924,7 @@ p { margin-bottom: 16px; }
 }
 .brand-footer .brand-copy strong {
   display: block;
-  color: #013bcb;
+  color: #2c4b9f;
   font-family: var(--font-display);
   font-size: 1.25rem;
   letter-spacing: 0.02em;
@@ -946,7 +937,7 @@ p { margin-bottom: 16px; }
   font-family: var(--font-display);
   font-size: 0.56rem;
   font-weight: 600;
-  color: #013bcb;
+  color: #2c4b9f;
   letter-spacing: 0.44em;
   text-indent: 0.44em;
   line-height: 1;
@@ -1154,13 +1145,13 @@ p { margin-bottom: 16px; }
   grid-column: 1 / -1;
 }
 .challenges-callout {
-  margin-top: 36px;
+  margin-top: 24px;
   margin-bottom: 0;
-  padding: 24px 28px;
-  border-radius: 14px;
+  padding: 28px 24px;
+  border-radius: 16px;
   background: var(--white);
-  border: 1px solid rgba(49, 86, 216, 0.15);
-  box-shadow: 0 8px 24px rgba(24, 32, 61, 0.04);
+  border: 1px solid rgba(24, 32, 61, 0.08);
+  box-shadow: 0 4px 20px -2px rgba(24, 32, 61, 0.04), 0 1px 3px rgba(24, 32, 61, 0.02);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1171,7 +1162,7 @@ p { margin-bottom: 16px; }
   margin: 0;
   max-width: 720px;
   color: var(--ink);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
   line-height: 1.7;
 }
