@@ -852,15 +852,39 @@ p { margin-bottom: 16px; }
 .form-field label .optional-label { color: #8892a4; font-weight: 400; font-size: 0.7rem; }
 .form-field input, .form-field select {
   width: 100%;
-  min-height: 46px;
-  padding: 11px 13px;
+  height: 48px;
+  min-height: 48px;
+  padding: 12px 14px;
   border: 1px solid #d4d9e2;
   border-radius: 8px;
-  background: #fff;
+  background-color: #fff;
   color: var(--ink);
-  font-size: .82rem;
+  font-size: 15px;
+  line-height: 1.4;
   font-family: inherit;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   transition: border-color .2s ease, box-shadow .2s ease;
+}
+.form-field select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 16px 16px;
+  padding-right: 42px;
+  cursor: pointer;
+}
+.form-field select::-ms-expand {
+  display: none;
+}
+.form-field select:invalid,
+.form-field select option[value=""] {
+  color: #9aa1a9;
+}
+.form-field select option {
+  color: var(--ink);
 }
 .form-field input:focus, .form-field select:focus {
   border-color: var(--accent);
