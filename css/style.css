@@ -158,9 +158,38 @@ p { margin-bottom: 16px; }
 .brand { display: inline-flex; align-items: center; gap: 12px; flex-shrink: 0; }
 .brand-logo { display: block; width: 164px; height: 60px; object-fit: contain; mix-blend-mode: multiply; }
 .site-header .brand-logo { width: auto; height: 48px; mix-blend-mode: normal; }
-.site-header .brand-copy { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; line-height: 1; }
-.site-header .brand-copy strong { font-family: var(--font-display); font-size: 1.25rem; font-weight: 800; color: #2c4b9f; letter-spacing: .02em; line-height: 1.05; }
-.site-header .brand-copy small { margin-top: 3px; font-family: var(--font-display); font-size: .56rem; font-weight: 600; color: #2c4b9f; letter-spacing: .44em; text-indent: .44em; line-height: 1; text-align: center; }
+.site-header .brand-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1;
+}
+.site-header .brand-copy strong {
+  display: block;
+  width: 100%;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #2c4b9f;
+  letter-spacing: .02em;
+  line-height: 1.05;
+  text-align: center;
+}
+.site-header .brand-copy small {
+  display: block;
+  width: 100%;
+  margin-top: 3px;
+  font-family: var(--font-display);
+  font-size: .56rem;
+  font-weight: 600;
+  color: #2c4b9f;
+  letter-spacing: .44em;
+  text-indent: .44em;
+  line-height: 1;
+  text-align: center;
+}
 .primary-nav { position: relative; display: flex; align-items: center; gap: clamp(18px, 2.4vw, 32px); height: 100%; }
 .primary-nav > a:not(.button) { position: relative; padding-block: 8px; font-size: .875rem; font-weight: 500; transition: color .2s ease; }
 .primary-nav > a:not(.button):hover { color: var(--accent); }
