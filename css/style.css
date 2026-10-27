@@ -286,6 +286,7 @@ p { margin-bottom: 16px; }
 .hero-btn-cta {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 12px;
   padding: 13px 30px;
   border-radius: 999px;
@@ -293,12 +294,19 @@ p { margin-bottom: 16px; }
   color: #031256;
   font-size: 13.5px;
   font-weight: 700;
+  line-height: 1;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   text-decoration: none;
   border: none;
   box-shadow: 0 8px 24px rgba(3, 18, 86, 0.28);
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, background-color 0.2s ease;
+}
+.hero-btn-cta span {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  transform: translateY(1.5px);
 }
 .hero-btn-cta:hover {
   transform: translateY(-2px);
@@ -307,9 +315,13 @@ p { margin-bottom: 16px; }
   box-shadow: 0 12px 30px rgba(3, 18, 86, 0.38);
 }
 .hero-btn-cta svg {
-  width: 17px;
-  height: 17px;
+  display: block;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
   stroke: #031256;
+  position: relative;
+  top: 0;
   transition: transform 0.25s ease;
 }
 .hero-btn-cta:hover svg {
