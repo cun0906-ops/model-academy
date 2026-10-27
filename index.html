@@ -11,8 +11,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=82">
-  <link rel="stylesheet" href="css/responsive.css?v=73">
+  <link rel="stylesheet" href="css/style.css?v=89">
+  <link rel="stylesheet" href="css/responsive.css?v=76">
   <script src="js/main.js?v=10" defer></script>
   <script src="js/form.js?v=3" defer></script>
 </head>
@@ -43,6 +43,84 @@
   <main id="main-content">
     <!-- SECTION 01: HERO BANNER -->
     <section class="section hero section-dark" id="top">
+      <!-- Background light rays shining from top right (Dải sáng bóng mờ hiện rõ & êm mắt) -->
+      <div class="hero-light-rays" aria-hidden="true">
+        <svg class="hero-rays-svg" viewBox="0 0 1600 900" preserveAspectRatio="none" fill="none">
+          <defs>
+            <!-- Feathered blur filters for seamless volumetric softness with defined beams -->
+            <filter id="shaft-blur-wide" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="32"/>
+            </filter>
+            <filter id="shaft-blur-core" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="18"/>
+            </filter>
+            <filter id="shaft-blur-flare" x="-30%" y="-30%" width="160%" height="160%">
+              <feGaussianBlur stdDeviation="36"/>
+            </filter>
+
+            <!-- Luminous soft-focus gradients blending smoothly into background -->
+            <linearGradient id="shaft-grad-1" x1="1360" y1="20" x2="-20" y2="390" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.85"/>
+              <stop offset="22%" stop-color="#dbeafe" stop-opacity="0.58"/>
+              <stop offset="52%" stop-color="#7dd3fc" stop-opacity="0.28"/>
+              <stop offset="82%" stop-color="#38bdf8" stop-opacity="0.08"/>
+              <stop offset="100%" stop-color="#1d4ed8" stop-opacity="0"/>
+            </linearGradient>
+
+            <linearGradient id="shaft-grad-2" x1="1360" y1="20" x2="330" y2="950" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+              <stop offset="20%" stop-color="#ffffff" stop-opacity="0.75"/>
+              <stop offset="48%" stop-color="#bae6fd" stop-opacity="0.44"/>
+              <stop offset="76%" stop-color="#60a5fa" stop-opacity="0.14"/>
+              <stop offset="100%" stop-color="#2563eb" stop-opacity="0"/>
+            </linearGradient>
+
+            <linearGradient id="shaft-grad-3" x1="1360" y1="20" x2="700" y2="950" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.82"/>
+              <stop offset="24%" stop-color="#e0f2fe" stop-opacity="0.54"/>
+              <stop offset="56%" stop-color="#7dd3fc" stop-opacity="0.26"/>
+              <stop offset="85%" stop-color="#38bdf8" stop-opacity="0.06"/>
+              <stop offset="100%" stop-color="#1d4ed8" stop-opacity="0"/>
+            </linearGradient>
+
+            <linearGradient id="shaft-grad-4" x1="1360" y1="20" x2="1080" y2="950" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.72"/>
+              <stop offset="25%" stop-color="#bae6fd" stop-opacity="0.44"/>
+              <stop offset="60%" stop-color="#38bdf8" stop-opacity="0.18"/>
+              <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
+            </linearGradient>
+
+            <!-- Soft ambient flare at studio light source position -->
+            <radialGradient id="shaft-origin-flare" cx="1360" cy="20" r="580" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.78"/>
+              <stop offset="20%" stop-color="#bae6fd" stop-opacity="0.48"/>
+              <stop offset="45%" stop-color="#7dd3fc" stop-opacity="0.24"/>
+              <stop offset="75%" stop-color="#38bdf8" stop-opacity="0.06"/>
+              <stop offset="100%" stop-color="#136efd" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+
+          <!-- Studio origin ambient flare -->
+          <circle cx="1360" cy="20" r="540" fill="url(#shaft-origin-flare)" filter="url(#shaft-blur-flare)"/>
+
+          <!-- 4 Harmonious, soft-focus volumetric light shafts (Dải sáng bóng mờ hiện rõ & tinh tế) -->
+          <!-- Shaft 1: Ambient upper sweep across title background -->
+          <polygon points="1360,20 -100,260 60,520" fill="url(#shaft-grad-1)" filter="url(#shaft-blur-wide)"/>
+          <polygon points="1360,20 -40,310 20,450" fill="url(#shaft-grad-1)" filter="url(#shaft-blur-core)" opacity="0.85"/>
+
+          <!-- Shaft 2: Primary soft light shaft through text area -->
+          <polygon points="1360,20 180,950 480,950" fill="url(#shaft-grad-2)" filter="url(#shaft-blur-wide)"/>
+          <polygon points="1360,20 270,950 390,950" fill="url(#shaft-grad-2)" filter="url(#shaft-blur-core)" opacity="0.85"/>
+
+          <!-- Shaft 3: Center divide soft light shaft -->
+          <polygon points="1360,20 580,950 820,950" fill="url(#shaft-grad-3)" filter="url(#shaft-blur-wide)"/>
+          <polygon points="1360,20 640,950 750,950" fill="url(#shaft-grad-3)" filter="url(#shaft-blur-core)" opacity="0.85"/>
+
+          <!-- Shaft 4: Right rim soft glow -->
+          <polygon points="1360,20 960,950 1180,950" fill="url(#shaft-grad-4)" filter="url(#shaft-blur-wide)"/>
+          <polygon points="1360,20 1020,950 1120,950" fill="url(#shaft-grad-4)" filter="url(#shaft-blur-core)" opacity="0.75"/>
+        </svg>
+      </div>
       <div class="container hero-grid">
         <div class="hero-content">
           <div class="hero-eyebrow-wrap">

@@ -207,12 +207,45 @@ p { margin-bottom: 16px; }
   padding-top: var(--section-space);
   padding-bottom: 0;
   padding-inline: 0;
-  background: radial-gradient(circle at 74% 45%, rgba(19, 110, 253, 0.45) 0%, transparent 60%),
-              linear-gradient(115deg, #031256 0%, #07389a 50%, #136efd 100%);
+  background: linear-gradient(115deg, #031256 0%, #07389a 18%, #0e5edc 48%, #136efd 75%, #136efd 100%);
   color: var(--white);
+}
+.hero-light-rays {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  mix-blend-mode: screen;
+}
+.hero-rays-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity: 1;
+  filter: drop-shadow(0 0 18px rgba(186, 230, 253, 0.32));
+  animation: rayGlowPulse 10s ease-in-out infinite;
+}
+@keyframes rayGlowPulse {
+  0%, 100% {
+    opacity: 0.92;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-rays-svg {
+    animation: none;
+  }
 }
 .hero-grid {
   position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: minmax(440px, 0.92fr) minmax(0, 1.28fr);
   align-items: end;
