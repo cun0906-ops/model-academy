@@ -97,7 +97,7 @@
   // Reveal content as it enters the viewport (hỗ trợ cả cuộn xuống và từ dưới cuộn lên)
   const revealTargets = document.querySelectorAll(
     ".intro-strip-inner, .section-heading, .feature-card, .benefit-card, .program-card, .timeline-item, " +
-    ".instructor-image, .instructor-copy, .gallery-item, .enrollment-card, .faq-item, .lead-copy, .lead-form, " +
+    ".instructor-image, .instructor-copy, .gallery-item, .enrollment-card, .faq-item, .lead-copy, .lead-media, .lead-form, " +
     ".pillar-card, .audience-card, .program-detail-card, .value-card, .advantage-card, .challenges-callout, " +
     ".section-heading-split, .about-header"
   );
