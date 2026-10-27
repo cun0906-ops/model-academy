@@ -5,6 +5,7 @@
   const menuToggle = document.querySelector(".menu-toggle");
   const nav = document.querySelector("#primary-nav");
   const navLinks = nav ? nav.querySelectorAll("a") : [];
+  const brandLink = document.querySelector(".brand");
 
   function closeMenu() {
     if (!menuToggle || !nav) return;
@@ -24,6 +25,11 @@
     });
 
     navLinks.forEach((link) => link.addEventListener("click", closeMenu));
+    if (brandLink) brandLink.addEventListener("click", closeMenu);
+
+    nav.addEventListener("click", (event) => {
+      if (event.target === nav) closeMenu();
+    });
 
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape") closeMenu();
@@ -34,14 +40,16 @@
     });
   }
 
-  // Add a subtle shadow once the sticky header has moved away from the top.
+  // Add a subtle shadow once the sticky header has moved away from the top & sync header height.
   const header = document.querySelector(".site-header");
   const updateHeader = () => {
     if (!header) return;
     header.classList.toggle("is-scrolled", window.scrollY > 12);
+    document.documentElement.style.setProperty("--header-actual-h", `${header.offsetHeight}px`);
   };
   updateHeader();
   window.addEventListener("scroll", updateHeader, { passive: true });
+  window.addEventListener("resize", updateHeader);
 
   const navIndicator = nav ? nav.querySelector(".nav-indicator") : null;
   const sectionLinks = nav ? [...nav.querySelectorAll('a[href^="#"]:not(.button)')] : [];
