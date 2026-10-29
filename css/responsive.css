@@ -16,6 +16,15 @@
   .program-image img { height: 280px; }
   .program-body { padding: 24px 18px; }
   .enrollment-layout { gap: 48px; }
+  .gifts-slider-container { padding-inline: 50px; }
+  .gifts-slider-track { gap: 20px; }
+  .gifts-slider-track .gift-card {
+    flex: 0 0 calc((100% - 40px) / 3);
+    max-width: calc((100% - 40px) / 3);
+  }
+  .gift-card-body { padding: 20px 18px 22px; }
+  .gift-card-body h3 { font-size: 1.08rem; min-height: 3.4em; }
+  .gift-card-body p { font-size: 13.2px; line-height: 1.62; }
 }
 @media (max-width: 900px) {
   :root {
@@ -310,6 +319,14 @@
   .footer-main { grid-template-columns: 1fr 1fr; gap: 36px 28px; }
   .footer-col-brand { grid-column: 1 / -1; max-width: none; }
   .footer-map-frame { max-width: 100%; height: 140px; }
+  .gifts-slider-container { padding-inline: 46px; }
+  .gifts-slider-track { gap: 18px; }
+  .gifts-slider-track .gift-card {
+    flex: 0 0 calc((100% - 18px) / 2);
+    max-width: calc((100% - 18px) / 2);
+  }
+  .slider-arrow { width: 42px; height: 42px; }
+  .gift-card-body h3 { min-height: 2.8em; }
 }
 @media (max-width: 767px) {
   :root {
@@ -631,6 +648,40 @@
   .footer-bottom { flex-direction: column; text-align: center; gap: 12px; }
   .back-to-top { right: 18px; bottom: 20px; width: 44px; height: 44px; }
   .back-to-top svg { width: 20px; height: 20px; }
+  /* Gifts section - Slider on mobile (Bỏ nút next/back, cân đối 2 bên) */
+  .gifts-slider-container {
+    padding-inline: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  .slider-arrow {
+    display: none !important;
+  }
+  .gifts-slider-track {
+    gap: 16px;
+  }
+  .gifts-slider-track .gift-card {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .slider-dots {
+    margin-top: 22px;
+  }
+  .gift-card {
+    border-radius: 16px;
+  }
+  .gift-card-body {
+    padding: 18px 16px 20px;
+  }
+  .gift-card-body h3 {
+    font-size: 1.08rem;
+    min-height: auto;
+    margin-bottom: 8px;
+  }
+  .gift-card-body p {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
 }
 @media (max-width: 380px) {
   :root {
