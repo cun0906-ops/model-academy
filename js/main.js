@@ -107,7 +107,7 @@
     ".intro-strip-inner, .section-heading, .feature-card, .benefit-card, .program-card, .timeline-item, " +
     ".instructor-image, .instructor-copy, .gallery-item, .enrollment-card, .faq-item, .lead-copy, .lead-media, .lead-form, " +
     ".pillar-card, .audience-card, .program-detail-card, .value-card, .advantage-card, .challenges-callout, " +
-    ".section-heading-split, .about-header, .gifts-slider-container"
+    ".section-heading-split, .about-header, .gift-row"
   );
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -186,58 +186,6 @@
     backToTopBtn.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
-  }
-
-  // Gifts auto-scrolling infinite slider with Swiper CDN
-  function initGiftsSwiper() {
-    const giftsSliderViewport = document.querySelector(".gifts-slider-viewport");
-    if (!giftsSliderViewport || typeof Swiper === "undefined") return;
-
-    new Swiper(giftsSliderViewport, {
-      slidesPerView: 1,
-      spaceBetween: 16,
-      loop: true,
-      speed: 750,
-      grabCursor: true,
-      autoplay: {
-        delay: 3500,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: true,
-      },
-      navigation: {
-        nextEl: ".slider-next",
-        prevEl: ".slider-prev",
-      },
-      pagination: {
-        el: ".slider-dots",
-        clickable: true,
-        bulletClass: "slider-dot",
-        bulletActiveClass: "is-active",
-        renderBullet: function (index, className) {
-          return '<button type="button" class="' + className + '" aria-label="Chuyển tới quà tặng ' + (index + 1) + '"></button>';
-        },
-      },
-      breakpoints: {
-        640: {
-          slidesPerView: 2,
-          spaceBetween: 18,
-        },
-        901: {
-          slidesPerView: 3,
-          spaceBetween: 20,
-        },
-        1101: {
-          slidesPerView: 3,
-          spaceBetween: 24,
-        },
-      },
-    });
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initGiftsSwiper);
-  } else {
-    initGiftsSwiper();
   }
 
 })();

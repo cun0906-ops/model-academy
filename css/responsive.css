@@ -28,11 +28,10 @@
   .program-image img { height: 280px; }
   .program-body { padding: 24px 18px; }
   .enrollment-layout { gap: 48px; }
-  .gifts-slider-container { padding-inline: 50px; }
-  /* Swiper tự động tính toán khoảng cách và kích thước card */
-  .gift-card-body { padding: 20px 18px 22px; }
-  .gift-card-body h3 { font-size: 1.08rem; min-height: 3.4em; }
-  .gift-card-body p { font-size: 13.2px; line-height: 1.62; }
+  .gifts-list { gap: 56px; }
+  .gift-row { gap: 40px; }
+  .gift-row-body h3 { font-size: 1.45rem; }
+  .gift-row-body p { font-size: 14.4px; line-height: 1.72; }
 }
 @media (max-width: 900px) {
   :root {
@@ -339,10 +338,12 @@
   .footer-main { grid-template-columns: 1fr 1fr; gap: 36px 28px; }
   .footer-col-brand { grid-column: 1 / -1; max-width: none; }
   .footer-map-frame { max-width: 100%; height: 140px; }
-  .gifts-slider-container { padding-inline: 46px; }
-  /* Swiper tự động tính toán khoảng cách và kích thước card */
-  .slider-arrow { width: 42px; height: 42px; }
-  .gift-card-body h3 { min-height: 2.8em; }
+  /* Quà tặng: ảnh trên, nội dung dưới; bỏ so le khi hết chỗ cho 2 cột */
+  .gifts-list { gap: 44px; }
+  .gift-row { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+  .gift-row:nth-child(even) .gift-row-media { order: 0; }
+  .gift-row-body { padding-left: 22px; }
+  .gift-row-body h3 { font-size: 1.35rem; }
 }
 @media (max-width: 767px) {
   :root {
@@ -685,32 +686,30 @@
   .footer-bottom { flex-direction: column; text-align: center; gap: 12px; }
   .back-to-top { right: 18px; bottom: 20px; width: 44px; height: 44px; }
   .back-to-top svg { width: 20px; height: 20px; }
-  /* Gifts section - Slider on mobile (Bỏ nút next/back, cân đối 2 bên) */
-  .gifts-slider-container {
-    padding-inline: 0 !important;
-    padding-bottom: 0 !important;
+  /* Quà tặng trên mobile */
+  .gifts-list {
+    gap: 34px;
   }
-  .slider-arrow {
-    display: none !important;
+  .gift-row {
+    gap: 18px;
   }
-  /* Swiper tự động tính toán khoảng cách và kích thước card */
-  .slider-dots {
-    margin-top: 22px;
-  }
-  .gift-card {
+  .gift-row-media {
     border-radius: 16px;
   }
-  .gift-card-body {
-    padding: 18px 16px 20px;
+  .gift-row-body {
+    padding-left: 18px;
   }
-  .gift-card-body h3 {
-    font-size: 1.08rem;
-    min-height: auto;
+  .gift-row-index {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  .gift-row-body h3 {
+    font-size: 1.18rem;
     margin-bottom: 8px;
   }
-  .gift-card-body p {
-    font-size: 13px;
-    line-height: 1.6;
+  .gift-row-body p {
+    font-size: 13.5px;
+    line-height: 1.66;
   }
 
 }

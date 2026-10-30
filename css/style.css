@@ -1606,52 +1606,56 @@ p { margin-bottom: 16px; }
   margin-inline: auto;
 }
 
-/* Slider Container (Cân đối 2 bên, chừa khoảng cách chuẩn cho nút bấm) */
-.gifts-slider-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  padding-inline: 56px;
-  margin-top: 10px;
-  box-sizing: border-box;
-}
-.gifts-slider-viewport.swiper {
-  overflow: hidden;
-  width: 100%;
-  border-radius: 20px;
-  padding-block: 14px 26px;
-  margin-block: -14px -26px;
-}
-.gifts-slider-track.swiper-wrapper {
-  display: flex;
-  gap: 0;
-  box-sizing: content-box;
-}
-.gift-card.swiper-slide {
-  flex: none;
-  max-width: none;
-  height: auto; /* Thẻ tự co giãn đều chiều cao theo card cao nhất */
-  box-sizing: border-box;
-}
-
-/* Thẻ quà tặng sang trọng, cân bằng tỉ lệ */
-.gift-card {
-  position: relative;
+/* Danh sách quà tặng dạng list: ảnh và nội dung so le trái phải */
+.gifts-list {
   display: flex;
   flex-direction: column;
-  background: var(--white);
-  border: 1px solid rgba(24, 32, 61, 0.08);
+  gap: 64px;
+  margin-top: 16px;
+}
+.gift-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: center;
+}
+.gift-row:nth-child(even) .gift-row-media {
+  order: 2;
+}
+
+/* Khung ảnh tỷ lệ 16:10 sắc nét, hoàn toàn sạch chữ */
+.gift-row-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 4px 24px rgba(24, 32, 61, 0.03);
+  background: var(--ink);
+  border: 1px solid rgba(24, 32, 61, 0.08);
+  box-shadow: 0 14px 40px -12px rgba(24, 32, 61, 0.14);
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.35s ease;
 }
-
+.gift-row-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+}
+.gift-row:hover .gift-row-media {
+  transform: translateY(-6px);
+  border-color: rgba(49, 86, 216, 0.28);
+  box-shadow: 0 24px 52px -14px rgba(49, 86, 216, 0.24);
+}
+.gift-row:hover .gift-row-media img {
+  transform: scale(1.06);
+  filter: brightness(1.03);
+}
 
 /* Hiệu ứng quét tia sáng khi hover */
-.gift-card .card-shine {
+.gift-row-media .card-shine {
   position: absolute;
   top: -50%;
   left: -60%;
@@ -1671,153 +1675,55 @@ p { margin-bottom: 16px; }
   z-index: 10;
   opacity: 0;
 }
-.gift-card:hover .card-shine {
+.gift-row:hover .card-shine {
   transform: rotate(25deg) translateY(100%);
   opacity: 1;
 }
 
-.gift-card:hover {
-  transform: translateY(-8px) !important;
-  border-color: rgba(49, 86, 216, 0.28);
-  box-shadow: 0 22px 46px -10px rgba(49, 86, 216, 0.16), 0 6px 18px rgba(24, 32, 61, 0.04);
-}
-
-/* Khung ảnh tỷ lệ 16:10 sắc nét, hoàn toàn sạch chữ */
-.gift-card-media {
+/* Nội dung: số thứ tự, tiêu đề, mô tả */
+.gift-row-body {
   position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-  background: var(--ink);
+  padding-left: 28px;
 }
-.gift-card-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
-}
-.gift-card:hover .gift-card-media img {
-  transform: scale(1.07);
-  filter: brightness(1.03);
-}
-.gift-card-media::after {
+.gift-row-body::before {
   content: "";
   position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(24, 32, 61, 0.04) 0%, rgba(24, 32, 61, 0) 50%, rgba(24, 32, 61, 0.28) 100%);
-  pointer-events: none;
+  top: 6px;
+  bottom: 6px;
+  left: 0;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, var(--accent) 0%, rgba(49, 86, 216, 0.08) 100%);
 }
-
-/* Phần nội dung với chiều cao tiêu đề căn đều chuẩn mực */
-.gift-card-body {
-  padding: 24px 22px 26px;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
+.gift-row-index {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: var(--accent-dark);
+  margin-bottom: 14px;
 }
-.gift-card-body h3 {
-  font-size: 1.14rem;
+.gift-row-body h3 {
+  font-size: 1.6rem;
   font-weight: 700;
   color: var(--ink);
-  line-height: 1.4;
-  margin: 0 0 12px;
-  letter-spacing: -0.015em;
-  min-height: 3.2em; /* Giúp các dòng văn bản bên dưới thẳng hàng tăm tắp */
+  line-height: 1.3;
+  margin: 0 0 14px;
+  letter-spacing: -0.02em;
   transition: color 0.25s ease;
 }
-.gift-card:hover .gift-card-body h3 {
+.gift-row:hover .gift-row-body h3 {
   color: var(--accent);
 }
-.gift-card-body p {
+.gift-row-body p {
   color: var(--muted);
-  font-size: 13.8px;
-  line-height: 1.68;
+  font-size: 15px;
+  line-height: 1.75;
   margin: 0;
   text-align: justify;
   text-justify: inter-word;
   text-align-last: left;
-}
-
-/* Nút bấm chuyển slide */
-.slider-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.96);
-  border: 1px solid rgba(24, 32, 61, 0.12);
-  color: var(--ink);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 10;
-  box-shadow: 0 6px 20px rgba(24, 32, 61, 0.1);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              background 0.25s ease,
-              color 0.25s ease,
-              border-color 0.25s ease,
-              box-shadow 0.25s ease;
-}
-.slider-prev {
-  left: 0;
-}
-.slider-next {
-  right: 0;
-}
-.slider-arrow svg {
-  width: 20px;
-  height: 20px;
-  transition: transform 0.2s ease;
-}
-.slider-prev:hover svg {
-  transform: translateX(-2px);
-}
-.slider-next:hover svg {
-  transform: translateX(2px);
-}
-.slider-arrow:hover {
-  background: var(--accent-gradient);
-  color: #ffffff;
-  border-color: transparent;
-  transform: translateY(-50%) scale(1.08);
-  box-shadow: 0 10px 24px rgba(49, 86, 216, 0.35);
-}
-.slider-arrow:active {
-  transform: translateY(-50%) scale(0.96);
-}
-
-/* Thanh chấm tròn phân trang */
-.slider-dots {
-  position: static !important;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin-top: 36px;
-  width: 100%;
-}
-.slider-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  background: rgba(24, 32, 61, 0.2);
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  display: inline-block;
-  opacity: 1 !important;
-  margin: 0 !important;
-}
-.slider-dot.is-active,
-.slider-dot.swiper-pagination-bullet-active {
-  width: 32px;
-  background: var(--accent);
-  opacity: 1 !important;
 }
 
 /* Section 04 - Audience */
