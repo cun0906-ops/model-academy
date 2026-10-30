@@ -7,8 +7,20 @@
   .primary-nav .nav-cta { font-size: 13px; padding: 8px 14px; }
   .brand-copy strong { font-size: 1.15rem; }
   .brand-copy small { font-size: .52rem; }
-  .hero-grid { grid-template-columns: minmax(430px, 0.96fr) 1.2fr; gap: 20px; }
-  .hero-title-img { max-width: 380px; }
+  .hero {
+    min-height: clamp(500px, 62vh, 620px);
+    padding-block: clamp(24px, 3.5vw, 40px);
+  }
+  .hero-grid { grid-template-columns: minmax(310px, 0.82fr) minmax(0, 1.32fr); gap: 16px; align-items: center; }
+  .hero-title-img { max-width: clamp(260px, 25vw, 330px); }
+  .hero-visual {
+    width: calc(100% + clamp(24px, 3.5vw, 50px));
+    margin-left: calc(-1 * clamp(24px, 3.5vw, 50px));
+    margin-right: 0;
+    align-self: center; /* Căn giữa vertical trên màn hình tablet */
+    align-items: center;
+  }
+  .hero-main-img { max-width: 100%; height: auto; }
   .hero-features-row { gap: clamp(8px, 1.2vw, 14px); }
   .hero-feature-item { gap: 6px; }
   .hero-feature-icon { width: 20px; }
@@ -198,8 +210,20 @@
     box-shadow: 0 10px 28px rgba(49, 86, 216, 0.38);
     transform: translateY(-1px);
   }
-  .hero-grid { grid-template-columns: 0.92fr 1.18fr; gap: 20px; align-items: end; }
-  .hero-title-img { max-width: 330px; }
+  .hero {
+    min-height: auto;
+    padding-block: clamp(28px, 4.5vw, 44px);
+  }
+  .hero-grid { grid-template-columns: minmax(280px, 0.78fr) minmax(0, 1.3fr); gap: 14px; align-items: center; min-height: auto; }
+  .hero-title-img { max-width: clamp(240px, 28vw, 290px); }
+  .hero-visual {
+    width: calc(100% + 24px);
+    margin-left: -24px;
+    margin-right: 0;
+    align-self: center; /* Căn giữa vertical trên tablet portrait */
+    align-items: center;
+  }
+  .hero-main-img { max-width: 100%; height: auto; }
   .hero-features-row {
     display: flex;
     flex-direction: column;
@@ -341,14 +365,24 @@
   .brand-logo { width: 144px; height: 54px; }
   .brand-copy strong { font-size: 1.05rem; }
   .brand-copy small { font-size: .46rem; }
-  .hero { padding-top: var(--section-space); padding-bottom: 0; }
-  .hero-grid { grid-template-columns: 1fr; gap: 20px; }
+  .hero {
+    padding-top: var(--section-space);
+    padding-bottom: 0;
+    min-height: auto;
+    display: block;
+  }
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    min-height: auto;
+  }
   .hero-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding-bottom: 0;
+    padding-block: 0;
+    align-self: auto;
   }
   .eyebrow { font-size: 12px; gap: 8px; flex-wrap: wrap; justify-content: center; text-align: center; }
   .eyebrow-line { width: 20px; flex-shrink: 0; }
@@ -410,7 +444,7 @@
   .hero-title-img {
     display: block;
     width: 100%;
-    max-width: clamp(290px, 86vw, 380px);
+    max-width: clamp(230px, 72vw, 285px);
     height: auto;
     object-fit: contain;
     margin-inline: auto;
@@ -433,12 +467,15 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    white-space: nowrap !important; /* Đảm bảo text nút luôn trên 1 dòng */
+    flex-shrink: 0;
     box-shadow: 0 6px 18px rgba(3, 18, 86, 0.22);
   }
   .hero-btn-cta span {
     display: inline-flex;
     align-items: center;
     line-height: 1;
+    white-space: nowrap !important;
     transform: translateY(1.2px);
   }
   .hero-btn-cta svg {
@@ -523,7 +560,15 @@
     text-justify: inter-word;
     text-align-last: left;
   }
-  .hero-visual { justify-content: center; max-width: 500px; margin-inline: auto; width: 100%; margin-top: 6px; }
+  .hero-visual {
+    justify-content: center;
+    max-width: 540px;
+    margin-inline: auto;
+    width: 100%;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-top: 10px;
+  }
   .hero-main-img { max-width: 100%; height: auto; }
   .hero-image-label { font-size: .52rem; }
   .intro-strip-inner { padding-block: 23px; gap: 8px 16px; }
@@ -700,7 +745,7 @@
   .brand-copy strong { font-size: .95rem; }
   .brand-copy small { font-size: .44rem; }
   .hero-eyebrow { font-size: 11.5px; }
-  .hero-title-img { max-width: clamp(260px, 88vw, 310px); }
+  .hero-title-img { max-width: clamp(210px, 78vw, 255px); }
   .hero-actions .hero-btn-cta,
   .hero-btn-cta {
     padding: 8px 16px;
@@ -709,6 +754,7 @@
     gap: 6px;
     min-height: 36px;
   }
+  .hero-btn-cta, .hero-btn-cta span { white-space: nowrap !important; }
   .hero-btn-cta span {
     display: inline-flex;
     align-items: center;

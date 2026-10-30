@@ -204,9 +204,11 @@ p { margin-bottom: 16px; }
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding-top: var(--section-space);
-  padding-bottom: 0;
-  padding-inline: 0;
+  padding: 0;
+  min-height: clamp(540px, 70vh, 670px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background: linear-gradient(115deg, #031256 0%, #07389a 18%, #0e5edc 48%, #136efd 75%, #136efd 100%);
   color: var(--white);
 }
@@ -247,17 +249,23 @@ p { margin-bottom: 16px; }
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(440px, 0.92fr) minmax(0, 1.28fr);
-  align-items: end;
-  gap: clamp(20px, 3vw, 40px);
+  grid-template-columns: minmax(340px, 0.84fr) minmax(0, 1.36fr);
+  align-items: center; /* Căn giữa vertical theo chiều dọc trên desktop */
+  gap: clamp(14px, 2vw, 32px);
+  width: min(var(--container), calc(100% - 64px));
+  min-height: inherit;
 }
 .hero-content {
-  padding-top: 0;
-  padding-bottom: clamp(32px, 4.5vw, 56px);
-  z-index: 2;
+  position: relative;
+  align-self: center; /* Căn giữa vertical tuyệt đối theo chiều cao của section */
+  padding-block: 0;
+  z-index: 2; /* Nổi bật lên trên hero-visual khi ảnh chèn mở rộng */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .hero-eyebrow-wrap {
-  margin-bottom: 20px;
+  margin-bottom: clamp(14px, 1.5vw, 18px);
 }
 .hero-eyebrow {
   margin: 0;
@@ -277,12 +285,12 @@ p { margin-bottom: 16px; }
   margin-top: 8px;
 }
 .hero-title-wrap {
-  margin: 0 0 18px;
+  margin: 0 0 clamp(16px, 1.6vw, 20px);
 }
 .hero-title-img {
   display: block;
   width: 100%;
-  max-width: 440px;
+  max-width: clamp(280px, 25vw, 390px); /* Tinh chỉnh tỷ lệ để ưu tiên scale cho hero-main-img */
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 10px 24px rgba(3, 18, 86, 0.45));
@@ -318,7 +326,7 @@ p { margin-bottom: 16px; }
   flex-wrap: nowrap;
   align-items: center;
   gap: clamp(10px, 1.6vw, 24px);
-  margin-bottom: 34px;
+  margin-bottom: clamp(20px, 2.2vw, 28px);
 }
 .hero-feature-item {
   display: flex;
@@ -338,6 +346,7 @@ p { margin-bottom: 16px; }
   font-weight: 600;
   line-height: 1.32;
   white-space: nowrap;
+  text-shadow: 0 2px 8px rgba(3, 18, 86, 0.5);
 }
 .hero-actions {
   display: flex;
@@ -349,26 +358,31 @@ p { margin-bottom: 16px; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  padding: 13px 30px;
+  gap: clamp(8px, 1vw, 12px);
+  padding: 12px 28px;
   border-radius: 999px;
   background: #ffffff;
   color: #031256;
-  font-size: 13.5px;
+  font-size: clamp(12.5px, 0.95vw, 13.5px);
   font-weight: 700;
   line-height: 1;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   text-decoration: none;
   border: none;
   box-shadow: 0 8px 24px rgba(3, 18, 86, 0.28);
+  white-space: nowrap !important; /* Đảm bảo text nút luôn hiển thị 1 dòng tuyệt đối */
+  flex-shrink: 0;
+  width: max-content;
+  max-width: 100%;
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, background-color 0.2s ease;
 }
 .hero-btn-cta span {
   display: inline-flex;
   align-items: center;
   line-height: 1;
-  transform: translateY(1.5px);
+  white-space: nowrap !important; /* Luôn giữ 1 dòng */
+  transform: translateY(1.2px);
 }
 .hero-btn-cta:hover {
   transform: translateY(-2px);
@@ -391,7 +405,10 @@ p { margin-bottom: 16px; }
 }
 .hero-visual {
   position: relative;
-  width: 100%;
+  /* Kỹ thuật chèn sang trái: mở rộng ảnh lấn nhẹ dưới hero-content, mép phải giữ chuẩn lề container */
+  width: calc(100% + clamp(32px, 4.5vw, 85px));
+  margin-left: calc(-1 * clamp(32px, 4.5vw, 85px));
+  margin-right: 0;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
@@ -402,7 +419,7 @@ p { margin-bottom: 16px; }
 }
 .hero-main-img {
   width: 100%;
-  max-width: 860px;
+  max-width: 890px; /* Thu nhỏ lại một chút vừa vặn, thanh thoát */
   height: auto;
   display: block;
   vertical-align: bottom;
