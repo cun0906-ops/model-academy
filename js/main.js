@@ -252,18 +252,12 @@
         });
       }
 
-      function getStepSize() {
-        const firstCard = track.querySelector(".gift-card");
-        if (!firstCard) return 0;
-        const cardWidth = firstCard.getBoundingClientRect().width;
-        const gap = parseFloat(window.getComputedStyle(track).gap) || 0;
-        return cardWidth + gap;
-      }
-
       function updateSliderPosition() {
-        const step = getStepSize();
-        const offset = currentIndex * step;
-        track.style.transform = `translateX(-${offset}px)`;
+        const allCards = track.querySelectorAll(".gift-card");
+        if (!allCards.length) return;
+        const targetCard = allCards[currentIndex];
+        const offset = targetCard ? targetCard.offsetLeft : 0;
+        track.style.transform = `translate3d(-${offset}px, 0, 0)`;
       }
 
       function setSlide(newIndex, animate) {
@@ -272,7 +266,11 @@
           currentIndex = newIndex;
           updateSliderPosition();
           void track.offsetWidth; // Buộc trình duyệt cập nhật layout ngay lập tức
-          track.style.transition = "";
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              track.style.transition = "";
+            });
+          });
           updateDots();
           return;
         }
@@ -286,7 +284,7 @@
         clearTimeout(transitionSafetyTimer);
         transitionSafetyTimer = setTimeout(() => {
           handleTransitionEnd();
-        }, 750);
+        }, 950);
       }
 
       function handleTransitionEnd() {
@@ -301,14 +299,22 @@
           track.style.transition = "none";
           updateSliderPosition();
           void track.offsetWidth;
-          track.style.transition = "";
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              track.style.transition = "";
+            });
+          });
         } else if (currentIndex < originalCount) {
           // Lùi mượt qua thẻ 1 tới clone thẻ 6 -> reset về thẻ 6 thật
           currentIndex += originalCount;
           track.style.transition = "none";
           updateSliderPosition();
           void track.offsetWidth;
-          track.style.transition = "";
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              track.style.transition = "";
+            });
+          });
         }
         updateDots();
       }

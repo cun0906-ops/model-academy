@@ -1608,8 +1608,11 @@ p { margin-bottom: 16px; }
 .gifts-slider-track {
   display: flex;
   gap: 24px;
-  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.85s cubic-bezier(0.25, 1, 0.45, 1);
   will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 .gifts-slider-track .gift-card {
   flex: 0 0 calc((100% - 48px) / 3);
@@ -1688,7 +1691,7 @@ p { margin-bottom: 16px; }
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(24, 32, 61, 0.04) 0%, rgba(24, 32, 61, 0) 50%, rgba(24, 32, 61, 0.32) 100%);
+  background: linear-gradient(180deg, rgba(24, 32, 61, 0.04) 0%, rgba(24, 32, 61, 0) 50%, rgba(24, 32, 61, 0.28) 100%);
   pointer-events: none;
 }
 
