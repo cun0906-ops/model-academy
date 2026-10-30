@@ -188,248 +188,56 @@
     });
   }
 
-  // Gifts auto-scrolling infinite slider (vòng lặp vô tận mượt mà)
-  const giftsSlider = document.querySelector(".gifts-slider-container");
-  if (giftsSlider) {
-    const track = giftsSlider.querySelector(".gifts-slider-track");
-    const originalCards = track ? Array.from(track.querySelectorAll(".gift-card")) : [];
-    const prevBtn = giftsSlider.querySelector(".slider-prev");
-    const nextBtn = giftsSlider.querySelector(".slider-next");
-    const dotsContainer = document.querySelector(".slider-dots");
-    const viewport = giftsSlider.querySelector(".gifts-slider-viewport");
+  // Gifts auto-scrolling infinite slider with Swiper CDN
+  function initGiftsSwiper() {
+    const giftsSliderViewport = document.querySelector(".gifts-slider-viewport");
+    if (!giftsSliderViewport || typeof Swiper === "undefined") return;
 
-    if (track && originalCards.length && viewport) {
-      const originalCount = originalCards.length; // 6 thẻ quà tặng
-      const AUTO_PLAY_DELAY = 3500;
-      let currentIndex = originalCount; // Bắt đầu tại thẻ thật đầu tiên (index = 6)
-      let autoPlayTimer = null;
-      let isTransitioning = false;
-      let transitionSafetyTimer = null;
-
-      // Nhân bản thẻ quà tặng để tạo vòng lặp vô tận mượt mà (không giật ngược)
-      // Clones trước:
-      originalCards.forEach((card) => {
-        const clone = card.cloneNode(true);
-        clone.classList.add("gift-card-clone");
-        clone.setAttribute("aria-hidden", "true");
-        clone.querySelectorAll("a, button").forEach((el) => el.setAttribute("tabindex", "-1"));
-        track.insertBefore(clone, originalCards[0]);
-      });
-
-      // Clones sau:
-      originalCards.forEach((card) => {
-        const clone = card.cloneNode(true);
-        clone.classList.add("gift-card-clone");
-        clone.setAttribute("aria-hidden", "true");
-        clone.querySelectorAll("a, button").forEach((el) => el.setAttribute("tabindex", "-1"));
-        track.appendChild(clone);
-      });
-
-      // Tạo dots chỉ báo (6 dots tương ứng 6 quà tặng)
-      function renderDots() {
-        if (!dotsContainer) return;
-        dotsContainer.innerHTML = "";
-        for (let i = 0; i < originalCount; i++) {
-          const dot = document.createElement("button");
-          dot.type = "button";
-          dot.className = `slider-dot${i === 0 ? " is-active" : ""}`;
-          dot.setAttribute("aria-label", `Chuyển tới quà tặng ${i + 1}`);
-          dot.addEventListener("click", () => {
-            if (isTransitioning) return;
-            goToDot(i);
-            startAutoPlay();
-          });
-          dotsContainer.appendChild(dot);
-        }
-      }
-
-      function updateDots() {
-        if (!dotsContainer) return;
-        const activeIdx = ((currentIndex - originalCount) % originalCount + originalCount) % originalCount;
-        const dots = dotsContainer.querySelectorAll(".slider-dot");
-        dots.forEach((dot, idx) => {
-          dot.classList.toggle("is-active", idx === activeIdx);
-        });
-      }
-
-      function updateSliderPosition() {
-        const allCards = track.querySelectorAll(".gift-card");
-        if (!allCards.length) return;
-        const targetCard = allCards[currentIndex];
-        const offset = targetCard ? targetCard.offsetLeft : 0;
-        track.style.transform = `translate3d(-${offset}px, 0, 0)`;
-      }
-
-      function setSlide(newIndex, animate) {
-        if (!animate) {
-          track.style.transition = "none";
-          currentIndex = newIndex;
-          updateSliderPosition();
-          void track.offsetWidth; // Buộc trình duyệt cập nhật layout ngay lập tức
-          requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-              track.style.transition = "";
-            });
-          });
-          updateDots();
-          return;
-        }
-
-        isTransitioning = true;
-        currentIndex = newIndex;
-        track.style.transition = "";
-        updateSliderPosition();
-        updateDots();
-
-        clearTimeout(transitionSafetyTimer);
-        transitionSafetyTimer = setTimeout(() => {
-          handleTransitionEnd();
-        }, 950);
-      }
-
-      function handleTransitionEnd() {
-        clearTimeout(transitionSafetyTimer);
-        if (!isTransitioning) return;
-        isTransitioning = false;
-
-        // Dịch chuyển tức thời (teleport vô hình) khi ra khỏi phạm vi thẻ thật
-        if (currentIndex >= 2 * originalCount) {
-          // Trượt mượt qua thẻ 6 tới clone thẻ 1 -> reset về thẻ 1 thật
-          currentIndex -= originalCount;
-          track.style.transition = "none";
-          updateSliderPosition();
-          void track.offsetWidth;
-          requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-              track.style.transition = "";
-            });
-          });
-        } else if (currentIndex < originalCount) {
-          // Lùi mượt qua thẻ 1 tới clone thẻ 6 -> reset về thẻ 6 thật
-          currentIndex += originalCount;
-          track.style.transition = "none";
-          updateSliderPosition();
-          void track.offsetWidth;
-          requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-              track.style.transition = "";
-            });
-          });
-        }
-        updateDots();
-      }
-
-      track.addEventListener("transitionend", (e) => {
-        if (e.target === track && e.propertyName === "transform") {
-          handleTransitionEnd();
-        }
-      });
-
-      function nextSlide() {
-        if (isTransitioning) return;
-        setSlide(currentIndex + 1, true);
-      }
-
-      function prevSlide() {
-        if (isTransitioning) return;
-        setSlide(currentIndex - 1, true);
-      }
-
-      function goToDot(targetDotIndex) {
-        if (isTransitioning) return;
-        const currentDotIndex = ((currentIndex - originalCount) % originalCount + originalCount) % originalCount;
-        let diff = targetDotIndex - currentDotIndex;
-        if (diff === 0) return;
-
-        // Lựa chọn hướng xoay ngắn nhất
-        if (diff > originalCount / 2) {
-          diff -= originalCount;
-        } else if (diff < -originalCount / 2) {
-          diff += originalCount;
-        }
-        setSlide(currentIndex + diff, true);
-      }
-
-      function startAutoPlay() {
-        stopAutoPlay();
-        autoPlayTimer = setInterval(nextSlide, AUTO_PLAY_DELAY);
-      }
-
-      function stopAutoPlay() {
-        if (autoPlayTimer) {
-          clearInterval(autoPlayTimer);
-          autoPlayTimer = null;
-        }
-      }
-
-      if (prevBtn) {
-        prevBtn.addEventListener("click", () => {
-          prevSlide();
-          startAutoPlay();
-        });
-      }
-
-      if (nextBtn) {
-        nextBtn.addEventListener("click", () => {
-          nextSlide();
-          startAutoPlay();
-        });
-      }
-
-      // Tạm dừng khi rê chuột và tiếp tục khi chuột rời đi
-      giftsSlider.addEventListener("mouseenter", stopAutoPlay);
-      giftsSlider.addEventListener("mouseleave", startAutoPlay);
-
-      // Hỗ trợ cử chỉ vuốt chạm trên thiết bị di động (phát hiện vuốt ngang mượt mà)
-      let touchStartX = 0;
-      let touchStartY = 0;
-      viewport.addEventListener(
-        "touchstart",
-        (e) => {
-          stopAutoPlay();
-          if (e.touches && e.touches.length) {
-            touchStartX = e.touches[0].clientX;
-            touchStartY = e.touches[0].clientY;
-          }
+    new Swiper(giftsSliderViewport, {
+      slidesPerView: 1,
+      spaceBetween: 16,
+      loop: true,
+      speed: 750,
+      grabCursor: true,
+      autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      },
+      navigation: {
+        nextEl: ".slider-next",
+        prevEl: ".slider-prev",
+      },
+      pagination: {
+        el: ".slider-dots",
+        clickable: true,
+        bulletClass: "slider-dot",
+        bulletActiveClass: "is-active",
+        renderBullet: function (index, className) {
+          return '<button type="button" class="' + className + '" aria-label="Chuyển tới quà tặng ' + (index + 1) + '"></button>';
         },
-        { passive: true }
-      );
-
-      viewport.addEventListener(
-        "touchend",
-        (e) => {
-          if (e.changedTouches && e.changedTouches.length) {
-            const touchEndX = e.changedTouches[0].clientX;
-            const touchEndY = e.changedTouches[0].clientY;
-            const diffX = touchStartX - touchEndX;
-            const diffY = touchStartY - touchEndY;
-            // Chỉ kích hoạt lướt nếu hướng vuốt ngang chiếm ưu thế
-            if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 35) {
-              if (diffX > 0) nextSlide();
-              else prevSlide();
-            }
-          }
-          startAutoPlay();
+      },
+      breakpoints: {
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 18,
         },
-        { passive: true }
-      );
+        901: {
+          slidesPerView: 3,
+          spaceBetween: 20,
+        },
+        1101: {
+          slidesPerView: 3,
+          spaceBetween: 24,
+        },
+      },
+    });
+  }
 
-      // Tạm dừng slider khi chuyển tab trình duyệt
-      document.addEventListener("visibilitychange", () => {
-        if (document.hidden) stopAutoPlay();
-        else startAutoPlay();
-      });
-
-      // Tự động căn chỉnh khi thay đổi kích thước màn hình
-      window.addEventListener("resize", () => {
-        setSlide(currentIndex, false);
-      });
-
-      // Khởi tạo slider ở vị trí thẻ thật đầu tiên
-      renderDots();
-      setSlide(originalCount, false);
-      startAutoPlay();
-    }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initGiftsSwiper);
+  } else {
+    initGiftsSwiper();
   }
 
 })();

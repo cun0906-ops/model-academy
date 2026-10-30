@@ -11,9 +11,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=100">
-  <link rel="stylesheet" href="css/responsive.css?v=85">
-  <script src="js/main.js?v=15" defer></script>
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="css/style.css?v=101">
+  <link rel="stylesheet" href="css/responsive.css?v=86">
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="js/main.js?v=16" defer></script>
   <script src="js/form.js?v=3" defer></script>
 </head>
 <body>
@@ -248,10 +252,10 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
           </button>
 
-          <div class="gifts-slider-viewport">
-            <div class="gifts-slider-track">
+          <div class="gifts-slider-viewport swiper">
+            <div class="gifts-slider-track swiper-wrapper">
               <!-- Card 1 -->
-              <article class="gift-card">
+              <article class="gift-card swiper-slide">
                 <span class="card-shine" aria-hidden="true"></span>
                 <div class="gift-card-media">
                   <img src="assets/anh1.webp" alt="Hệ sinh thái kinh doanh dành cho KOL/KOC" width="2400" height="1792" loading="lazy">
@@ -263,7 +267,7 @@
               </article>
 
               <!-- Card 2 -->
-              <article class="gift-card">
+              <article class="gift-card swiper-slide">
                 <span class="card-shine" aria-hidden="true"></span>
                 <div class="gift-card-media">
                   <img src="assets/anh2.webp" alt="Đồng hành cùng Á hậu doanh nhân Đặng Thị Tân" width="2400" height="1792" loading="lazy">
@@ -275,7 +279,7 @@
               </article>
 
               <!-- Card 3 -->
-              <article class="gift-card">
+              <article class="gift-card swiper-slide">
                 <span class="card-shine" aria-hidden="true"></span>
                 <div class="gift-card-media">
                   <img src="assets/anh3.webp" alt="Phần mềm hỗ trợ KOL/KOC bán hàng" width="2400" height="1792" loading="lazy">
@@ -287,7 +291,7 @@
               </article>
 
               <!-- Card 4 -->
-              <article class="gift-card">
+              <article class="gift-card swiper-slide">
                 <span class="card-shine" aria-hidden="true"></span>
                 <div class="gift-card-media">
                   <img src="assets/anh4.webp" alt="Hỗ trợ setup phòng livestream tại nhà / Studio livestream Idol chuyên nghiệp" width="2400" height="1792" loading="lazy">
@@ -299,7 +303,7 @@
               </article>
 
               <!-- Card 5 -->
-              <article class="gift-card">
+              <article class="gift-card swiper-slide">
                 <span class="card-shine" aria-hidden="true"></span>
                 <div class="gift-card-media">
                   <img src="assets/anh5.webp" alt="Xây dựng hình ảnh cá nhân chuyên nghiệp" width="2400" height="1792" loading="lazy">
@@ -311,7 +315,7 @@
               </article>
 
               <!-- Card 6 -->
-              <article class="gift-card">
+              <article class="gift-card swiper-slide">
                 <span class="card-shine" aria-hidden="true"></span>
                 <div class="gift-card-media">
                   <img src="assets/anh6.webp" alt="Đặc quyền mua sắm – Voucher giảm giá 30%" width="2400" height="1792" loading="lazy">
@@ -330,7 +334,7 @@
         </div>
 
         <!-- Slider Pagination Dots -->
-        <div class="slider-dots" role="tablist" aria-label="Điều hướng slide quà tặng"></div>
+        <div class="slider-dots swiper-pagination" role="tablist" aria-label="Điều hướng slide quà tặng"></div>
       </div>
     </section>
 

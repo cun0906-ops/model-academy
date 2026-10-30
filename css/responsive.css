@@ -17,11 +17,7 @@
   .program-body { padding: 24px 18px; }
   .enrollment-layout { gap: 48px; }
   .gifts-slider-container { padding-inline: 50px; }
-  .gifts-slider-track { gap: 20px; }
-  .gifts-slider-track .gift-card {
-    flex: 0 0 calc((100% - 40px) / 3);
-    max-width: calc((100% - 40px) / 3);
-  }
+  /* Swiper tự động tính toán khoảng cách và kích thước card */
   .gift-card-body { padding: 20px 18px 22px; }
   .gift-card-body h3 { font-size: 1.08rem; min-height: 3.4em; }
   .gift-card-body p { font-size: 13.2px; line-height: 1.62; }
@@ -320,11 +316,7 @@
   .footer-col-brand { grid-column: 1 / -1; max-width: none; }
   .footer-map-frame { max-width: 100%; height: 140px; }
   .gifts-slider-container { padding-inline: 46px; }
-  .gifts-slider-track { gap: 18px; }
-  .gifts-slider-track .gift-card {
-    flex: 0 0 calc((100% - 18px) / 2);
-    max-width: calc((100% - 18px) / 2);
-  }
+  /* Swiper tự động tính toán khoảng cách và kích thước card */
   .slider-arrow { width: 42px; height: 42px; }
   .gift-card-body h3 { min-height: 2.8em; }
 }
@@ -656,13 +648,7 @@
   .slider-arrow {
     display: none !important;
   }
-  .gifts-slider-track {
-    gap: 16px;
-  }
-  .gifts-slider-track .gift-card {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
+  /* Swiper tự động tính toán khoảng cách và kích thước card */
   .slider-dots {
     margin-top: 22px;
   }
