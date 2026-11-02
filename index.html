@@ -11,9 +11,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=107">
-  <link rel="stylesheet" href="css/responsive.css?v=93">
-  <script src="js/main.js?v=17" defer></script>
+  <link rel="stylesheet" href="css/style.css?v=110">
+  <link rel="stylesheet" href="css/responsive.css?v=96">
+  <script src="js/main.js?v=20" defer></script>
   <script src="js/form.js?v=3" defer></script>
 </head>
 <body>
@@ -885,5 +885,36 @@
       <polyline points="18 15 12 9 6 15"></polyline>
     </svg>
   </button>
+
+  <!-- Banner Modal Popup (Hiển thị mỗi lần vào trang) -->
+  <div class="banner-modal" id="banner-modal" role="dialog" aria-modal="true" aria-label="Thông báo chương trình đào tạo" aria-hidden="true">
+    <div class="banner-modal-backdrop" data-close-banner aria-hidden="true"></div>
+    <div class="banner-modal-container">
+      <div class="banner-modal-dialog">
+        <button type="button" class="banner-modal-close" data-close-banner aria-label="Đóng banner">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+        <div class="banner-modal-media">
+          <picture class="banner-modal-picture">
+            <!-- Banner dọc tối ưu cho thiết bị di động -->
+            <source media="(max-width: 767px)" srcset="assets/bannermobile.webp" width="941" height="1672">
+            <!-- Banner ngang cho máy tính và máy tính bảng -->
+            <img
+              src="assets/banner.webp"
+              alt="ADA Talent Academy - Banner tuyển sinh đào tạo người mẫu & KOL"
+              width="1672"
+              height="941"
+              class="banner-modal-img"
+              loading="eager"
+              fetchpriority="high">
+          </picture>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>

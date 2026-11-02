@@ -2039,3 +2039,155 @@ p { margin-bottom: 16px; }
   .hero::before, .hero h1 em { animation: none !important; }
   .js-reveal-ready .reveal-on-scroll { opacity: 1; transform: none; filter: none; }
 }
+
+/* Banner Modal Popup (Hiển thị mỗi lần tải trang - Sắc nét & Chặn click xuyên thấu) */
+.banner-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 20px;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.banner-modal.is-open {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Khi đang đóng (fading out): giữ pointer-events: auto để chặn triệt để mọi click/tap xuyên xuống các nút bên dưới */
+.banner-modal.is-closing {
+  visibility: visible;
+  opacity: 0;
+  pointer-events: auto;
+}
+
+.banner-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 14, 38, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  cursor: pointer;
+  transition: opacity 0.35s ease;
+}
+
+.banner-modal-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none; /* Chỉ dialog và backdrop nhận sự kiện */
+}
+
+.banner-modal-dialog {
+  position: relative;
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 25px 70px -10px rgba(3, 18, 86, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.18);
+  transform: scale(0.92) translateY(16px);
+  opacity: 0;
+  pointer-events: auto;
+  transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.32s ease;
+  will-change: transform, opacity;
+}
+
+.banner-modal.is-open .banner-modal-dialog {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+/* Sau khi mở xong: gỡ bỏ transform để trình duyệt render ảnh trực tiếp ở độ nét pixel gốc 100% (không bị mờ do GPU texture) */
+.banner-modal.is-sharp .banner-modal-dialog {
+  transform: none !important;
+  will-change: auto;
+}
+
+.banner-modal.is-closing .banner-modal-dialog {
+  transform: scale(0.94) translateY(12px) !important;
+  opacity: 0;
+}
+
+.banner-modal-close {
+  position: absolute;
+  top: -16px;
+  right: -16px;
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #031256;
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(3, 18, 86, 0.5);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.banner-modal-close svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.banner-modal-close:hover {
+  transform: scale(1.1) rotate(90deg);
+  background: #031256;
+  color: #ffffff;
+  box-shadow: 0 12px 30px rgba(3, 18, 86, 0.65);
+}
+
+.banner-modal-close:active {
+  transform: scale(0.95);
+}
+
+.banner-modal-media {
+  display: block;
+  position: relative;
+  width: 100%;
+  line-height: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #031256;
+  cursor: default; /* Bấm vào ảnh không tương tác đóng, giữ nguyên hiển thị */
+}
+
+.banner-modal-picture {
+  display: block;
+  width: 100%;
+  line-height: 0;
+}
+
+/* Đảm bảo ảnh luôn hiển thị sắc nét nhất trên mọi màn hình */
+.banner-modal-img {
+  width: 100%;
+  height: auto;
+  max-height: 84vh;
+  object-fit: contain;
+  display: block;
+  border-radius: 20px;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: high-quality;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Khóa cuộn trang khi banner mở */
+body.banner-modal-open {
+  overflow: hidden !important;
+  touch-action: none;
+}
+

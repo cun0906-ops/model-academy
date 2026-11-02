@@ -188,4 +188,93 @@
     });
   }
 
+
+  // Banner Modal Popup (Hiển thị sắc nét & Chặn click xuyên thấu an toàn)
+  function initBannerModal() {
+    const bannerModal = document.querySelector("#banner-modal");
+    if (!bannerModal) return;
+
+    let isClosing = false;
+    let sharpTimer = null;
+
+    function openBanner() {
+      if (isClosing) return;
+      bannerModal.classList.remove("is-closing");
+      bannerModal.classList.add("is-open");
+      bannerModal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("banner-modal-open");
+
+      // Sau khi animation mở hoàn tất (400ms), kích hoạt .is-sharp gỡ bỏ transform
+      // Giúp ảnh render trực tiếp 100% độ nét pixel gốc, không bị mờ do GPU texture
+      clearTimeout(sharpTimer);
+      sharpTimer = setTimeout(() => {
+        if (bannerModal.classList.contains("is-open") && !isClosing) {
+          bannerModal.classList.add("is-sharp");
+        }
+      }, 400);
+    }
+
+    function closeBanner() {
+      if (isClosing || !bannerModal.classList.contains("is-open")) return;
+      isClosing = true;
+      clearTimeout(sharpTimer);
+
+      bannerModal.classList.remove("is-sharp");
+      bannerModal.classList.remove("is-open");
+      bannerModal.classList.add("is-closing");
+      bannerModal.setAttribute("aria-hidden", "true");
+
+      // Trong suốt thời gian mờ dần 350ms, banner-modal vẫn giữ pointer-events: auto
+      // để chặn triệt để mọi click/tap/ghost-click xuyên xuống các nút và liên kết bên dưới!
+      setTimeout(() => {
+        bannerModal.classList.remove("is-closing");
+        document.body.classList.remove("banner-modal-open");
+        isClosing = false;
+      }, 350);
+    }
+
+    // Xử lý sự kiện click:
+    // - Bấm nút X: tắt modal
+    // - Bấm bất kỳ điểm nào trong ảnh: KHÔNG ẩn đi (giữ nguyên)
+    // - Bấm ra ngoài ảnh (backdrop hoặc vùng trống ngoài dialog): tự động tắt modal mà không ảnh hưởng tới nút bên dưới
+    bannerModal.addEventListener("click", (e) => {
+      // 1. Nhấp vào nút X đóng
+      if (e.target.closest(".banner-modal-close")) {
+        e.preventDefault();
+        e.stopPropagation();
+        closeBanner();
+        return;
+      }
+
+      // 2. Nhấp vào bất kỳ điểm nào trong ảnh/dialog -> KHÔNG ẩn đi, giữ nguyên
+      if (e.target.closest(".banner-modal-dialog")) {
+        return;
+      }
+
+      // 3. Nhấp ra ngoài ảnh (backdrop hoặc vùng trống ngoài dialog) -> tự động đóng banner
+      e.preventDefault();
+      e.stopPropagation();
+      closeBanner();
+    });
+
+    // Chặn triệt để touchstart/pointerdown bên ngoài dialog lan truyền xuống trang dưới (loại bỏ ghost-clicks trên mobile)
+    bannerModal.addEventListener("pointerdown", (e) => {
+      if (!e.target.closest(".banner-modal-dialog")) {
+        e.stopPropagation();
+      }
+    });
+
+    // Đóng khi bấm phím Escape
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && bannerModal.classList.contains("is-open")) {
+        closeBanner();
+      }
+    });
+
+    // Hiển thị banner sau khi trang tải xong (350ms để tạo hiệu ứng xuất hiện mượt mà)
+    setTimeout(openBanner, 350);
+  }
+
+  initBannerModal();
+
 })();
