@@ -303,7 +303,7 @@
     });
 
     // Hiển thị banner sau khi trang tải xong (350ms để tạo hiệu ứng xuất hiện mượt mà)
-    setTimeout(openBanner, 350);
+    openBanner();
   }
 
   initBannerModal();

@@ -13,13 +13,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/banner.webp" media="(min-width: 768px)" type="image/webp" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/bannermobile.webp" media="(max-width: 767px)" type="image/webp" fetchpriority="high">
   <link rel="stylesheet" href="css/style.css?v=113">
   <link rel="stylesheet" href="css/responsive.css?v=96">
-  <script src="js/main.js?v=24" defer></script>
+  <script src="js/main.js?v=25" defer></script>
   <script src="js/form.js?v=4" defer></script>
 </head>
 
-<body>
+<body class="banner-modal-open">
   <a class="skip-link" href="#main-content">Bỏ qua điều hướng</a>
   <header class="site-header">
     <div class="container header-inner">
@@ -1033,7 +1035,7 @@
   </button>
 
   <!-- Banner Modal Popup (Hiển thị mỗi lần vào trang) -->
-  <div class="banner-modal" id="banner-modal" role="dialog" aria-modal="true" aria-label="Thông báo chương trình đào tạo" aria-hidden="true">
+  <div class="banner-modal is-open" id="banner-modal" role="dialog" aria-modal="true" aria-label="Thông báo chương trình đào tạo" aria-hidden="false">
     <div class="banner-modal-backdrop" data-close-banner aria-hidden="true"></div>
     <div class="banner-modal-container">
       <div class="banner-modal-dialog">
