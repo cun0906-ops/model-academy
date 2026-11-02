@@ -107,7 +107,7 @@
     ".intro-strip-inner, .section-heading, .feature-card, .benefit-card, .program-card, .timeline-item, " +
     ".instructor-image, .instructor-copy, .gallery-item, .enrollment-card, .faq-item, .lead-copy, .lead-media, .lead-form, " +
     ".pillar-card, .audience-card, .program-detail-card, .value-card, .advantage-card, .challenges-callout, " +
-    ".section-heading-split, .about-header, .gift-row"
+    ".section-heading-split, .about-header"
   );
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -155,15 +155,41 @@
         });
       },
       {
-        threshold: 0.08,
-        rootMargin: "-40px 0px -20px 0px"
+        threshold: 0.05,
+        rootMargin: "0px 0px 80px 0px"
       }
     );
+
 
     document.body.classList.add("js-reveal-ready");
     revealTargets.forEach((element) => {
       element.classList.add("reveal-on-scroll");
       revealObserver.observe(element);
+    });
+  }
+
+  // Section 03 - Quà tặng học viên: Hiển thị mượt mà trước khi cuộn tới, triệt tiêu hoàn toàn khoảng trắng và delay
+  const giftRows = document.querySelectorAll(".gift-row");
+  if (giftRows.length && "IntersectionObserver" in window && !prefersReducedMotion) {
+    const giftsObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            // Khi đã xuất hiện thì duy trì hiển thị, không ẩn đi để cuộn lên/xuống tức thì mượt mà
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0,
+        rootMargin: "0px 0px 220px 0px" // Kích hoạt sớm 220px trước khi vào tầm mắt -> xóa bỏ triệt để khoảng trắng delay
+      }
+    );
+
+    giftRows.forEach((row) => {
+      row.classList.add("gift-reveal");
+      giftsObserver.observe(row);
     });
   }
 
