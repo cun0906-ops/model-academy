@@ -746,6 +746,10 @@
   .footer-col-brand { grid-column: auto; }
   .footer-map-frame { max-width: 100%; height: 140px; margin-top: 14px; }
   .footer-bottom { flex-direction: column; text-align: center; gap: 12px; }
+  .banner-reopen-btn { right: 18px; bottom: 20px; width: 44px; height: 44px; }
+  .banner-reopen-btn svg { width: 20px; height: 20px; }
+  .banner-reopen-btn.has-back-to-top { transform: translateY(-54px); }
+  .banner-reopen-btn.has-back-to-top:hover { transform: translateY(-56px) scale(1.08); }
   .back-to-top { right: 18px; bottom: 20px; width: 44px; height: 44px; }
   .back-to-top svg { width: 20px; height: 20px; }
   /* Quà tặng trên mobile */

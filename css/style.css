@@ -2340,6 +2340,99 @@ p {
   width: 100%;
 }
 
+/* Floating Reopen Banner Button (Nút icon quà tặng mở lại banner) */
+.banner-reopen-btn {
+  position: fixed;
+  right: 28px;
+  bottom: 28px; /* Mặc định nằm ở đúng vị trí của nút back-to-top */
+  z-index: 95;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff4d6d 0%, #e6284d 55%, #c9183b 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 18px rgba(230, 40, 77, 0.42), 0 0 0 2px rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  transform: translateY(0);
+  transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.28s ease, opacity 0.25s ease, visibility 0.25s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.banner-reopen-btn svg {
+  width: 22px;
+  height: 22px;
+  stroke: #ffffff;
+  stroke-width: 2.2;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.banner-reopen-btn:hover {
+  transform: translateY(-3px) scale(1.08);
+  box-shadow: 0 8px 26px rgba(230, 40, 77, 0.55), 0 0 0 3px rgba(255, 255, 255, 0.95);
+}
+
+.banner-reopen-btn:hover svg {
+  transform: rotate(-10deg) scale(1.1);
+}
+
+.banner-reopen-btn:active {
+  transform: translateY(-1px) scale(0.96);
+}
+
+/* Khi back-to-top xuất hiện (scrollY > 350): nút quà tặng trượt êm ái lên trên nhường chỗ */
+.banner-reopen-btn.has-back-to-top {
+  transform: translateY(-58px);
+}
+
+.banner-reopen-btn.has-back-to-top:hover {
+  transform: translateY(-61px) scale(1.08);
+}
+
+.banner-reopen-btn.has-back-to-top:active {
+  transform: translateY(-59px) scale(0.96);
+}
+
+.banner-reopen-btn .banner-reopen-pulse {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 77, 109, 0.7);
+  animation: gift-pulse 2.2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes gift-pulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  70% {
+    transform: scale(1.45);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.45);
+    opacity: 0;
+  }
+}
+
+/* Khi banner đang mở, ẩn nút quà tặng đi */
+body.banner-modal-open .banner-reopen-btn {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(8px) scale(0.85);
+}
+
+body.banner-modal-open .banner-reopen-btn.has-back-to-top {
+  transform: translateY(-50px) scale(0.85);
+}
+
 /* Floating Back to Top Button */
 .back-to-top {
   position: fixed;

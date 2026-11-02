@@ -206,14 +206,26 @@
     });
   });
 
-  // Floating back to top button
+  // Floating back to top & Banner reopen buttons: điều phối vị trí linh hoạt
   const backToTopBtn = document.querySelector("#back-to-top");
+  const reopenBtn = document.querySelector("#banner-reopen-btn");
+
+  const updateFloatingButtons = () => {
+    const showBackToTop = window.scrollY > 350;
+    if (backToTopBtn) {
+      backToTopBtn.classList.toggle("is-visible", showBackToTop);
+    }
+    if (reopenBtn) {
+      // Khi back-to-top hiển thị, đẩy nút quà tặng trượt êm ái lên trên
+      // Khi back-to-top chưa hiển thị, nút quà tặng hạ xuống chiếm đúng vị trí của nút đó
+      reopenBtn.classList.toggle("has-back-to-top", showBackToTop);
+    }
+  };
+
+  updateFloatingButtons();
+  window.addEventListener("scroll", updateFloatingButtons, { passive: true });
+
   if (backToTopBtn) {
-    const toggleBackToTop = () => {
-      backToTopBtn.classList.toggle("is-visible", window.scrollY > 350);
-    };
-    toggleBackToTop();
-    window.addEventListener("scroll", toggleBackToTop, { passive: true });
     backToTopBtn.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
@@ -301,6 +313,15 @@
         closeBanner();
       }
     });
+
+    // Bấm nút quà tặng nổi để mở lại banner bất kỳ lúc nào
+    const reopenBtn = document.querySelector("#banner-reopen-btn");
+    if (reopenBtn) {
+      reopenBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        openBanner();
+      });
+    }
 
     // Hiển thị banner sau khi trang tải xong (350ms để tạo hiệu ứng xuất hiện mượt mà)
     openBanner();
