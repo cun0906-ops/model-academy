@@ -102,6 +102,24 @@
   const year = document.querySelector("#current-year");
   if (year) year.textContent = String(new Date().getFullYear());
 
+  // Theo dõi hướng cuộn chung (down / up) cho toàn bộ trang
+  let lastScrollY = window.scrollY;
+  let scrollDirection = "down";
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY + 4) {
+        scrollDirection = "down";
+      } else if (currentScrollY < lastScrollY - 4) {
+        scrollDirection = "up";
+      }
+      lastScrollY = currentScrollY;
+    },
+    { passive: true }
+  );
+
   // Reveal content as it enters the viewport (hỗ trợ cả cuộn xuống và từ dưới cuộn lên)
   const revealTargets = document.querySelectorAll(
     ".intro-strip-inner, .section-heading, .feature-card, .benefit-card, .program-card, .timeline-item, " +
@@ -112,22 +130,6 @@
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   if (revealTargets.length && "IntersectionObserver" in window && !prefersReducedMotion) {
-    let lastScrollY = window.scrollY;
-    let scrollDirection = "down";
-
-    window.addEventListener(
-      "scroll",
-      () => {
-        const currentScrollY = window.scrollY;
-        if (currentScrollY > lastScrollY + 4) {
-          scrollDirection = "down";
-        } else if (currentScrollY < lastScrollY - 4) {
-          scrollDirection = "up";
-        }
-        lastScrollY = currentScrollY;
-      },
-      { passive: true }
-    );
 
     const revealObserver = new IntersectionObserver(
       (entries) => {
@@ -168,22 +170,25 @@
     });
   }
 
-  // Section 03 - Quà tặng học viên: Hiển thị mượt mà trước khi cuộn tới, triệt tiêu hoàn toàn khoảng trắng và delay
+  // Section 03 - Quà tặng học viên: Hiển thị dần lên khi cuộn tới và cả khi cuộn lại (hai chiều)
   const giftRows = document.querySelectorAll(".gift-row");
   if (giftRows.length && "IntersectionObserver" in window && !prefersReducedMotion) {
     const giftsObserver = new IntersectionObserver(
-      (entries, observer) => {
+      (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
+            entry.target.dataset.scrollDir = scrollDirection;
             entry.target.classList.add("is-visible");
-            // Khi đã xuất hiện thì duy trì hiển thị, không ẩn đi để cuộn lên/xuống tức thì mượt mà
-            observer.unobserve(entry.target);
+          } else {
+            // Khi cuộn qua khỏi màn hình (cả cuộn xuống lẫn cuộn ngược lại từ dưới lên)
+            // gỡ bỏ is-visible để khi cuộn quay trở lại, phần tử tiếp tục hiện dần lên mượt mà
+            entry.target.classList.remove("is-visible");
           }
         });
       },
       {
         threshold: 0,
-        rootMargin: "0px 0px 220px 0px" // Kích hoạt sớm 220px trước khi vào tầm mắt -> xóa bỏ triệt để khoảng trắng delay
+        rootMargin: "0px 0px -10px 0px" // Kích hoạt ngay khi vừa chạm màn hình, không bị ẩn khi đang đọc
       }
     );
 

@@ -2711,19 +2711,29 @@ p {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 48px;
   align-items: center;
-  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .js-reveal-ready .gift-row.gift-reveal {
   opacity: 0;
-  transform: translateY(14px);
+  transform: translateY(24px);
+  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
+}
+
+/* Khi cuộn lại từ dưới lên: trượt nhẹ từ trên xuống */
+.js-reveal-ready .gift-row.gift-reveal[data-scroll-dir="up"] {
+  transform: translateY(-24px);
 }
 
 .js-reveal-ready .gift-row.gift-reveal.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) !important;
   will-change: auto;
+}
+
+/* Tắt transition khi reset (ra khỏi màn hình) để tránh giật lag khi cuộn */
+.js-reveal-ready .gift-row.gift-reveal:not(.is-visible) {
+  transition: none !important;
 }
 
 .gift-row:nth-child(even) .gift-row-media {
