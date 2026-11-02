@@ -1,14 +1,29 @@
 const allowedCourses = new Set([
   "kol_koc",
   "branding_model",
-  "personal_image"
+  "personal_image",
+  "kol_branding",
+  "model_image",
+  "undetermined",
+  "skills",
+  "foundation",
+  "unknown"
 ]);
 
 const courseNames = {
   kol_koc: "KOL/KOC",
   branding_model: "Personal Branding / Model",
-  personal_image: "Personal Image"
+  personal_image: "Personal Image",
+  kol_branding: "KOL/KOC & Personal Branding",
+  model_image: "Model & Personal Image",
+  undetermined: "Chưa xác định (Cần tư vấn thêm)",
+  skills: "KOL/KOC",
+  foundation: "Personal Image",
+  unknown: "Chưa xác định"
 };
+
+const DEFAULT_GOOGLE_SHEET_WEBHOOK_URL =
+  "https://script.google.com/macros/s/AKfycbxQOQeImY9CGFEhkbdSl6aNz8SixReRXwHjMKwnj3j2GQPLt8SWQF6vJX5w60BNdMnBRA/exec";
 
 const allowedContactTimes = new Set(["any"]);
 
@@ -33,6 +48,23 @@ function escapeHtml(value) {
   })[character]);
 }
 
+function formatVietnamTime(date = new Date()) {
+  try {
+    return new Intl.DateTimeFormat("vi-VN", {
+      timeZone: "Asia/Ho_Chi_Minh",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false
+    }).format(date);
+  } catch {
+    return date.toISOString();
+  }
+}
+
 function validateLead(value) {
   if (!value || typeof value !== "object" || Array.isArray(value)) return null;
 
@@ -53,8 +85,7 @@ function validateLead(value) {
   return { name, phone, course, learningGoal, contactTime };
 }
 
-function buildEmail(lead) {
-  const submittedAt = new Date().toISOString();
+function buildEmail(lead, submittedAtVN) {
   const goalDisplay = lead.learningGoal || "Chưa cung cấp";
   const fields = [
     ["Họ và tên", lead.name],
@@ -62,7 +93,7 @@ function buildEmail(lead) {
     ["Khóa học quan tâm", courseNames[lead.course] || lead.course],
     ["Mục tiêu học", goalDisplay],
     ["Thời gian liên hệ", contactTimeNames[lead.contactTime] || "Bất kỳ thời gian phù hợp"],
-    ["Thời gian gửi", submittedAt]
+    ["Thời gian gửi (VN)", submittedAtVN]
   ];
   const text = fields.map(([label, value]) => `${label}: ${value}`).join("\n");
   const html = fields
@@ -70,6 +101,59 @@ function buildEmail(lead) {
     .join("");
 
   return { text, html: `<h1>Yêu cầu tư vấn mới — ADA Talent Academy</h1>${html}` };
+}
+
+async function sendEmailViaResend(lead, submittedAtVN, env) {
+  const email = buildEmail(lead, submittedAtVN);
+  const response = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${env.RESEND_API_KEY}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      from: env.LEADS_FROM_EMAIL,
+      to: [env.LEADS_TO_EMAIL],
+      subject: `Yêu cầu tư vấn mới: ${lead.name} (${lead.phone}) — ADA Talent Academy`,
+      text: email.text,
+      html: email.html
+    })
+  });
+
+  if (!response.ok) {
+    throw new Error(`Resend HTTP ${response.status}`);
+  }
+  return true;
+}
+
+async function pushLeadToGoogleSheet(lead, submittedAtVN, env) {
+  const sheetWebhookUrl = (env.GOOGLE_SHEET_WEBHOOK_URL || DEFAULT_GOOGLE_SHEET_WEBHOOK_URL).trim();
+  if (!sheetWebhookUrl) return false;
+
+  const sheetPayload = {
+    submitted_at: submittedAtVN,
+    name: lead.name,
+    phone: `'${lead.phone}`, // Giữ số 0 ở đầu khi đẩy vào Google Sheet
+    course_code: lead.course,
+    course_name: courseNames[lead.course] || lead.course,
+    learning_goal: lead.learningGoal || "Chưa cung cấp",
+    contact_time: contactTimeNames[lead.contactTime] || "Bất kỳ thời gian phù hợp",
+    source: "ADA Talent Academy Landing Page"
+  };
+
+  const response = await fetch(sheetWebhookUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(sheetPayload),
+    redirect: "follow"
+  });
+
+  if (!response.ok) {
+    throw new Error(`Google Sheet Webhook HTTP ${response.status}`);
+  }
+  return true;
 }
 
 export async function sendLead(request, env) {
@@ -105,41 +189,54 @@ export async function sendLead(request, env) {
     return jsonResponse({ error: "Vui lòng kiểm tra lại thông tin và xác nhận đồng ý liên hệ." }, 400);
   }
 
-  const missingBindings = ["RESEND_API_KEY", "LEADS_TO_EMAIL", "LEADS_FROM_EMAIL"]
-    .filter((name) => !env[name]);
-  if (missingBindings.length > 0) {
+  const hasResendConfig = Boolean(
+    env.RESEND_API_KEY && env.LEADS_TO_EMAIL && env.LEADS_FROM_EMAIL
+  );
+  const hasSheetConfig = Boolean((env.GOOGLE_SHEET_WEBHOOK_URL || DEFAULT_GOOGLE_SHEET_WEBHOOK_URL).trim());
+
+  if (!hasResendConfig && !hasSheetConfig) {
+    const missingBindings = [
+      "RESEND_API_KEY",
+      "LEADS_TO_EMAIL",
+      "LEADS_FROM_EMAIL",
+      "GOOGLE_SHEET_WEBHOOK_URL"
+    ].filter((name) => !env[name]);
     console.error("Missing Worker runtime bindings:", missingBindings.join(", "));
-    return jsonResponse({
-      error: `Worker chưa nhận được cấu hình: ${missingBindings.join(", ")}. Hãy thêm các giá trị này trong Runtime → Production rồi Deploy.`
-    }, 503);
-  }
-
-  const email = buildEmail(lead);
-  let response;
-  try {
-    response = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${env.RESEND_API_KEY}`,
-        "Content-Type": "application/json"
+    return jsonResponse(
+      {
+        error: `Worker chưa nhận được cấu hình: ${missingBindings.join(", ")}. Hãy thêm các giá trị này trong Runtime → Production rồi Deploy.`
       },
-      body: JSON.stringify({
-        from: env.LEADS_FROM_EMAIL,
-        to: [env.LEADS_TO_EMAIL],
-        subject: "Yêu cầu tư vấn mới — ADA Talent Academy",
-        text: email.text,
-        html: email.html
+      503
+    );
+  }
+
+  const submittedAtVN = formatVietnamTime(new Date());
+  const tasks = [];
+
+  if (hasResendConfig) {
+    tasks.push(
+      sendEmailViaResend(lead, submittedAtVN, env).catch((err) => {
+        console.error("Lead email provider error:", err.message || err);
+        throw err;
       })
-    });
-  } catch {
-    console.error("Lead email provider could not be reached.");
+    );
+  }
+
+  if (hasSheetConfig) {
+    tasks.push(
+      pushLeadToGoogleSheet(lead, submittedAtVN, env).catch((err) => {
+        console.error("Google Sheet webhook error:", err.message || err);
+        throw err;
+      })
+    );
+  }
+
+  const results = await Promise.allSettled(tasks);
+  const anySucceeded = results.some((r) => r.status === "fulfilled");
+
+  if (!anySucceeded) {
     return jsonResponse({ error: "Chưa gửi được yêu cầu. Vui lòng thử lại sau." }, 502);
   }
 
-  if (!response.ok) {
-    console.error(`Lead email provider returned HTTP ${response.status}.`);
-    return jsonResponse({ error: "Chưa gửi được yêu cầu. Vui lòng thử lại sau." }, 502);
-  }
-
-  return jsonResponse({ ok: true }, 200);
+  return jsonResponse({ ok: true, sheet_synced: hasSheetConfig }, 200);
 }

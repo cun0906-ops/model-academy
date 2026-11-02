@@ -17,6 +17,52 @@
   const consentError = form.querySelector(".consent-error");
 
   const API_ENDPOINT = "https://model-academy.cun09062.workers.dev/api/leads";
+  const GOOGLE_SHEET_WEBHOOK_URL =
+    "https://script.google.com/macros/s/AKfycbxQOQeImY9CGFEhkbdSl6aNz8SixReRXwHjMKwnj3j2GQPLt8SWQF6vJX5w60BNdMnBRA/exec";
+
+  const COURSE_LABELS = {
+    kol_koc: "KOL/KOC",
+    branding_model: "Personal Branding / Model",
+    personal_image: "Personal Image"
+  };
+
+  async function pushToGoogleSheet(payload) {
+    if (!GOOGLE_SHEET_WEBHOOK_URL) return false;
+    try {
+      const vnTime = new Intl.DateTimeFormat("vi-VN", {
+        timeZone: "Asia/Ho_Chi_Minh",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false
+      }).format(new Date());
+
+      const sheetPayload = {
+        submitted_at: vnTime,
+        name: payload.name,
+        phone: `'${payload.phone}`,
+        course_code: payload.course,
+        course_name: COURSE_LABELS[payload.course] || payload.course,
+        learning_goal: payload.learning_goal || "Chưa cung cấp",
+        contact_time: "Bất kỳ thời gian phù hợp",
+        source: "ADA Talent Academy Landing Page"
+      };
+
+      await fetch(GOOGLE_SHEET_WEBHOOK_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(sheetPayload)
+      });
+      return true;
+    } catch (err) {
+      console.warn("Google Sheet sync error:", err);
+      return false;
+    }
+  }
 
   function setError(field, message) {
     if (!field) return;
@@ -242,7 +288,8 @@
         payload
       );
       await new Promise((resolve) => setTimeout(resolve, 600));
-      return { ok: true, simulated: true };
+      await pushToGoogleSheet(payload);
+      return { ok: true, simulated: true, sheet_synced: true };
     }
 
     // 2. Gửi request lên API Worker
@@ -292,7 +339,11 @@
       throw new Error(result?.error || "Không thể gửi thông tin lúc này. Vui lòng thử lại sau.");
     }
 
-    return await response.json().catch(() => ({ ok: true }));
+    const result = await response.json().catch(() => ({ ok: true }));
+    if (!result?.sheet_synced) {
+      await pushToGoogleSheet(payload);
+    }
+    return result;
   }
 
   form.addEventListener("submit", async (event) => {
