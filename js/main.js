@@ -232,6 +232,43 @@
   }
 
 
+  // Swiper Slider cho Banner Modal (Chuyển động mượt mà giữa 2 banner desktop & mobile)
+  let bannerSwiper = null;
+
+  function initBannerSwiper() {
+    if (typeof Swiper === "undefined") {
+      setTimeout(initBannerSwiper, 50);
+      return;
+    }
+    const swiperEl = document.querySelector("#banner-swiper");
+    if (!swiperEl || bannerSwiper) return;
+
+    bannerSwiper = new Swiper("#banner-swiper", {
+      loop: true,
+      speed: 650,
+      grabCursor: true,
+      observer: true,
+      observeParents: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true
+      },
+      pagination: {
+        el: ".banner-pagination",
+        clickable: true
+      },
+      navigation: {
+        nextEl: ".banner-nav-next",
+        prevEl: ".banner-nav-prev"
+      },
+      keyboard: {
+        enabled: true,
+        onlyInViewport: true
+      }
+    });
+  }
+
   // Banner Modal Popup (Hiển thị sắc nét & Chặn click xuyên thấu an toàn)
   function initBannerModal() {
     const bannerModal = document.querySelector("#banner-modal");
@@ -255,12 +292,25 @@
           bannerModal.classList.add("is-sharp");
         }
       }, 400);
+
+      if (bannerSwiper) {
+        bannerSwiper.update();
+        if (bannerSwiper.autoplay && !bannerSwiper.autoplay.running) {
+          bannerSwiper.autoplay.start();
+        }
+      } else {
+        initBannerSwiper();
+      }
     }
 
     function closeBanner() {
       if (isClosing || !bannerModal.classList.contains("is-open")) return;
       isClosing = true;
       clearTimeout(sharpTimer);
+
+      if (bannerSwiper && bannerSwiper.autoplay && bannerSwiper.autoplay.running) {
+        bannerSwiper.autoplay.stop();
+      }
 
       bannerModal.classList.remove("is-sharp");
       bannerModal.classList.remove("is-open");
@@ -323,7 +373,7 @@
       });
     }
 
-    // Hiển thị banner sau khi trang tải xong (350ms để tạo hiệu ứng xuất hiện mượt mà)
+    initBannerSwiper();
     openBanner();
   }
 

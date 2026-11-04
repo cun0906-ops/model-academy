@@ -15,9 +15,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/banner.webp" media="(min-width: 768px)" type="image/webp" fetchpriority="high">
   <link rel="preload" as="image" href="assets/bannermobile.webp" media="(max-width: 767px)" type="image/webp" fetchpriority="high">
-  <link rel="stylesheet" href="css/style.css?v=115">
-  <link rel="stylesheet" href="css/responsive.css?v=98">
-  <script src="js/main.js?v=27" defer></script>
+  <link rel="stylesheet" href="css/swiper-bundle.min.css">
+  <link rel="stylesheet" href="css/style.css?v=120">
+  <link rel="stylesheet" href="css/responsive.css?v=104">
+  <script src="js/swiper-bundle.min.js" defer></script>
+  <script src="js/main.js?v=29" defer></script>
   <script src="js/form.js?v=4" defer></script>
 </head>
 
@@ -565,11 +567,38 @@
               và mục tiêu của từng nhóm học viên.</p>
           </div>
         </div>
+
+        <!-- Khung ưu đãi học phí đặc quyền nổi bật -->
+        <div class="programs-promo-banner" role="region" aria-label="Ưu đãi học phí đặc quyền">
+          <div class="programs-promo-info">
+            <div class="programs-promo-tag">
+              <span class="promo-tag-badge">Ưu đãi học phí đặc quyền</span>
+              <span class="promo-tag-save">Tiết kiệm 70% (14 triệu)</span>
+            </div>
+            <p class="programs-promo-text">
+              Giá gốc khoá đào tạo KOL/KOC - Personal Branding - Model - Personal Image là <del>20 triệu</del>. <br> Đăng ký ngay trước ngày <strong class="promo-highlight-date">15/11</strong> học phí chỉ còn <strong class="promo-highlight-price">6 triệu</strong>!
+            </p>
+          </div>
+          <div class="programs-promo-action">
+            <a class="button button-accent" href="#lead-form">
+              <span>Đăng ký nhận ưu đãi</span>
+              <span class="action-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </span>
+            </a>
+          </div>
+        </div>
+
         <div class="programs-dual-grid">
           <!-- Program 1 -->
           <article class="program-detail-card">
             <div class="program-detail-header">
-              <span class="program-badge">CHƯƠNG TRÌNH 01</span>
+              <div class="program-badge-row">
+                <span class="program-badge">CHƯƠNG TRÌNH 01</span>
+              </div>
               <h3>KOL/KOC &amp; Personal Branding</h3>
               <p class="program-tagline">Xây dựng hình ảnh – Phát triển nội dung – Tự tin xuất hiện trước công chúng</p>
               <p class="program-summary">Chương trình tập trung vào những kỹ năng nền tảng dành cho người muốn bước vào
@@ -606,12 +635,38 @@
                 </li>
               </ul>
             </div>
+
+            <div class="program-outcome">
+              <span class="outcome-label">ĐỊNH HƯỚNG PHÁT TRIỂN</span>
+              <p>Content Creator, KOC, KOL, xây dựng thương hiệu cá nhân và truyền thông hỗ trợ kinh doanh.</p>
+            </div>
+
             <div class="program-detail-footer">
-              <div class="program-outcome">
-                <span class="outcome-label">ĐỊNH HƯỚNG PHÁT TRIỂN</span>
-                <p>Content Creator, KOC, KOL, xây dựng thương hiệu cá nhân và truyền thông hỗ trợ kinh doanh.</p>
+              <div class="program-pricing-box">
+                <div class="pricing-box-header">
+                  <span class="pricing-box-tag">HỌC PHÍ ĐẶC QUYỀN</span>
+                  <span class="pricing-save-chip">-70% • TIẾT KIỆM 14 TRIỆU</span>
+                </div>
+                <div class="pricing-row">
+                  <div class="pricing-row-left">
+                    <span class="pricing-original-label">Giá gốc: <del>20.000.000đ</del></span>
+                    <div class="pricing-final">
+                      <span class="pricing-final-amount">6.000.000</span>
+                      <span class="pricing-final-unit">VNĐ</span>
+                      <span class="pricing-final-term">/ trọn khóa</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="pricing-deadline-tag">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  <span>Áp dụng đăng ký ngay <strong>trước ngày 15/11</strong></span>
+                </div>
               </div>
-              <a class="button button-accent button-full" href="#lead-form">Đăng ký tư vấn chương trình <span
+
+              <a class="button button-accent button-full" href="#lead-form">Đăng ký nhận ưu đãi<span
                   class="action-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                     stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="7" y1="17" x2="17" y2="7"></line>
@@ -623,7 +678,9 @@
           <!-- Program 2 -->
           <article class="program-detail-card">
             <div class="program-detail-header">
-              <span class="program-badge">CHƯƠNG TRÌNH 02</span>
+              <div class="program-badge-row">
+                <span class="program-badge">CHƯƠNG TRÌNH 02</span>
+              </div>
               <h3>Model &amp; Personal Image</h3>
               <p class="program-tagline">Định hình phong thái – Phát triển khả năng trình diễn – Thể hiện cá tính riêng
               </p>
@@ -659,12 +716,38 @@
                 </li>
               </ul>
             </div>
+
+            <div class="program-outcome">
+              <span class="outcome-label">ĐỊNH HƯỚNG PHÁT TRIỂN</span>
+              <p>Phát triển kỹ năng người mẫu, hình ảnh cá nhân, trình diễn và các hoạt động sáng tạo hình ảnh.</p>
+            </div>
+
             <div class="program-detail-footer">
-              <div class="program-outcome">
-                <span class="outcome-label">ĐỊNH HƯỚNG PHÁT TRIỂN</span>
-                <p>Phát triển kỹ năng người mẫu, hình ảnh cá nhân, trình diễn và các hoạt động sáng tạo hình ảnh.</p>
+              <div class="program-pricing-box">
+                <div class="pricing-box-header">
+                  <span class="pricing-box-tag">HỌC PHÍ ĐẶC QUYỀN</span>
+                  <span class="pricing-save-chip">-70% • TIẾT KIỆM 14 TRIỆU</span>
+                </div>
+                <div class="pricing-row">
+                  <div class="pricing-row-left">
+                    <span class="pricing-original-label">Giá gốc: <del>20.000.000đ</del></span>
+                    <div class="pricing-final">
+                      <span class="pricing-final-amount">6.000.000</span>
+                      <span class="pricing-final-unit">VNĐ</span>
+                      <span class="pricing-final-term">/ trọn khóa</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="pricing-deadline-tag">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  <span>Áp dụng đăng ký ngay <strong>trước ngày 15/11</strong></span>
+                </div>
               </div>
-              <a class="button button-accent button-full" href="#lead-form">Đăng ký tư vấn chương trình <span
+
+              <a class="button button-accent button-full" href="#lead-form">Đăng ký nhận ưu đãi<span
                   class="action-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                     stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="7" y1="17" x2="17" y2="7"></line>
@@ -1058,19 +1141,50 @@
           </svg>
         </button>
         <div class="banner-modal-media">
-          <picture class="banner-modal-picture">
-            <!-- Banner dọc tối ưu cho thiết bị di động -->
-            <source media="(max-width: 767px)" srcset="assets/bannermobile.webp" width="941" height="1672">
-            <!-- Banner ngang cho máy tính và máy tính bảng -->
-            <img
-              src="assets/banner.webp"
-              alt="ADA Talent Academy - Banner tuyển sinh đào tạo người mẫu & KOL"
-              width="1672"
-              height="941"
-              class="banner-modal-img"
-              loading="eager"
-              fetchpriority="high">
-          </picture>
+          <!-- Swiper Slider Banner (2 slide chuyển động mượt mà) -->
+          <div class="swiper banner-swiper" id="banner-swiper">
+            <div class="swiper-wrapper">
+              <!-- Slide 1 -->
+              <div class="swiper-slide banner-slide">
+                <picture class="banner-modal-picture">
+                  <!-- Banner dọc cho mobile -->
+                  <source media="(max-width: 767px)" srcset="assets/bannermobile.webp" width="941" height="1672">
+                  <!-- Banner ngang cho desktop & tablet -->
+                  <img
+                    src="assets/banner.webp"
+                    alt="ADA Talent Academy - Banner tuyển sinh đào tạo người mẫu & KOL 1"
+                    width="1672"
+                    height="941"
+                    class="banner-modal-img"
+                    loading="eager"
+                    fetchpriority="high">
+                </picture>
+              </div>
+
+              <!-- Slide 2 -->
+              <div class="swiper-slide banner-slide">
+                <picture class="banner-modal-picture">
+                  <!-- Banner dọc cho mobile -->
+                  <source media="(max-width: 767px)" srcset="assets/bannermobile2.webp" width="1024" height="1536">
+                  <!-- Banner ngang cho desktop & tablet -->
+                  <img
+                    src="assets/banner2.webp"
+                    alt="ADA Talent Academy - Banner tuyển sinh đào tạo người mẫu & KOL 2"
+                    width="1671"
+                    height="941"
+                    class="banner-modal-img"
+                    loading="lazy">
+                </picture>
+              </div>
+            </div>
+
+            <!-- Phân trang chấm tròn (Pagination Dots) -->
+            <div class="swiper-pagination banner-pagination"></div>
+
+            <!-- Nút điều hướng trước / sau (Navigation Arrows) -->
+            <div class="swiper-button-prev banner-nav-prev" aria-label="Slide trước" role="button" tabindex="0"></div>
+            <div class="swiper-button-next banner-nav-next" aria-label="Slide tiếp theo" role="button" tabindex="0"></div>
+          </div>
         </div>
       </div>
     </div>

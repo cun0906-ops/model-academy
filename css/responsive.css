@@ -323,6 +323,18 @@
     grid-template-columns: 1fr;
     gap: 18px;
   }
+  .programs-promo-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .programs-promo-action {
+    width: 100%;
+  }
+  .programs-promo-action .button {
+    width: 100%;
+    justify-content: center;
+  }
   .audience-cards-grid,
   .advantages-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -373,6 +385,34 @@
   .banner-modal-media {
     border-radius: 18px;
     width: 100%;
+  }
+  .banner-swiper {
+    border-radius: 18px;
+  }
+  .banner-nav-prev,
+  .banner-nav-next {
+    width: 36px;
+    height: 36px;
+  }
+  .banner-nav-prev {
+    left: 8px;
+  }
+  .banner-nav-next {
+    right: 8px;
+  }
+  .banner-nav-prev::after,
+  .banner-nav-next::after {
+    font-size: 13px !important;
+  }
+  .banner-pagination {
+    bottom: 10px !important;
+  }
+  .banner-pagination .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+  }
+  .banner-pagination .swiper-pagination-bullet-active {
+    width: 22px;
   }
   .banner-modal-picture {
     display: block;
@@ -548,6 +588,21 @@
     height: 14px;
     position: relative;
     top: 0;
+  }
+  /* Ẩn khung banner ưu đãi học phí trên mobile để giao diện tinh gọn */
+  .programs-promo-banner {
+    display: none !important;
+  }
+  .program-pricing-box {
+    padding: 14px 14px;
+  }
+  .pricing-final-amount {
+    font-size: 1.75rem;
+  }
+  .pricing-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
   }
   .program-detail-card {
     padding: 26px 20px;
@@ -891,4 +946,11 @@
     margin-bottom: 8px;
   }
   .gallery-grid { grid-template-rows: 250px 160px; }
+  .pricing-final-amount {
+    font-size: 1.55rem;
+  }
+  .pricing-save-chip {
+    font-size: 9.5px;
+    padding: 2px 6px;
+  }
 }
