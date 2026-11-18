@@ -16,11 +16,12 @@
   <link rel="preload" as="image" href="assets/banner.webp" media="(min-width: 768px)" type="image/webp" fetchpriority="high">
   <link rel="preload" as="image" href="assets/bannermobile.webp" media="(max-width: 767px)" type="image/webp" fetchpriority="high">
   <link rel="stylesheet" href="css/swiper-bundle.min.css">
-  <link rel="stylesheet" href="css/style.css?v=120">
-  <link rel="stylesheet" href="css/responsive.css?v=104">
+  <link rel="stylesheet" href="css/style.css?v=146">
+  <link rel="stylesheet" href="css/responsive.css?v=114">
   <script src="js/swiper-bundle.min.js" defer></script>
-  <script src="js/main.js?v=29" defer></script>
-  <script src="js/form.js?v=4" defer></script>
+  <script src="js/content.js?v=7" defer></script>
+  <script src="js/main.js?v=43" defer></script>
+  <script src="js/form.js?v=9" defer></script>
 </head>
 
 <body class="banner-modal-open">
@@ -40,7 +41,7 @@
         <a href="#challenges">Nhu cầu</a>
         <a href="#audience">Đối tượng</a>
         <a href="#programs">Chương trình</a>
-        <a href="#roadmap">Lộ trình</a>
+        <a href="#values">Giá trị</a>
         <a href="#advantages">Lợi thế</a>
         <a class="button button-small button-accent nav-cta" href="#lead-form">Nhận tư vấn</a>
         <span class="nav-indicator" aria-hidden="true"></span>
@@ -493,7 +494,7 @@
         <div class="challenges-callout">
           <p>Mỗi hành trình đều cần một điểm khởi đầu. ADA Talent Academy đồng hành cùng bạn trong quá trình tìm hiểu
             bản thân, rèn luyện kỹ năng và lựa chọn hướng phát triển phù hợp.</p>
-          <a class="button button-accent" href="#roadmap">Tìm hiểu lộ trình dành cho bạn <span class="action-icon"
+          <a class="button button-accent" href="#programs">Tìm hiểu chương trình phù hợp <span class="action-icon"
               aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
                 stroke-linecap="round" stroke-linejoin="round">
                 <line x1="7" y1="17" x2="17" y2="7"></line>
@@ -553,42 +554,18 @@
       </div>
     </section>
 
-    <!-- SECTION 06: CHƯƠNG TRÌNH ĐÀO TẠO -->
+    <!-- SECTION 06: CHƯƠNG TRÌNH & LỘ TRÌNH ĐÀO TẠO -->
     <section class="section section-white" id="programs">
+      <span id="roadmap" class="anchor-target" aria-hidden="true"></span>
       <div class="container">
         <div class="section-heading section-heading-split">
-          <p class="eyebrow"><span class="eyebrow-line"></span> CHƯƠNG TRÌNH ĐÀO TẠO <span class="eyebrow-line"></span>
+          <p class="eyebrow"><span class="eyebrow-line"></span> CHƯƠNG TRÌNH &amp; LỘ TRÌNH ĐÀO TẠO <span class="eyebrow-line"></span>
           </p>
           <div class="heading-title-wrap">
             <h2>Lựa chọn lộ trình<br><em>phát triển phù hợp.</em></h2>
           </div>
           <div class="heading-lead-wrap">
-            <p class="section-lead">ADA Talent Academy định hướng phát triển các chương trình đào tạo dựa trên nhu cầu
-              và mục tiêu của từng nhóm học viên.</p>
-          </div>
-        </div>
-
-        <!-- Khung ưu đãi học phí đặc quyền nổi bật -->
-        <div class="programs-promo-banner" role="region" aria-label="Ưu đãi học phí đặc quyền">
-          <div class="programs-promo-info">
-            <div class="programs-promo-tag">
-              <span class="promo-tag-badge">Ưu đãi học phí đặc quyền</span>
-              <span class="promo-tag-save">Tiết kiệm 70% (14 triệu)</span>
-            </div>
-            <p class="programs-promo-text">
-              Giá gốc khoá đào tạo KOL/KOC, Personal Branding, Model, Personal Image là <del>20 triệu</del>. <br> Đăng ký ngay trước ngày <strong class="promo-highlight-date">15/11</strong> học phí chỉ còn <strong class="promo-highlight-price">6 triệu</strong>!
-            </p>
-          </div>
-          <div class="programs-promo-action">
-            <a class="button button-accent" href="#lead-form">
-              <span>Đăng ký nhận ưu đãi</span>
-              <span class="action-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="7" y1="17" x2="17" y2="7"></line>
-                  <polyline points="7 7 17 7 17 17"></polyline>
-                </svg>
-              </span>
-            </a>
+            <p class="section-lead">ADA Talent Academy định hướng phát triển 4 chương trình đào tạo bài bản từ nền tảng đến chuyên sâu, phù hợp với nhu cầu và mục tiêu thực chiến của từng nhóm học viên.</p>
           </div>
         </div>
 
@@ -598,130 +575,151 @@
             <div class="program-detail-header">
               <div class="program-badge-row">
                 <span class="program-badge">CHƯƠNG TRÌNH 01</span>
+                <span class="program-format-chip">Đào tạo Online</span>
               </div>
-              <h3>KOL/KOC &amp; Personal Branding</h3>
-              <p class="program-tagline">Xây dựng hình ảnh – Phát triển nội dung – Tự tin xuất hiện trước công chúng</p>
-              <p class="program-summary">Chương trình tập trung vào những kỹ năng nền tảng dành cho người muốn bước vào
-                lĩnh vực sáng tạo nội dung, phát triển hình ảnh cá nhân và tìm hiểu hoạt động KOL/KOC.</p>
+              <h3>KOL/KOC Starter Online</h3>
+              <p class="program-tagline">Bắt đầu từ con số 0 - Xây dựng hình ảnh - Tạo video đầu tiên</p>
+              <p class="program-summary">Chương trình 5 buổi Online dành cho người mới bắt đầu từ con số 0: Khám phá thế mạnh cá nhân, định hình phong cách kênh, viết kịch bản video ngắn thu hút, tự tin quay trước máy và hoàn thiện video đầu tiên cùng kế hoạch 30 ngày.</p>
             </div>
             <div class="program-detail-body">
-              <h4 class="program-subhead">Nội dung đào tạo định hướng:</h4>
-              <ul class="program-content-list">
-                <li>
-                  <strong>Xây dựng thương hiệu cá nhân:</strong>
-                  <span>Xác định phong cách, thế mạnh, đối tượng khán giả và thông điệp cá nhân.</span>
-                </li>
-                <li>
-                  <strong>Kỹ năng trước ống kính:</strong>
-                  <span>Luyện tập giọng nói, biểu cảm, giao tiếp và cách truyền tải thông điệp.</span>
-                </li>
-                <li>
-                  <strong>Sáng tạo nội dung số:</strong>
-                  <span>Phát triển ý tưởng, viết kịch bản, xác định chủ đề và định dạng video.</span>
-                </li>
-                <li>
-                  <strong>Quay dựng video ngắn:</strong>
-                  <span>Tiếp cận các kỹ thuật cơ bản trong quay hình, bố cục và biên tập video.</span>
-                </li>
-                <li>
-                  <strong>Review sản phẩm &amp; livestream:</strong>
-                  <span>Tìm hiểu cách giới thiệu sản phẩm tự nhiên, truyền đạt thông tin rõ ràng và tương tác với người
-                    xem.</span>
-                </li>
-                <li>
-                  <strong>Phát triển kênh cá nhân:</strong>
-                  <span>Tìm hiểu nguyên tắc xây dựng nội dung nhất quán, phân tích phản hồi và cải thiện chất lượng
-                    kênh.</span>
-                </li>
-              </ul>
+              <div class="program-detail-image-wrap">
+                <img src="assets/programs/chuongtrinh1.webp" alt="Chương trình 01: KOL/KOC Starter Online" class="program-detail-img" width="1678" height="937" loading="lazy">
+              </div>
             </div>
-
-            <div class="program-outcome">
-              <span class="outcome-label">ĐỊNH HƯỚNG PHÁT TRIỂN</span>
-              <p>Content Creator, KOC, KOL, xây dựng thương hiệu cá nhân và truyền thông hỗ trợ kinh doanh.</p>
-            </div>
-
             <div class="program-detail-footer">
               <div class="program-pricing-box">
                 <div class="pricing-box-header">
                   <span class="pricing-box-tag">HỌC PHÍ ĐẶC QUYỀN</span>
-                  <span class="pricing-save-chip">-70% • TIẾT KIỆM 14 TRIỆU</span>
+                  <span class="pricing-save-chip">-25% • TIẾT KIỆM 500.000Đ</span>
                 </div>
                 <div class="pricing-row">
                   <div class="pricing-row-left">
-                    <span class="pricing-original-label">Giá gốc: <del>20.000.000đ</del></span>
+                    <span class="pricing-original-label">Giá gốc: <del>2.000.000đ</del></span>
                     <div class="pricing-final">
-                      <span class="pricing-final-amount">6.000.000</span>
+                      <span class="pricing-final-amount">1.500.000</span>
                       <span class="pricing-final-unit">VNĐ</span>
                       <span class="pricing-final-term">/ trọn khóa</span>
                     </div>
                   </div>
+                </div>
+                <div class="pricing-refund-chip">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Hoàn lại 500.000đ khi học đủ 5/5 buổi và hoàn thành bài cuối khóa đạt yêu cầu</span>
                 </div>
                 <div class="pricing-deadline-tag">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <circle cx="12" cy="12" r="10"></circle>
                     <polyline points="12 6 12 12 16 14"></polyline>
                   </svg>
-                  <span>Áp dụng đăng ký ngay <strong>trước ngày 15/11</strong></span>
+                  <span>Áp dụng đăng ký ngay <strong>trước ngày 20/11</strong></span>
                 </div>
               </div>
 
-              <a class="button button-accent button-full" href="#lead-form">Đăng ký nhận ưu đãi<span
-                  class="action-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="7" y1="17" x2="17" y2="7"></line>
-                    <polyline points="7 7 17 7 17 17"></polyline>
-                  </svg></span></a>
+              <div class="program-card-actions">
+                <button type="button" class="button button-outline button-full program-roadmap-btn" data-open-roadmap="program-1">
+                  <span>Chi tiết lộ trình</span>
+                  <span class="action-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                      <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                    </svg>
+                  </span>
+                </button>
+                <a class="button button-accent button-full" href="#lead-form" data-course="kol_starter">
+                  <span>Đăng ký nhận ưu đãi</span>
+                  <span class="action-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="7" y1="17" x2="17" y2="7"></line>
+                      <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                  </span>
+                </a>
+              </div>
             </div>
           </article>
 
           <!-- Program 2 -->
-          <article class="program-detail-card">
+          <article class="program-detail-card program-detail-card--model">
             <div class="program-detail-header">
               <div class="program-badge-row">
                 <span class="program-badge">CHƯƠNG TRÌNH 02</span>
+                <span class="program-format-chip">Đào tạo Offline</span>
               </div>
-              <h3>Model &amp; Personal Image</h3>
-              <p class="program-tagline">Định hình phong thái – Phát triển khả năng trình diễn – Thể hiện cá tính riêng
-              </p>
-              <p class="program-summary">Chương trình hướng đến những cá nhân yêu thích lĩnh vực người mẫu, mong muốn
-                phát triển kỹ năng hình thể, biểu cảm và xây dựng hình ảnh chuyên nghiệp hơn.</p>
+              <h3>KOL/KOC Model</h3>
+              <p class="program-tagline">Khởi đầu hành trình KOL/KOC &amp; Model chuyên nghiệp</p>
+              <p class="program-summary">Chương trình đào tạo Offline 3 buổi (06 giờ) tài trợ phát triển tài năng, tích hợp kỹ năng kép: xây dựng hình ảnh &amp; sản xuất nội dung KOL/KOC kết hợp giải phóng hình thể, tạo dáng và biểu cảm người mẫu chuyên nghiệp tại studio.</p>
             </div>
             <div class="program-detail-body">
-              <h4 class="program-subhead">Nội dung đào tạo:</h4>
-              <ul class="program-content-list">
-                <li>
-                  <strong>Phong thái &amp; hình thể:</strong>
-                  <span>Rèn luyện tư thế đứng, dáng đi, ngôn ngữ cơ thể.</span>
-                </li>
-                <li>
-                  <strong>Catwalk cơ bản:</strong>
-                  <span>Tìm hiểu kỹ thuật di chuyển, giữ thăng bằng và trình diễn.</span>
-                </li>
-                <li>
-                  <strong>Tạo dáng trước ống kính:</strong>
-                  <span>Làm quen với góc mặt, tư thế và cách thể hiện hình ảnh.</span>
-                </li>
-                <li>
-                  <strong>Biểu cảm &amp; thần thái:</strong>
-                  <span>Phát triển khả năng truyền tải cảm xúc và tạo điểm nhấn cá nhân.</span>
-                </li>
-                <li>
-                  <strong>Định hình phong cách:</strong>
-                  <span>Tìm hiểu cách lựa chọn trang phục, hình ảnh và cách thể hiện phù hợp.</span>
-                </li>
-                <li>
-                  <strong>Xây dựng hồ sơ hình ảnh:</strong>
-                  <span>Tìm hiểu các yếu tố tạo nên portfolio cá nhân.</span>
-                </li>
-              </ul>
+              <div class="program-detail-image-wrap">
+                <img src="assets/programs/chuongtrinh2.webp" alt="Chương trình 02: KOL/KOC Model" class="program-detail-img" width="1678" height="937" loading="lazy">
+              </div>
             </div>
+            <div class="program-detail-footer">
+              <div class="program-pricing-box">
+                <div class="pricing-box-header">
+                  <span class="pricing-box-tag">HỌC PHÍ ĐẶC QUYỀN</span>
+                  <span class="pricing-save-chip">-60% • TIẾT KIỆM 3 TRIỆU</span>
+                </div>
+                <div class="pricing-row">
+                  <div class="pricing-row-left">
+                    <span class="pricing-original-label">Giá gốc: <del>5.000.000đ</del></span>
+                    <div class="pricing-final">
+                      <span class="pricing-final-amount">2.000.000</span>
+                      <span class="pricing-final-unit">VNĐ</span>
+                      <span class="pricing-final-term">/ trọn khóa</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="pricing-deadline-tag">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  <span>Áp dụng đăng ký ngay <strong>trước ngày 20/11</strong></span>
+                </div>
+              </div>
 
-            <div class="program-outcome">
-              <span class="outcome-label">ĐỊNH HƯỚNG PHÁT TRIỂN</span>
-              <p>Phát triển kỹ năng người mẫu, hình ảnh cá nhân, trình diễn và các hoạt động sáng tạo hình ảnh.</p>
+              <div class="program-card-actions">
+                <button type="button" class="button button-outline button-full program-roadmap-btn" data-open-roadmap="program-2">
+                  <span>Chi tiết lộ trình</span>
+                  <span class="action-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                      <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                    </svg>
+                  </span>
+                </button>
+                <a class="button button-accent button-full" href="#lead-form" data-course="kol_model">
+                  <span>Đăng ký nhận ưu đãi</span>
+                  <span class="action-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="7" y1="17" x2="17" y2="7"></line>
+                      <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                  </span>
+                </a>
+              </div>
             </div>
+          </article>
 
+          <!-- Program 3 -->
+          <article class="program-detail-card">
+            <div class="program-detail-header">
+              <div class="program-badge-row">
+                <span class="program-badge">CHƯƠNG TRÌNH 03</span>
+                <span class="program-format-chip">Đào tạo Offline</span>
+              </div>
+              <h3>Model Professional</h3>
+              <p class="program-tagline">Tạo dáng - Biểu cảm - Catwalk - Model thương mại - Portfolio &amp; Casting</p>
+              <p class="program-summary">Lộ trình đào tạo 12 buổi Offline chuyên sâu (150 phút/buổi) cùng chuyên gia, rèn luyện toàn diện từ tác phong người mẫu, kiểm soát hình thể, posing master, runway catwalk, commercial photoshoot đến xây dựng portfolio và showcase tốt nghiệp.</p>
+            </div>
+            <div class="program-detail-body">
+              <div class="program-detail-image-wrap">
+                <img src="assets/programs/chuongtrinh3.webp" alt="Chương trình 03: Model Professional" class="program-detail-img" width="1678" height="937" loading="lazy">
+              </div>
+            </div>
             <div class="program-detail-footer">
               <div class="program-pricing-box">
                 <div class="pricing-box-header">
@@ -743,75 +741,94 @@
                     <circle cx="12" cy="12" r="10"></circle>
                     <polyline points="12 6 12 12 16 14"></polyline>
                   </svg>
-                  <span>Áp dụng đăng ký ngay <strong>trước ngày 15/11</strong></span>
+                  <span>Áp dụng đăng ký ngay <strong>trước ngày 20/11</strong></span>
                 </div>
               </div>
 
-              <a class="button button-accent button-full" href="#lead-form">Đăng ký nhận ưu đãi<span
-                  class="action-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="7" y1="17" x2="17" y2="7"></line>
-                    <polyline points="7 7 17 7 17 17"></polyline>
-                  </svg></span></a>
+              <div class="program-card-actions">
+                <button type="button" class="button button-outline button-full program-roadmap-btn" data-open-roadmap="program-3">
+                  <span>Chi tiết lộ trình</span>
+                  <span class="action-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                      <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                    </svg>
+                  </span>
+                </button>
+                <a class="button button-accent button-full" href="#lead-form" data-course="model_pro">
+                  <span>Đăng ký nhận ưu đãi</span>
+                  <span class="action-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="7" y1="17" x2="17" y2="7"></line>
+                      <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                  </span>
+                </a>
+              </div>
             </div>
           </article>
-        </div>
-      </div>
-    </section>
 
-    <!-- SECTION 07: LỘ TRÌNH ĐÀO TẠO -->
-    <section class="section section-sand" id="roadmap">
-      <div class="container roadmap-layout">
-        <div class="roadmap-intro">
-          <p class="eyebrow"><span class="eyebrow-line"></span> LỘ TRÌNH ĐÀO TẠO <span class="eyebrow-line"></span></p>
-          <h2>Từ khám phá bản thân<br><em>đến phát triển kỹ năng thực tế.</em></h2>
-          <p class="section-lead">Quy trình đào tạo 5 giai đoạn được thiết kế bài bản, giúp học viên đi từ nền tảng nhận
-            thức đến rèn luyện kỹ năng và hoàn thiện sản phẩm thực tế.</p>
-          <a class="button button-accent" href="#lead-form">Đăng ký nhận lộ trình chi tiết <span class="action-icon"
-              aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                stroke-linecap="round" stroke-linejoin="round">
-                <line x1="7" y1="17" x2="17" y2="7"></line>
-                <polyline points="7 7 17 7 17 17"></polyline>
-              </svg></span></a>
-        </div>
-        <div class="timeline">
-          <article class="timeline-item">
-            <span class="timeline-number">01</span>
-            <div>
-              <h3>Giai đoạn 01: Khám phá &amp; Định hướng</h3>
-              <p>Tìm hiểu mục tiêu, thế mạnh và nhu cầu cá nhân. Xác định lĩnh vực và phong cách phát triển phù hợp.</p>
+          <!-- Program 4 -->
+          <article class="program-detail-card">
+            <div class="program-detail-header">
+              <div class="program-badge-row">
+                <span class="program-badge">CHƯƠNG TRÌNH 04</span>
+                <span class="program-format-chip">Đào tạo Online &amp; Offline</span>
+              </div>
+              <h3>KOL/KOC Advanced</h3>
+              <p class="program-tagline">Xây kênh - Sản xuất nội dung - Livestream - Hợp tác nhãn hàng</p>
+              <p class="program-summary">Lộ trình đào tạo 12 buổi Hybrid chuyên sâu (kết hợp Online &amp; Offline 150 phút/buổi), trang bị trọn vẹn từ chiến lược định vị kênh, sản xuất video ngắn triệu view, livestream chuyển đổi đến hợp tác nhãn hàng và vận hành dự án 90 ngày.</p>
             </div>
-          </article>
-          <article class="timeline-item">
-            <span class="timeline-number">02</span>
-            <div>
-              <h3>Giai đoạn 02: Xây dựng nền tảng</h3>
-              <p>Tiếp cận các kiến thức về thương hiệu cá nhân, giao tiếp, ngôn ngữ cơ thể, biểu cảm và kỹ năng chuyên
-                môn theo chương trình lựa chọn.</p>
+            <div class="program-detail-body">
+              <div class="program-detail-image-wrap">
+                <img src="assets/programs/chuongtrinh4.webp" alt="Chương trình 04: KOL/KOC Advanced" class="program-detail-img" width="1678" height="937" loading="lazy">
+              </div>
             </div>
-          </article>
-          <article class="timeline-item">
-            <span class="timeline-number">03</span>
-            <div>
-              <h3>Giai đoạn 03: Rèn luyện kỹ năng</h3>
-              <p>Luyện tập xuất hiện trước ống kính, sáng tạo nội dung hoặc trình diễn thông qua các bài tập theo từng
-                học phần.</p>
-            </div>
-          </article>
-          <article class="timeline-item">
-            <span class="timeline-number">04</span>
-            <div>
-              <h3>Giai đoạn 04: Thực hành &amp; Hoàn thiện</h3>
-              <p>Ứng dụng kiến thức vào các bài tập video, hình ảnh, trình diễn hoặc sản phẩm cá nhân theo nội dung
-                chương trình.</p>
-            </div>
-          </article>
-          <article class="timeline-item">
-            <span class="timeline-number">05</span>
-            <div>
-              <h3>Giai đoạn 05: Đánh giá &amp; Định hướng tiếp theo</h3>
-              <p>Tổng kết quá trình thực hành, tiếp nhận góp ý chuyên môn và xác định những kỹ năng cần tiếp tục cải
-                thiện.</p>
+            <div class="program-detail-footer">
+              <div class="program-pricing-box">
+                <div class="pricing-box-header">
+                  <span class="pricing-box-tag">HỌC PHÍ ĐẶC QUYỀN</span>
+                  <span class="pricing-save-chip">-70% • TIẾT KIỆM 14 TRIỆU</span>
+                </div>
+                <div class="pricing-row">
+                  <div class="pricing-row-left">
+                    <span class="pricing-original-label">Giá gốc: <del>20.000.000đ</del></span>
+                    <div class="pricing-final">
+                      <span class="pricing-final-amount">6.000.000</span>
+                      <span class="pricing-final-unit">VNĐ</span>
+                      <span class="pricing-final-term">/ trọn khóa</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="pricing-deadline-tag">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  <span>Áp dụng đăng ký ngay <strong>trước ngày 20/11</strong></span>
+                </div>
+              </div>
+
+              <div class="program-card-actions">
+                <button type="button" class="button button-outline button-full program-roadmap-btn" data-open-roadmap="program-4">
+                  <span>Chi tiết lộ trình</span>
+                  <span class="action-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                      <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                    </svg>
+                  </span>
+                </button>
+                <a class="button button-accent button-full" href="#lead-form" data-course="kol_advanced">
+                  <span>Đăng ký nhận ưu đãi</span>
+                  <span class="action-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="7" y1="17" x2="17" y2="7"></line>
+                      <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                  </span>
+                </a>
+              </div>
             </div>
           </article>
         </div>
@@ -819,7 +836,7 @@
     </section>
 
     <!-- SECTION 08: GIÁ TRỊ HỌC TẬP -->
-    <section class="section section-white" id="values">
+    <section class="section section-sand" id="values">
       <div class="container">
         <div class="section-heading section-heading-split">
           <p class="eyebrow"><span class="eyebrow-line"></span> GIÁ TRỊ HỌC TẬP <span class="eyebrow-line"></span></p>
@@ -900,7 +917,7 @@
     </section>
 
     <!-- SECTION 09: LỢI THẾ ĐÀO TẠO -->
-    <section class="section section-sand" id="advantages">
+    <section class="section section-white" id="advantages">
       <div class="container">
         <div class="section-heading section-heading-split">
           <p class="eyebrow"><span class="eyebrow-line"></span> VÌ SAO LỰA CHỌN ADA TALENT? <span
@@ -971,9 +988,10 @@
             <label for="course">Chương trình quan tâm <span>*</span></label>
             <select id="course" name="course" required>
               <option value="" disabled selected>Chọn chương trình quan tâm</option>
-              <option value="kol_koc">KOL/KOC</option>
-              <option value="branding_model">Personal Branding / Model</option>
-              <option value="personal_image">Personal Image</option>
+              <option value="kol_starter">KOL/KOC Starter Online</option>
+              <option value="kol_model">KOL/KOC Model</option>
+              <option value="model_pro">Model Professional</option>
+              <option value="kol_advanced">KOL/KOC Advanced</option>
             </select>
             <small class="field-error" aria-live="polite"></small>
           </div>
@@ -1128,6 +1146,66 @@
       <polyline points="18 15 12 9 6 15"></polyline>
     </svg>
   </button>
+
+    <!-- Roadmap Detail Modal Popup (Popup hiển thị lộ trình chi tiết 4 chương trình đào tạo) -->
+  <div class="roadmap-modal" id="roadmap-modal" role="dialog" aria-modal="true" aria-label="Chi tiết lộ trình đào tạo" aria-hidden="true">
+    <div class="roadmap-modal-backdrop" data-close-roadmap aria-hidden="true"></div>
+    <div class="roadmap-modal-container">
+      <div class="roadmap-modal-dialog">
+        <button type="button" class="roadmap-modal-close" data-close-roadmap aria-label="Đóng popup chi tiết lộ trình">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <div class="roadmap-modal-header">
+          <div class="roadmap-modal-tabs" role="tablist" aria-label="Danh sách chương trình">
+            <button type="button" class="roadmap-tab-btn is-active" data-roadmap-tab="program-1" role="tab" aria-selected="true">Chương trình 01</button>
+            <button type="button" class="roadmap-tab-btn" data-roadmap-tab="program-2" role="tab" aria-selected="false">Chương trình 02</button>
+            <button type="button" class="roadmap-tab-btn" data-roadmap-tab="program-3" role="tab" aria-selected="false">Chương trình 03</button>
+            <button type="button" class="roadmap-tab-btn" data-roadmap-tab="program-4" role="tab" aria-selected="false">Chương trình 04</button>
+          </div>
+          <div class="roadmap-header-info">
+            <div class="roadmap-badge-row">
+              <span class="roadmap-badge" id="roadmap-badge">CHƯƠNG TRÌNH 01</span>
+              <span class="roadmap-tagline-chip" id="roadmap-tagline-chip">5 Buổi • 100% Online</span>
+            </div>
+            <h3 class="roadmap-title" id="roadmap-title">KOL/KOC STARTER ONLINE</h3>
+            <p class="roadmap-desc" id="roadmap-desc">Bắt đầu từ con số 0 - Khám phá thế mạnh - Xây dựng hình ảnh - Tạo video đầu tiên</p>
+          </div>
+        </div>
+
+        <div class="roadmap-modal-body">
+          <div class="roadmap-sessions-list" id="roadmap-sessions-list">
+            <!-- Dynamic session list inserted by JS -->
+          </div>
+        </div>
+
+        <div class="roadmap-modal-footer">
+          <div class="roadmap-footer-price">
+            <span class="roadmap-footer-label">Học phí ưu đãi đặc quyền (trước 20/11):</span>
+            <div class="roadmap-footer-values">
+              <del id="roadmap-footer-old">2.000.000đ</del>
+              <strong id="roadmap-footer-deal">1.500.000đ</strong>
+              <span class="roadmap-footer-save" id="roadmap-footer-save">Tiết kiệm 25% (500.000đ)</span>
+            </div>
+          </div>
+          <div class="roadmap-footer-actions">
+            <a class="button button-accent roadmap-enroll-btn" id="roadmap-enroll-btn" href="#lead-form">
+              <span>Đăng ký khóa học này</span>
+              <span class="action-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Banner Modal Popup (Hiển thị mỗi lần vào trang) -->
   <div class="banner-modal is-open" id="banner-modal" role="dialog" aria-modal="true" aria-label="Thông báo chương trình đào tạo" aria-hidden="false">

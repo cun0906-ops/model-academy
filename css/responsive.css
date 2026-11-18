@@ -323,17 +323,11 @@
     grid-template-columns: 1fr;
     gap: 18px;
   }
-  .programs-promo-banner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
+  .roadmap-modal {
+    padding: 16px 12px;
   }
-  .programs-promo-action {
-    width: 100%;
-  }
-  .programs-promo-action .button {
-    width: 100%;
-    justify-content: center;
+  .roadmap-sessions-list {
+    gap: 12px;
   }
   .audience-cards-grid,
   .advantages-grid {
@@ -589,9 +583,66 @@
     position: relative;
     top: 0;
   }
-  /* Ẩn khung banner ưu đãi học phí trên mobile để giao diện tinh gọn */
-  .programs-promo-banner {
-    display: none !important;
+  /* Responsive cho Roadmap Modal trên điện thoại */
+  .roadmap-modal {
+    padding: 10px 8px;
+  }
+  .roadmap-modal-dialog {
+    max-height: 92vh;
+    max-height: calc(100dvh - 20px);
+    border-radius: 16px;
+  }
+  .roadmap-modal-close {
+    top: 14px;
+    right: 14px;
+    width: 36px;
+    height: 36px;
+  }
+  .roadmap-modal-header {
+    padding: 16px 14px 12px;
+  }
+  .roadmap-modal-tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 0 44px 12px 0;
+  }
+  .roadmap-tab-btn {
+    font-size: 11.5px;
+    padding: 7px 4px;
+  }
+  .roadmap-title {
+    font-size: 1.2rem;
+  }
+  .roadmap-desc {
+    font-size: 12.5px;
+  }
+  .roadmap-modal-body {
+    padding: 12px 14px;
+  }
+  .roadmap-session-card {
+    padding: 12px 14px;
+  }
+  .roadmap-session-main-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .roadmap-session-head {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .session-title {
+    font-size: 13px;
+  }
+  .roadmap-modal-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 12px 14px;
+  }
+  .roadmap-footer-values strong {
+    font-size: 1.35rem;
+  }
+  .roadmap-footer-actions .button {
+    width: 100%;
   }
   .program-pricing-box {
     padding: 14px 14px;

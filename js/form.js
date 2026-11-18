@@ -21,6 +21,10 @@
     "https://script.google.com/macros/s/AKfycbxQOQeImY9CGFEhkbdSl6aNz8SixReRXwHjMKwnj3j2GQPLt8SWQF6vJX5w60BNdMnBRA/exec";
 
   const COURSE_LABELS = {
+    kol_starter: "KOL/KOC Starter Online",
+    kol_model: "KOL/KOC Model",
+    model_pro: "Model Professional",
+    kol_advanced: "KOL/KOC Advanced",
     kol_koc: "KOL/KOC",
     branding_model: "Personal Branding / Model",
     personal_image: "Personal Image"
@@ -306,6 +310,10 @@
       !response.ok &&
       response.status === 400 &&
       [
+        "kol_starter",
+        "kol_model",
+        "model_pro",
+        "kol_advanced",
         "kol_koc",
         "branding_model",
         "personal_image",
@@ -315,6 +323,10 @@
       ].includes(payload.course)
     ) {
       const legacyCourseMap = {
+        kol_starter: "skills",
+        kol_model: "skills",
+        model_pro: "foundation",
+        kol_advanced: "skills",
         kol_koc: "skills",
         branding_model: "skills",
         personal_image: "foundation",

@@ -52,7 +52,7 @@
   window.addEventListener("resize", updateHeader);
 
   const navIndicator = nav ? nav.querySelector(".nav-indicator") : null;
-  const sectionLinks = nav ? [...nav.querySelectorAll('a[href^="#"]:not(.button)')] : [];
+  const sectionLinks = nav ? [...nav.querySelectorAll('a[href^="#"]')] : [];
   const sectionLinkTargets = sectionLinks
     .map((link) => ({ link, section: document.querySelector(link.getAttribute("href")) }))
     .filter(({ section }) => section);
@@ -78,7 +78,7 @@
     });
 
     if (!navIndicator) return;
-    if (!activeLink || window.innerWidth <= 900) {
+    if (!activeLink || activeLink.classList.contains("button") || window.innerWidth <= 900) {
       navIndicator.classList.remove("is-visible");
       return;
     }
@@ -205,6 +205,47 @@
       if (courseSelect) courseSelect.value = link.dataset.course || "";
     });
   });
+
+  // Đồng bộ chiều cao header của các thẻ chương trình cùng hàng.
+  function syncProgramCardHeaders() {
+    const cards = document.querySelectorAll(".program-detail-card");
+    if (!cards.length) return;
+
+    if (window.innerWidth <= 900) {
+      cards.forEach((card) => {
+        const header = card.querySelector(".program-detail-header");
+        if (header) header.style.minHeight = "";
+      });
+      return;
+    }
+
+    // Xử lý theo từng cặp 2 thẻ trên cùng hàng ngang
+    for (let i = 0; i < cards.length; i += 2) {
+      const pair = [cards[i], cards[i + 1]].filter(Boolean);
+      const headers = pair.map((c) => c.querySelector(".program-detail-header")).filter(Boolean);
+
+      headers.forEach((h) => (h.style.minHeight = ""));
+
+      if (headers.length > 1) {
+        const maxHeaderH = Math.max(...headers.map((h) => h.offsetHeight));
+        headers.forEach((h) => (h.style.minHeight = `${maxHeaderH}px`));
+      }
+    }
+  }
+
+  syncProgramCardHeaders();
+  window.addEventListener("resize", syncProgramCardHeaders);
+  window.addEventListener("load", syncProgramCardHeaders);
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(syncProgramCardHeaders);
+  }
+  if (typeof ResizeObserver !== "undefined") {
+    const grid = document.querySelector(".programs-dual-grid");
+    if (grid) {
+      const ro = new ResizeObserver(() => syncProgramCardHeaders());
+      ro.observe(grid);
+    }
+  }
 
   // Floating back to top & Banner reopen buttons: điều phối vị trí linh hoạt
   const backToTopBtn = document.querySelector("#back-to-top");
@@ -377,6 +418,6 @@
     openBanner();
   }
 
-  initBannerModal();
+    initBannerModal();
 
 })();

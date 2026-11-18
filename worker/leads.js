@@ -1,4 +1,8 @@
 const allowedCourses = new Set([
+  "kol_starter",
+  "kol_model",
+  "model_pro",
+  "kol_advanced",
   "kol_koc",
   "branding_model",
   "personal_image",
@@ -11,6 +15,10 @@ const allowedCourses = new Set([
 ]);
 
 const courseNames = {
+  kol_starter: "Chương trình 01: KOL/KOC Starter Online",
+  kol_model: "Chương trình 02: KOL/KOC Model",
+  model_pro: "Chương trình 03: Model Professional",
+  kol_advanced: "Chương trình 04: KOL/KOC Advanced",
   kol_koc: "KOL/KOC",
   branding_model: "Personal Branding / Model",
   personal_image: "Personal Image",
