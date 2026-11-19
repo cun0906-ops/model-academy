@@ -2607,6 +2607,97 @@ body.banner-modal-open .banner-reopen-btn.has-back-to-top {
   text-align-last: left;
 }
 
+.about-gallery {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-auto-rows: clamp(250px, 28vw, 370px);
+  gap: clamp(12px, 1.6vw, 20px);
+  margin-bottom: clamp(24px, 3.2vw, 42px);
+}
+
+.about-gallery-card {
+  position: relative;
+  grid-column: span 5;
+  margin: 0;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.about-gallery-card--wide {
+  grid-column: span 7;
+}
+
+.about-gallery-frame {
+  position: relative;
+  isolation: isolate;
+  height: 100%;
+  overflow: hidden;
+}
+
+.about-gallery-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-gallery-card figcaption {
+  position: absolute;
+  z-index: 1;
+  inset-inline-start: 12px;
+  bottom: 12px;
+  width: fit-content;
+  max-width: calc(100% - 24px);
+  padding: 4px 8px;
+  border: 1px solid rgba(24, 32, 61, 0.12);
+  border-radius: 6px;
+  background: #eaf1ff;
+  color: #243f78;
+  box-shadow: 0 2px 8px rgba(24, 32, 61, 0.14);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .about-gallery-card,
+  .about-gallery-card--wide {
+    grid-column: span 6;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-gallery {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+
+  .about-gallery-card,
+  .about-gallery-card--wide {
+    grid-column: auto;
+    aspect-ratio: 3 / 2;
+  }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .about-gallery-card {
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .about-gallery-frame img {
+    transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+  }
+
+  .about-gallery-card:hover {
+    transform: translateY(-6px);
+  }
+
+  .about-gallery-card:hover img {
+    transform: scale(1.06);
+    filter: brightness(1.03);
+  }
+}
+
 .pillars-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -2873,7 +2964,8 @@ body.banner-modal-open .banner-reopen-btn.has-back-to-top {
 }
 
 /* Hiệu ứng quét tia sáng khi hover */
-.gift-row-media .card-shine {
+.gift-row-media .card-shine,
+.about-gallery-frame::after {
   position: absolute;
   top: -50%;
   left: -60%;
@@ -2892,9 +2984,20 @@ body.banner-modal-open .banner-reopen-btn.has-back-to-top {
   opacity: 0;
 }
 
+.about-gallery-frame::after {
+  content: "";
+}
+
 .gift-row:hover .card-shine {
   transform: rotate(25deg) translateY(100%);
   opacity: 1;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .about-gallery-card:hover .about-gallery-frame::after {
+    transform: rotate(25deg) translateY(100%);
+    opacity: 1;
+  }
 }
 
 /* Nội dung: số thứ tự, tiêu đề, mô tả */

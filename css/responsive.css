@@ -758,6 +758,16 @@
   .section-heading-split .heading-title-wrap { margin-bottom: 14px; }
   .section-heading-split .section-lead { font-size: 14px; line-height: 1.7; }
   .about-header { margin-bottom: 28px; }
+  #about {
+    --about-card-gap: 18px;
+  }
+  #about .about-gallery,
+  #about .pillars-grid {
+    gap: var(--about-card-gap);
+  }
+  #about .about-gallery {
+    margin-bottom: var(--about-card-gap);
+  }
   .about-title-wrap { margin-bottom: 14px; }
   .about-lead-copy p,
   .about-desc { font-size: 14px; line-height: 1.7; }
