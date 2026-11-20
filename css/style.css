@@ -3909,25 +3909,25 @@ body.banner-modal-open .banner-reopen-btn.has-back-to-top {
 }
 
 .roadmap-curriculum-table thead {
-  position: sticky;
-  top: 0;
-  z-index: 1;
   background: var(--roadmap-panel-bg);
 }
 
-.roadmap-curriculum-table thead::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border: 1px solid #bfcbe0;
-  border-radius: 18px 18px 0 0;
+.roadmap-curriculum-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  border-top-color: #bfcbe0;
   background: #e4ebf7;
-  pointer-events: none;
 }
 
-.roadmap-curriculum-table thead th {
-  position: relative;
-  border-top: 0;
+.roadmap-curriculum-table thead th:first-child {
+  border-inline-start: 1px solid #bfcbe0;
+  border-start-start-radius: 16px;
+}
+
+.roadmap-curriculum-table thead th:last-child {
+  border-inline-end: 1px solid #bfcbe0;
+  border-start-end-radius: 16px;
 }
 
 .roadmap-curriculum-table tbody :is(th, td) {

@@ -707,21 +707,6 @@
   .roadmap-curriculum-table :is(th, td) {
     padding-inline: 4px;
   }
-  .roadmap-curriculum-table thead::before {
-    border-radius: 16px 16px 0 0;
-    z-index: 1;
-  }
-  .roadmap-curriculum-table thead::after {
-    content: "";
-    position: absolute;
-    inset: calc(-1 * var(--roadmap-table-top-gap)) 0 0;
-    z-index: 0;
-    background: var(--roadmap-panel-bg);
-    pointer-events: none;
-  }
-  .roadmap-curriculum-table thead th {
-    z-index: 2;
-  }
   .roadmap-session-card {
     padding: 12px 14px;
   }
