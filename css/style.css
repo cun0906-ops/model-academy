@@ -3791,7 +3791,7 @@ body.banner-modal-open .banner-reopen-btn.has-back-to-top {
 
 .roadmap-expert-identity {
   display: grid;
-  grid-template-columns: clamp(56px, 12vw, 92px) minmax(0, 1fr);
+  grid-template-columns: clamp(66px, 14vw, 108px) minmax(0, 1fr);
   align-items: center;
   gap: clamp(12px, 2.5vw, 20px);
   padding-bottom: 16px;

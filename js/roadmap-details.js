@@ -536,7 +536,7 @@ const ROADMAP_EXPERT_PROFILES = {
     "name": "Giảng viên Hoàng Nam",
     "roles": "Thạc sĩ – Diễn viên – Ca sĩ – Giảng viên",
     "photo": {
-      "src": "assets/experts/hoangnam.jpg",
+      "src": "assets/experts/hoangnam.webp",
       "alt": "Chân dung giảng viên Hoàng Nam",
       "size": 2792
     },
@@ -570,7 +570,7 @@ const ROADMAP_EXPERT_PROFILES = {
     "name": "Á hậu Đặng Thị Tân",
     "roles": "Á hậu 2 Hoa hậu Doanh nhân Quốc gia Việt Nam 2024",
     "photo": {
-      "src": "assets/experts/dangthitan.jpg",
+      "src": "assets/experts/dangthitan.webp",
       "alt": "Chân dung Á hậu Đặng Thị Tân",
       "size": 3432
     },
