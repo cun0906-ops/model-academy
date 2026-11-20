@@ -694,6 +694,7 @@
   #roadmap-panel[aria-labelledby="roadmap-tab-content"] {
     padding-inline: 10px;
   }
+  .roadmap-curriculum-heading,
   .roadmap-curriculum-table {
     table-layout: fixed;
     font-size: 0.75rem;
@@ -704,6 +705,7 @@
   .roadmap-col-count {
     width: 17%;
   }
+  .roadmap-curriculum-heading th,
   .roadmap-curriculum-table :is(th, td) {
     padding-inline: 4px;
   }
@@ -989,7 +991,7 @@
 }
 @media (max-width: 380px) {
 
-  .roadmap-curriculum-table thead th {
+  .roadmap-curriculum-heading th {
     font-size: 0.6875rem;
   }
 

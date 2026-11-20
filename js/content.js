@@ -26,6 +26,13 @@
   }
 
   function renderCurriculum(program, details) {
+    const headings = ["STT", "Chuyên đề", "Số buổi", "Số tiết"];
+    const columnGroup = `
+      <colgroup>
+        <col class="roadmap-col-index">
+        <col>
+        <col class="roadmap-col-count" span="2">
+      </colgroup>`;
     const topics = [...program.sessions];
     if (details.extraTopic) topics.push(details.extraTopic);
 
@@ -41,15 +48,24 @@
 
     return `
       <div class="roadmap-curriculum-frame">
-        <table class="roadmap-table roadmap-curriculum-table" aria-label="Nội dung chương trình">
-          <colgroup><col class="roadmap-col-index"><col><col class="roadmap-col-count" span="2"></colgroup>
-          <thead><tr><th scope="col">STT</th><th scope="col">Chuyên đề</th><th scope="col">Số buổi</th><th scope="col">Số tiết</th></tr></thead>
-          <tbody>${rows}</tbody>
-          <tfoot><tr><th scope="row" colspan="2">Tổng</th>
-            <td>${String(program.sessions.length).padStart(2, "0")}</td>
-            <td>${program.sessions.length * details.periodsPerSession}</td>
-          </tr></tfoot>
-        </table>
+        <div class="roadmap-curriculum-scroll" tabindex="0" role="region" aria-label="Bảng nội dung chương trình">
+          <div class="roadmap-curriculum-sticky-heading" aria-hidden="true">
+            <table class="roadmap-table roadmap-curriculum-heading">
+              ${columnGroup}
+              <thead><tr>${headings.map((heading) => `<th scope="col">${heading}</th>`).join("")}</tr></thead>
+            </table>
+          </div>
+          <table class="roadmap-table roadmap-curriculum-table" aria-label="Nội dung chương trình">
+            ${columnGroup}
+            <thead class="sr-only"><tr>${headings.map((heading) => `<th scope="col">${heading}</th>`).join("")}</tr></thead>
+            <tbody>${rows}</tbody>
+            <tfoot><tr><th scope="row">Tổng</th>
+              <td></td>
+              <td>${String(program.sessions.length).padStart(2, "0")}</td>
+              <td>${program.sessions.length * details.periodsPerSession}</td>
+            </tr></tfoot>
+          </table>
+        </div>
       </div>
       <p class="roadmap-panel-note">${escapeHtml(details.curriculumNote)}</p>`;
   }

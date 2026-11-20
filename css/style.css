@@ -3604,7 +3604,6 @@ body.banner-modal-open .banner-reopen-btn.has-back-to-top {
 
 .roadmap-modal-dialog {
   --roadmap-panel-bg: #f7f7f8;
-  --roadmap-table-top-gap: 12px;
   position: relative;
   background: #ffffff;
   border-radius: 22px;
@@ -3739,8 +3738,11 @@ body.banner-modal-open .banner-reopen-btn.has-back-to-top {
 }
 
 #roadmap-panel[aria-labelledby="roadmap-tab-content"] {
-  padding-top: 0;
-  border-top: var(--roadmap-table-top-gap) solid var(--roadmap-panel-bg);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+  padding-top: 12px;
 }
 
 .roadmap-panel-copy {
@@ -3867,7 +3869,31 @@ body.banner-modal-open .banner-reopen-btn.has-back-to-top {
 
 .roadmap-curriculum-frame {
   --roadmap-table-radius: 12px;
-  background: var(--roadmap-panel-bg);
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid #bfcbe0;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.roadmap-curriculum-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+.roadmap-curriculum-sticky-heading {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  overflow: hidden;
+  border-start-start-radius: 15px;
+  border-start-end-radius: 15px;
+  background: #e4ebf7;
 }
 
 .roadmap-table {
@@ -3903,29 +3929,39 @@ body.banner-modal-open .banner-reopen-btn.has-back-to-top {
   font-weight: 400;
 }
 
+.roadmap-curriculum-heading,
 .roadmap-curriculum-table {
+  width: 100%;
+  table-layout: fixed;
   border-collapse: separate;
   border-spacing: 0;
 }
 
-.roadmap-curriculum-table thead {
-  background: var(--roadmap-panel-bg);
+.roadmap-col-index {
+  width: 8%;
 }
 
-.roadmap-curriculum-table thead th {
-  position: sticky;
-  top: 0;
-  z-index: 1;
+.roadmap-col-count {
+  width: 13%;
+}
+
+.roadmap-curriculum-heading thead th {
   border-top-color: #bfcbe0;
   background: #e4ebf7;
 }
 
-.roadmap-curriculum-table thead th:first-child {
+.roadmap-curriculum-heading th:not(:nth-child(2)),
+.roadmap-curriculum-table :is(thead th, tbody td, tfoot td):not(:nth-child(2)) {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.roadmap-curriculum-heading th:first-child {
   border-inline-start: 1px solid #bfcbe0;
   border-start-start-radius: 16px;
 }
 
-.roadmap-curriculum-table thead th:last-child {
+.roadmap-curriculum-heading th:last-child {
   border-inline-end: 1px solid #bfcbe0;
   border-start-end-radius: 16px;
 }
@@ -3952,6 +3988,11 @@ body.banner-modal-open .banner-reopen-btn.has-back-to-top {
 }
 
 .roadmap-curriculum-table tfoot th:first-child {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.roadmap-curriculum-table tfoot th:first-child {
   border-end-start-radius: var(--roadmap-table-radius);
 }
 
@@ -3959,16 +4000,19 @@ body.banner-modal-open .banner-reopen-btn.has-back-to-top {
   border-end-end-radius: var(--roadmap-table-radius);
 }
 
+#roadmap-panel[aria-labelledby="roadmap-tab-content"] > .roadmap-panel-note {
+  flex: 0 0 auto;
+}
+
 .roadmap-curriculum-table tbody th {
   overflow-wrap: anywhere;
 }
 
-.roadmap-curriculum-table thead th:not(:nth-child(2)),
 .roadmap-curriculum-table :is(tbody, tfoot) td {
-  text-align: center;
   vertical-align: middle;
 }
 
+.roadmap-curriculum-heading th:not(:nth-child(2)),
 .roadmap-curriculum-table :is(th, td):not(:nth-child(2)),
 .roadmap-schedule-table thead th,
 .roadmap-schedule-table tbody :is(th, td):nth-child(-n+4) {
@@ -4205,10 +4249,6 @@ body.banner-modal-open .banner-reopen-btn.has-back-to-top {
   .roadmap-modal-dialog {
     overflow-y: auto;
     overscroll-behavior: contain;
-  }
-
-  .roadmap-modal-dialog:has(> #roadmap-panel[aria-labelledby="roadmap-tab-content"]) {
-    border-top: var(--roadmap-table-top-gap) solid var(--roadmap-panel-bg);
   }
 
   .roadmap-modal-body {
