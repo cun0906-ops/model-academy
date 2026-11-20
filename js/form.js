@@ -15,19 +15,18 @@
     consent: form.querySelector('[name="consent"]')
   };
   const consentError = form.querySelector(".consent-error");
+  const courseNote = form.querySelector("#course-note");
 
   const API_ENDPOINT = "https://model-academy.cun09062.workers.dev/api/leads";
   const GOOGLE_SHEET_WEBHOOK_URL =
     "https://script.google.com/macros/s/AKfycbxQOQeImY9CGFEhkbdSl6aNz8SixReRXwHjMKwnj3j2GQPLt8SWQF6vJX5w60BNdMnBRA/exec";
 
   const COURSE_LABELS = {
-    kol_starter: "KOL/KOC Starter Online",
-    kol_model: "KOL/KOC Model",
+    kol_model: "KOL/KOC & Model Trực Tiếp",
+    kol_starter: "KOL/KOC & Model Trực Tuyến",
     model_pro: "Model Professional",
     kol_advanced: "KOL/KOC Advanced",
-    kol_koc: "KOL/KOC",
-    branding_model: "Personal Branding / Model",
-    personal_image: "Personal Image"
+    free_trial: "Buổi trải nghiệm miễn phí"
   };
 
   async function pushToGoogleSheet(payload) {
@@ -186,8 +185,12 @@
 
   if (fields.course) {
     fields.course.addEventListener("change", () => {
+      if (courseNote) courseNote.hidden = fields.course.value !== "free_trial";
       setError(fields.course, "");
       clearStatus();
+    });
+    form.addEventListener("reset", () => {
+      if (courseNote) courseNote.hidden = true;
     });
   }
 
@@ -297,54 +300,11 @@
     }
 
     // 2. Gửi request lên API Worker
-    let response = await fetch(API_ENDPOINT, {
+    const response = await fetch(API_ENDPOINT, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
     });
-
-    // 3. Cơ chế tương thích ngược (Fallback):
-    // Nếu Worker trên Cloudflare chưa deploy bản cập nhật khóa học mới và trả về HTTP 400,
-    // tự động ánh xạ sang schema cũ để gửi lead thành công mà không làm gián đoạn người dùng.
-    if (
-      !response.ok &&
-      response.status === 400 &&
-      [
-        "kol_starter",
-        "kol_model",
-        "model_pro",
-        "kol_advanced",
-        "kol_koc",
-        "branding_model",
-        "personal_image",
-        "kol_branding",
-        "model_image",
-        "undetermined"
-      ].includes(payload.course)
-    ) {
-      const legacyCourseMap = {
-        kol_starter: "skills",
-        kol_model: "skills",
-        model_pro: "foundation",
-        kol_advanced: "skills",
-        kol_koc: "skills",
-        branding_model: "skills",
-        personal_image: "foundation",
-        kol_branding: "skills",
-        model_image: "foundation",
-        undetermined: "unknown"
-      };
-      const fallbackPayload = {
-        ...payload,
-        course: legacyCourseMap[payload.course] || "unknown",
-        learning_goal: ""
-      };
-      response = await fetch(API_ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(fallbackPayload)
-      });
-    }
 
     if (!response.ok) {
       const result = await response.json().catch(() => null);
@@ -391,7 +351,7 @@
           return;
         }
         status.textContent =
-          "Không thể kết nối đến máy chủ tiếp nhận. Vui lòng kiểm tra lại kết nối mạng hoặc liên hệ qua Hotline/Zalo: 088 629 1909.";
+          "Không thể kết nối đến máy chủ tiếp nhận. Vui lòng kiểm tra lại kết nối mạng hoặc liên hệ qua Hotline/Zalo: 0918371032.";
       } else {
         status.textContent = error.message || "Có lỗi xảy ra. Vui lòng thử lại.";
       }

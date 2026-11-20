@@ -1,33 +1,17 @@
 const allowedCourses = new Set([
-  "kol_starter",
   "kol_model",
+  "kol_starter",
   "model_pro",
   "kol_advanced",
-  "kol_koc",
-  "branding_model",
-  "personal_image",
-  "kol_branding",
-  "model_image",
-  "undetermined",
-  "skills",
-  "foundation",
-  "unknown"
+  "free_trial"
 ]);
 
 const courseNames = {
-  kol_starter: "Chương trình 01: KOL/KOC Starter Online",
-  kol_model: "Chương trình 02: KOL/KOC Model",
+  kol_model: "Chương trình 01: KOL/KOC & Model Trực Tiếp",
+  kol_starter: "Chương trình 02: KOL/KOC & Model Trực Tuyến",
   model_pro: "Chương trình 03: Model Professional",
   kol_advanced: "Chương trình 04: KOL/KOC Advanced",
-  kol_koc: "KOL/KOC",
-  branding_model: "Personal Branding / Model",
-  personal_image: "Personal Image",
-  kol_branding: "KOL/KOC & Personal Branding",
-  model_image: "Model & Personal Image",
-  undetermined: "Chưa xác định (Cần tư vấn thêm)",
-  skills: "KOL/KOC",
-  foundation: "Personal Image",
-  unknown: "Chưa xác định"
+  free_trial: "Buổi trải nghiệm miễn phí"
 };
 
 const DEFAULT_GOOGLE_SHEET_WEBHOOK_URL =

@@ -202,7 +202,9 @@
   const courseSelect = document.querySelector("#course");
   document.querySelectorAll("[data-course]").forEach((link) => {
     link.addEventListener("click", () => {
-      if (courseSelect) courseSelect.value = link.dataset.course || "";
+      if (!courseSelect) return;
+      courseSelect.value = link.dataset.course || "";
+      courseSelect.dispatchEvent(new Event("change", { bubbles: true }));
     });
   });
 
